@@ -1,19 +1,11 @@
-### Movie-recommendation 
-
-
-dropdown 두가지 방법
-
-```javascript
-
 import React, {Component} from 'react';
-/*import { Dropdown } from 'semantic-ui-react'*/
 import {Link} from "react-router-dom";
-import Header from "../header/Header";
+
 
 class DropdownList extends Component{
 
     state = {
-        vibe:'',
+        vibes:[1,2,3],
         situations:['a','b','c'],
         search:''
     };
@@ -30,22 +22,18 @@ class DropdownList extends Component{
    }
 
     render(){
-        const { vibe , situation ,search} =this.state;
+        const { search } =this.state;
         return(
             <div>
                 <form onSubmit={this.handleSubmit} >
                     <label>
                         오늘 나는
-                        <select
-                            name='vibe'
-                            value={vibe}
-                            onChange={this.handleChange}
-                            placeholder={vibe}
-                        >
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
+                        <select>
+                            {this.state.vibes.map(vibe => (
+                                <option key={vibe} value={vibe}>
+                                    {vibe}
+                                </option>
+                            ))}
                         </select>
                     </label>
                     <label>
@@ -57,7 +45,9 @@ class DropdownList extends Component{
                             ))}
                         </select>
                     </label>
+                    <Link to='#'>
                     <button type="submit">등록</button>
+                    </Link>
                     <br/>
                     <br/>
                     <input
@@ -75,4 +65,10 @@ class DropdownList extends Component{
 
 export default DropdownList;
 
-```
+
+
+
+
+
+
+
