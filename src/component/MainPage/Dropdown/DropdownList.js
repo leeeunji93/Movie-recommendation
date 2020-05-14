@@ -1,35 +1,34 @@
-import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
-class DropdownList extends Component{
-
+class DropdownList extends Component {
     state = {
-        vibes:[1,2,3],
-        situations:['a','b','c'],
-        search:''
+      vibes: [1, 2, 3],
+      situations: ['a', 'b', 'c'],
+      search: '',
     };
 
-    handleChange= e => {
-        this.setState({
-    [e.target.name]: e.target.value
-        });
+    handleChange = (e) => {
+      this.setState({
+        [e.target.name]: e.target.value,
+      });
     }
 
 
-   handleSubmit = e => {
-       e.preventDefault();
-   }
+    handleSubmit = (e) => {
+      e.preventDefault();
+    }
 
-    render(){
-        const { search } =this.state;
-        return(
+    render() {
+      const { search } = this.state;
+      return (
             <div>
-                <form onSubmit={this.handleSubmit} >
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         오늘 나는
                         <select>
-                            {this.state.vibes.map(vibe => (
+                            {this.state.vibes.map((vibe) => (
                                 <option key={vibe} value={vibe}>
                                     {vibe}
                                 </option>
@@ -38,7 +37,7 @@ class DropdownList extends Component{
                     </label>
                     <label>
                         <select>
-                            {this.state.situations.map(situation => (
+                            {this.state.situations.map((situation) => (
                                 <option key={situation} value={situation}>
                                     {situation}
                                 </option>
@@ -46,7 +45,7 @@ class DropdownList extends Component{
                         </select>
                     </label>
                     <Link to='#'>
-                    <button type="submit">등록</button>
+                        <button type="submit">등록</button>
                     </Link>
                     <br/>
                     <br/>
@@ -56,19 +55,13 @@ class DropdownList extends Component{
                         onChange={this.handleChange}
                         value={search}
                     />
+                    <Link to='/SearchContainer'>
                     <button type="submit">등록</button>
+                    </Link>
                 </form>
             </div>
-        )
+      );
     }
 }
 
 export default DropdownList;
-
-
-
-
-
-
-
-

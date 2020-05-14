@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faHome,faEdit,faHeart,faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import {MainContainer} from "../../containers";
 
 library.add(fab, faHome,faEdit);
 
@@ -16,25 +17,25 @@ class Header extends Component {
             <div className= 'Header'>
                 <Link
                     className='header_home'
-                    to='/Main'>
+                    to='/MainContainer'>
                     <FontAwesomeIcon icon={faHome}/>
                     Home
                 </Link>
                 <Link
                     className='header_write'
-                    to='/Main'>
+                    to='/Post'>
                     <FontAwesomeIcon icon={faEdit}/>
                     Write
                 </Link>
                 <Link
                     className='header_myPage'
-                     to='/Main'>
+                     to='/Post'>
                     <FontAwesomeIcon icon={faHeart}/>
                     MyPage
                 </Link>
                 <Link
                     className='header_login'
-                    to='/Main'>
+                    to='/Post'>
                     <FontAwesomeIcon icon={faUserCircle}/>
                     Login
                 </Link>

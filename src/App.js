@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
-import {BrowserRouter} from "react-router-dom";
-import Header from "./Component/header/Header";
-import Main from "./Route/Main";
-import DropdownList from "./Component/navigate/DropdownList";
-
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Header } from './component';
+import {MainContainer, PosterResultContainer,SearchMovieContainer } from './containers';
 
 
 class App extends Component {
@@ -12,13 +10,11 @@ class App extends Component {
         <div>
           <h1>사이트 이름</h1>
             <BrowserRouter>
-                <Header />
-                <Main path='/' exact={true} component={Main} />
-                <DropdownList />
-            </BrowserRouter>
-
-
-
+             <Header/>
+             <Route path='/MainContainer' exact={true} component={MainContainer} />
+             <Route path='/PosterResultContainer' component={PosterResultContainer}/>
+             <Route path='/SearchMovieContainer' component={SearchMovieContainer}/>
+            </BrowserRouter>-
 
 
         </div>

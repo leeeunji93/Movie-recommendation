@@ -8,7 +8,7 @@ dropdown 두가지 방법
 import React, {Component} from 'react';
 /*import { Dropdown } from 'semantic-ui-react'*/
 import {Link} from "react-router-dom";
-import Header from "../header/Header";
+import Header from "../Header/Header";
 
 class DropdownList extends Component{
 
