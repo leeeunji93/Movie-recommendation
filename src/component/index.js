@@ -1,4 +1,4 @@
-import Header from './Header/Header';
+import Header from '../containers/Header/Header';
 import Post from './MainPage/Post/Post';
 import DropdownList from './MainPage/Dropdown/DropdownList';
 import MainPageWrapper from './MainPage/MainPageWrapper/MainPageWrapper';
@@ -6,6 +6,8 @@ import PosterResultWrapper from './PosterResult/PosterResultWrapper/PosterResult
 import InformationIcon from './PosterResult/InformationIcon/InformationIcon';
 import Diary from './PosterResult/Diary/Diary';
 import SearchMovie from "./SearchMovie/SearchMovie";
+import Login from "./Login/Login";
+import RegisterPage from "./Login/RegisterPage";
 
 export {
   Header,
@@ -15,7 +17,10 @@ export {
   PosterResultWrapper,
   InformationIcon,
   Diary,
-  SearchMovie
+  SearchMovie,
+    Login,
+    RegisterPage
+
 
 
 };

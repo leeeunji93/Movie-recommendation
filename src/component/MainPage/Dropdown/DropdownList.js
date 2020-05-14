@@ -6,22 +6,21 @@ class DropdownList extends Component {
     state = {
       vibes: [1, 2, 3],
       situations: ['a', 'b', 'c'],
-      search: '',
     };
 
-    handleChange = (e) => {
+   /* handleChange = (e) => {
       this.setState({
         [e.target.name]: e.target.value,
       });
     }
-
+*/
 
     handleSubmit = (e) => {
       e.preventDefault();
     }
 
     render() {
-      const { search } = this.state;
+      const { vibes,situations } = this.state;
       return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -47,9 +46,7 @@ class DropdownList extends Component {
                     <Link to='#'>
                         <button type="submit">등록</button>
                     </Link>
-                    <br/>
-                    <br/>
-                    <input
+                   {/* <input
                         name='search'
                         placeholder='영화 제목, 아이디,'
                         onChange={this.handleChange}
@@ -57,7 +54,7 @@ class DropdownList extends Component {
                     />
                     <Link to='/SearchContainer'>
                     <button type="submit">등록</button>
-                    </Link>
+                    </Link>*/}
                 </form>
             </div>
       );
