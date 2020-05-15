@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import PosterResultWrapper from '../../component/PosterResult/PosterResultWrapper/PosterResultWrapper';
-// eslint-disable-next-line import/no-cycle
-import { Diary, InformationIcon } from '../../component';
+import {Diary, InformationIcon, PosterResultWrapper} from '../../component';
 
 
 class PosterResultContainer extends Component {

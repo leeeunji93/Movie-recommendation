@@ -3,7 +3,7 @@ import './Diary.css';
 
 const Diary = () => (
     <div className='diary'>
-        다이어리 내용
+       여기에 사람들이 써둔 영화 일기와 정보가 불러와짐
     </div>
 );
 

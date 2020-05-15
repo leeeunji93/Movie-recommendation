@@ -33,7 +33,7 @@ class App extends Component {
             <BrowserRouter>
              <Header/>
              <Route path='/' exact={true} component={MainContainer} />
-             <Route path='/PosterResultContainer' component={PosterResultContainer}/>
+             <Route path='/PosterResult' component={PosterResult}/>
              <Route path='/SearchMovieContainer' component={SearchMovieContainer}/>
             </BrowserRouter>-
 

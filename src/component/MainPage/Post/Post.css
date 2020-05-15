@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+.PosterWrapper{
+    width: 960px;
+    margin: 0 auto;
+}
+
+
+.PosterWrapper .posterZIP {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+
+
+}
+
+.poster_1,
+.poster_2,
+.poster_3,
+.poster_4,
+.poster_5,
+.poster_6
+{
+    display: block;
+    margin-bottom: 20px;
+
+
+}

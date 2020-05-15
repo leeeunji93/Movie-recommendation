@@ -27,7 +27,11 @@ class Header extends Component{
         return(
             <div className= 'Header'>
                 <div className='header_top'>
-                    <p className='header_name'>사이트 이름</p>
+                    <Link
+                        to = '/'
+                        className='header_name'>
+                    사이트 이름
+                    </Link>
                     <div className='header_search'>
                         <input
                             placeholder='영화 제목, 아이디'
@@ -47,7 +51,7 @@ class Header extends Component{
                     <div className='header_menu'>
                         <Link
                             className='header_write'
-                            to='/Post'>
+                            to='/SearchMovieContainer'>
                             <FontAwesomeIcon
                                 className='header_icon'
                                 icon={faEdit}/>

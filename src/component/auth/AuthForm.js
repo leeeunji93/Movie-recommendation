@@ -8,30 +8,37 @@ const textMap = {
     register: '회원가입',
 };
 
-
-const AuthForm = ({type}) => {
+const AuthForm = ({type,form,oncChange,onSubmit}) => {
     const text = textMap[type];
     return (
         <div className='authform_wrapper'>
             <h3>{text}</h3>
 
-            <form className='auth_form'>
+            <form
+                onSubmit={onSubmit}
+                className='auth_form'>
                 <input
                     className='auth_id'
                     name='username'
                     placeholder='아이디를 입력하세요'
+                    onChange={oncChange}
+                    value={form.username}
                 />
                 <br/>
                 <input
                     className='auth_password'
                     name='password'
                     placeholder='비밀번호를 입력하세요'
+                    onChange={oncChange}
+                    value={form.password}
                 />
                 {type === 'register' && (
                     <input
                         className='auth_passwordConfirm'
                         name='passwordConfirm'
                         placeholder='비밀번호를 확인하세요'
+                        onChange={oncChange}
+                        value={form.passwordConfirm}
                     />
                 )}
                 <br/>

@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: 'Lato', 'Noto Sans KR';
+    font-family: 'Roboto', sans-serif;
 }
 
 .Header{
@@ -39,9 +41,11 @@
     right: 0;
 }
 
-.Header .header_menu a{
-    color: black;
+.Header .header_top a {
+    color: #262626;
+
 }
+
 
 .Header .header_menu .header_icon{
     margin-right: 10px;
@@ -70,9 +74,6 @@ margin-right: 80px;
     border:0.1rem solid #b2b2b2;
 }
 
-.Header .header_search a{
-    color: black;
 
-}
 
 
