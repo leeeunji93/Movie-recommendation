@@ -1,13 +1,17 @@
-import Header from '../containers/Header/Header';
-import Post from './MainPage/Post/Post';
-import DropdownList from './MainPage/Dropdown/DropdownList';
-import MainPageWrapper from './MainPage/MainPageWrapper/MainPageWrapper';
-import PosterResultWrapper from "./PosterResult/PosterResultWrapper/PosterResultWrapper";
-import InformationIcon from './PosterResult/InformationIcon/InformationIcon';
-import Diary from './PosterResult/Diary/Diary';
-import SearchMovie from "./SearchMovie/SearchMovie";
-import Login from "./Login/Login";
-import RegisterPage from "./Login/RegisterPage";
+import Header from "../containers/header/Header";
+import Post from "./mainPage/post/Post";
+import DropdownList from "./mainPage/dropdown/DropdownList";
+import MainPageWrapper from "./mainPage/mainPageWrapper/MainPageWrapper";
+import PosterResultWrapper from "./posterResult/posterResultWrapper/PosterResultWrapper";
+import InformationIcon from "./posterResult/informationIcon/InformationIcon";
+import Diary from "./posterResult/diary/Diary";
+import SearchMovie from "./searchMovie/SearchMovie";
+import Login from "./login/Login";
+import RegisterPage from "./login/RegisterPage";
+import MyPageMainHeader from "./myPage/myPageMainHeader/MyPageMainHeader";
+import MyPageMainReviewAll from "./myPage/myPageMainReviewAll/MyPageMainReviewAll";
+import MyPageMainTag from "./myPage/myPageMainTag/MyPageMainTag";
+import MyPageWrapper from "./myPage/myPageWrapper/MyPageWrapper";
 
 export {
   Header,
@@ -18,9 +22,10 @@ export {
   InformationIcon,
   Diary,
   SearchMovie,
-    Login,
-    RegisterPage
-
-
-
+  Login,
+  RegisterPage,
+  MyPageMainHeader,
+  MyPageMainReviewAll,
+  MyPageMainTag,
+  MyPageWrapper,
 };

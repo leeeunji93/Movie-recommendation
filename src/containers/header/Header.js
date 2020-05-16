@@ -59,7 +59,7 @@ class Header extends Component{
                         </Link>
                         <Link
                             className='header_myPage'
-                            to='/Post'>
+                            to='/MyPageContainer'>
                             <FontAwesomeIcon
                                 className='header_icon'
                                 icon={faHeart}/>

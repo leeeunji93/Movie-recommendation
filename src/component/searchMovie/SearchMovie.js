@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -33,4 +34,4 @@ SearchMovie.propTypes = {
     director: PropTypes.string.isRequired,
     actor: PropTypes.string.isRequired
 };
-export default SearchMovie;
+export default SearchMovie;*/

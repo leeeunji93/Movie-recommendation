@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import {Header, Login, RegisterPage} from './component';
 import './App.css'
 import './reset.css'
-import {MainContainer, PosterResultContainer,SearchMovieContainer } from './containers';
+import {MainContainer, MyPageContainer, PosterResultContainer, SearchMovieContainer} from './containers';
 
 
 
@@ -19,6 +19,7 @@ const App = () => {
             <Route component={RegisterPage} path='/RegisterPage' />
             <Route component={PosterResultContainer} path='/PosterResultContainer' />
             <Route component={SearchMovieContainer} path='/SearchMovieContainer' />
+            <Route component={MyPageContainer} path='/MyPageContainer' />
 
             </>
     )
@@ -31,9 +32,9 @@ class App extends Component {
     return (
         <div>
             <BrowserRouter>
-             <Header/>
-             <Route path='/' exact={true} component={MainContainer} />
-             <Route path='/PosterResult' component={PosterResult}/>
+             <header/>
+             <Route path='/' exact={true} component={mainContainer} />
+             <Route path='/posterResult' component={posterResult}/>
              <Route path='/SearchMovieContainer' component={SearchMovieContainer}/>
             </BrowserRouter>-
 

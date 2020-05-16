@@ -61,7 +61,7 @@ class DropdownList extends Component {
                         onChange={this.handleChange}
                         value={search}
                     />
-                    <Link to='/SearchContainer'>
+                    <Link to='/searchContainer'>
                     <button type="submit">등록</button>
                     </Link>*/}
                 </form>
