@@ -55,7 +55,7 @@ class Header extends Component {
               <FontAwesomeIcon className="header_icon" icon={faHeart} />
               <span>MyPage</span>
             </Link>
-            <Link className="header_login" to="/loginPage">
+            <Link className="header_login" to="/Auth">
               <FontAwesomeIcon className="header_icon" icon={faUserCircle} />
               <span>Login</span>
             </Link>

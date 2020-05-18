@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-import MyAccount from "../../../tool/MyAccount";
-import { NetTool, APIs } from "../../../tool/NetTool";
-import "./UserPage.css";
+import MyAccount from "../../tool/MyAccount";
+import { NetTool, APIs } from "../../tool/NetTool";
+import { Link } from "react-router-dom";
 
-const Userpage = ({ onChangeLoginState }) => {
+const textMap = {
+  login: "로그인",
+  register: "회원가입",
+};
+const Auth = ({ type }) => {
+  const text = textMap[type];
+
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    email: "",
+    pwd: "",
     passwordConfirm: "",
   });
 
-  const { username, password, passwordConfirm } = form;
+  const { email, pwd, passwordConfirm } = form;
 
   const onChange = (e) => {
     const nextForm = {
@@ -38,7 +44,6 @@ const Userpage = ({ onChangeLoginState }) => {
       .then((resultData) => {
         alert("로그인 성공");
         MyAccount.updateMyAccount(resultData);
-        onChangeLoginState();
       })
       .catch((error) => {
         if (error === "UserNotFound") {
@@ -56,12 +61,11 @@ const Userpage = ({ onChangeLoginState }) => {
     MyAccount.logout();
   };
 
-  // 이메일주소로 회원가입하기.
   const clickJoin = () => {
-    // 필수 데이터 : email, name, pwd
+    //필수 데이터 : email, name, pwd
     const email = "aa@aa.aa";
     const pwd = "123123";
-    const nickname = `이름${new Date().getTime()}`;
+    const nickname = "이름" + new Date().getTime();
 
     NetTool.request(APIs.userJoin)
       .appendFormData("email", email)
@@ -72,7 +76,6 @@ const Userpage = ({ onChangeLoginState }) => {
         alert("회원 가입 성공");
         console.log("가입 성공, 리절트 : ", resultData);
         MyAccount.updateMyAccount(resultData);
-        onChangeLoginState();
       })
       .catch((error) => {
         if (error === "EmailExists") {
@@ -84,41 +87,51 @@ const Userpage = ({ onChangeLoginState }) => {
   };
 
   return (
-    <div>
-      <h1>로그인</h1>
+    <div className="authForm_wrapper">
+      <h1>{text}</h1>
       <form onSubmit={onSubmit} className="auth_form">
         <input
           className="auth_id"
-          name="username"
+          name="email"
           placeholder="아이디를 입력하세요"
           onChange={onChange}
-          value={username}
+          value={email}
         />
         <br />
         <input
           className="auth_password"
-          name="password"
+          name="pwd"
           placeholder="비밀번호를 입력하세요"
           onChange={onChange}
-          value={password}
+          value={pwd}
         />
-        {/*  { === "clickJoin" && (
+
+        {type === "register" && (
           <input
             className="auth_passwordConfirm"
             name="passwordConfirm"
             placeholder="비밀번호를 확인하세요"
             onChange={onChange}
             value={passwordConfirm}
-          />}
-        )}*/}
+          />
+        )}
+
         <br />
-        <br />
-        <button onClick={clickLogin}>로그인하기</button>
-        <button onClick={clickJoin}>회원가입하기</button>
-        {}
+        <footer>
+          {type === "login" ? (
+            <Link onClick={clickJoin} to="/register">
+              회원가입
+            </Link>
+          ) : (
+            <Link onClick={clickLogin} to="/login">
+              로그인
+            </Link>
+          )}
+          ;
+        </footer>
       </form>
     </div>
   );
 };
 
-export default Userpage;
+export default Auth;

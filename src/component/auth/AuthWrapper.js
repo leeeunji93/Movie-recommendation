@@ -1,8 +1,9 @@
 import React from "react";
+import "./Auth.css";
 
 // eslint-disable-next-line react/prop-types
-const UserPageWrapper = ({ children }) => {
+const AuthWrapper = ({ children }) => {
   return <div>{children}</div>;
 };
 
-export default UserPageWrapper;
+export default AuthWrapper;

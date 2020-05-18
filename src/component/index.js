@@ -10,9 +10,8 @@ import MyPageMainHeader from "./myPage/myPageMainHeader/MyPageMainHeader";
 import MyPageMainReviewAll from "./myPage/myPageMainReviewAll/MyPageMainReviewAll";
 import MyPageMainTag from "./myPage/myPageMainTag/MyPageMainTag";
 import MyPageWrapper from "./myPage/myPageWrapper/MyPageWrapper";
-import UserPageWrapper from "./loginPage/userPageWrapper/UserPageWrapper";
-import Login from "./loginPage/userPage/login/Login";
-import Register from "./loginPage/userPage/register/Register";
+import AuthWrapper from "./auth/AuthWrapper";
+import Auth from "./auth/Auth";
 
 export {
   Header,
@@ -27,7 +26,6 @@ export {
   MyPageMainReviewAll,
   MyPageMainTag,
   MyPageWrapper,
-  UserPageWrapper,
-  Login,
-  Register,
+  AuthWrapper,
+  Auth,
 };

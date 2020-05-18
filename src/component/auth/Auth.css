@@ -64,13 +64,13 @@ h3{
 
 
 
-.authform_wrapper footer{
+.authForm_wrapper footer{
     margin-top: 20px;
     text-align: right;
 
 }
 
-.authform_wrapper footer a{
+.authForm_wrapper footer a{
     color: #262626;
     cursor: pointer;
     font-weight: bold;

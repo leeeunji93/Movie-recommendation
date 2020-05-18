@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { NetTool, APIs } from "./tool/NetTool";
 import MyAccount from "./tool/MyAccount";
-import { Header } from "./component";
+import { Auth, Header } from "./component";
 import "./App.css";
 import "./reset.css";
 import {
+  Login,
   MainContainer,
   MyPageContainer,
   PosterResultContainer,
+  Register,
   SearchMovieContainer,
-  UserPageContainer,
 } from "./containers";
 
 class App extends Component {
@@ -45,7 +46,6 @@ class App extends Component {
     return (
       <div>
         <Header />
-
         <Route component={MainContainer} path="/" exact />
         <Route
           component={PosterResultContainer}
@@ -53,16 +53,9 @@ class App extends Component {
         />
         <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
         <Route component={MyPageContainer} path="/MyPageContainer" />
-        <Route
-          exact
-          path="/loginPage"
-          render={(props) => (
-            <UserPageContainer
-              {...props}
-              onChangeLoginState={this.onChangeLoginState}
-            />
-          )}
-        />
+        <Route component={Login} path="/login" />
+        <Route component={Register} path="/register" />
+        <Route component={Auth} path="/auth" />
       </div>
     );
   }
