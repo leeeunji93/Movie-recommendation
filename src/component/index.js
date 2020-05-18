@@ -6,12 +6,13 @@ import PosterResultWrapper from "./posterResult/posterResultWrapper/PosterResult
 import InformationIcon from "./posterResult/informationIcon/InformationIcon";
 import Diary from "./posterResult/diary/Diary";
 import SearchMovie from "./searchMovie/SearchMovie";
-import Login from "./login/Login";
-import RegisterPage from "./login/RegisterPage";
 import MyPageMainHeader from "./myPage/myPageMainHeader/MyPageMainHeader";
 import MyPageMainReviewAll from "./myPage/myPageMainReviewAll/MyPageMainReviewAll";
 import MyPageMainTag from "./myPage/myPageMainTag/MyPageMainTag";
 import MyPageWrapper from "./myPage/myPageWrapper/MyPageWrapper";
+import UserPageWrapper from "./loginPage/userPageWrapper/UserPageWrapper";
+import Login from "./loginPage/userPage/login/Login";
+import Register from "./loginPage/userPage/register/Register";
 
 export {
   Header,
@@ -22,10 +23,11 @@ export {
   InformationIcon,
   Diary,
   SearchMovie,
-  Login,
-  RegisterPage,
   MyPageMainHeader,
   MyPageMainReviewAll,
   MyPageMainTag,
   MyPageWrapper,
+  UserPageWrapper,
+  Login,
+  Register,
 };
