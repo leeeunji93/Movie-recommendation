@@ -6,8 +6,8 @@ const Login = ({ onChangeLoginState, isLogin }) => {
   return (
     <AuthWrapper>
       <Auth
-        onChangeLoginState={onChangeLoginState}
         isLogin={isLogin}
+        onChangeLoginState={onChangeLoginState}
         type="login"
       />
     </AuthWrapper>

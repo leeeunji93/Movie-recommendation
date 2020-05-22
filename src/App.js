@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { NetTool, APIs } from "./tool/NetTool";
 import MyAccount from "./tool/MyAccount";
-import { Auth, Header } from "./component";
+import { Header } from "./component";
 import "./App.css";
 import "./reset.css";
 import {
@@ -40,6 +40,7 @@ class App extends Component {
   onChangeLoginState = () => {
     const isLogin = MyAccount.uId > 0;
     this.setState({ isLogin });
+    console.log(isLogin);
   };
 
   render() {
@@ -54,14 +55,18 @@ class App extends Component {
         />
         <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
         <Route
-          isLogin={isLogin}
           component={MyPageContainer}
           path="/MyPageContainer"
+          render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
         />
         <Route
           path="/login"
           render={(props) => (
-            <Login {...props} onChangeLoginState={this.onChangeLoginState} />
+            <Login
+              {...props}
+              onChangeLoginState={this.onChangeLoginState}
+              isLogin={this.isLogin}
+            />
           )}
         />
 

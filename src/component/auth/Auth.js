@@ -27,36 +27,13 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
     setForm(nextForm);
   };
 
-  const onSafe = (email, pwd) => {
-    const regExpPwEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    const regExpPw = /^[A-Za-z0-9]{6,12}$/;
-
-    if (email.match(regExpPwEmail)) {
-      if (pwd.match(regExpPw)) {
-        this.props.history.push("/");
-      } else {
-        alert("비밀번호를 다시 입력하세요");
-        /*해당 인풋 포커스 주자*/
-      }
-    } else {
-      alert("이메일 주소를 다시 입력하세요");
-    }
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    const error = onSafe(email, pwd);
-    if (error) {
-      alert(error);
-    }
   };
 
   // 이메일 주소로 로그인 하기.
   const clickLogin = () => {
     // 필수 email, pwd
-
-    /*const email = "hyunwoo-21@hanmail.net";
-    const pwd = "123123";*/
 
     NetTool.request(APIs.userLogin)
       .appendFormData("email", email) // 필수
@@ -66,7 +43,6 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
         alert("로그인 성공");
         MyAccount.updateMyAccount(resultData);
         onChangeLoginState();
-        console.log(isLogin);
       })
       .catch((error) => {
         if (error === "UserNotFound") {
@@ -86,9 +62,17 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
 
   const clickJoin = () => {
     //필수 데이터 : email, name, pwd
-    /* const email = "aa@aa.aa";
-    const pwd = "123123";*/
-    /*    const nickname = "이름" + new Date().getTime();*/
+
+    const regExpPw = /^[a-zA-z0-9]{4,12}$/;
+    if (!email.includes("@")) {
+      alert("@을 넣어주세요");
+      return false;
+    }
+
+    if (!regExpPw.test(pwd)) {
+      alert("비밀번호를 확인해주세요");
+      return false;
+    }
 
     NetTool.request(APIs.userJoin)
       .appendFormData("email", email)
@@ -99,8 +83,8 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
         alert("회원 가입 성공");
         console.log("가입 성공, 리절트 : ", resultData);
         MyAccount.updateMyAccount(resultData);
+        this.props.history.push("/");
         onChangeLoginState();
-        console.log(isLogin);
       })
       .catch((error) => {
         if (error === "EmailExists") {
@@ -123,19 +107,21 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
           value={email}
         />
         <br />
-        <input
-          className="auth_input"
-          name="nickname"
-          placeholder="닉네임을 입력하세요"
-          onChange={onChange}
-          value={nickname}
-        />
+        {type === "register" && (
+          <input
+            className="auth_input"
+            name="nickname"
+            placeholder="닉네임을 입력하세요"
+            onChange={onChange}
+            value={nickname}
+          />
+        )}
 
         <input
           type="password"
           className="auth_input"
           name="pwd"
-          placeholder="비밀번호를 입력하세요"
+          placeholder="비밀번호를 입력하세요(영문 대소문자와 숫자 4~12자)"
           onChange={onChange}
           value={pwd}
         />
@@ -150,19 +136,21 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
             value={passwordConfirm}
           />
         )}
+        {type === "login" && (
+          <Link to="/">
+            <button onClick={clickLogin}>로그인</button>
+          </Link>
+        )}
 
         <br />
         <footer>
-          <button>
+          {type === "login" ? (
+            <Link to="/register">회원가입</Link>
+          ) : (
             <Link onClick={clickJoin} to="/">
-              회원가입
-            </Link>
-          </button>
-          <button>
-            <Link onClick={clickLogin} to="/">
               로그인
             </Link>
-          </button>
+          )}
         </footer>
       </form>
     </div>

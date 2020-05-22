@@ -11,6 +11,7 @@ class MyPageContainer extends Component {
     const { isLogin } = this.props;
     return (
       <div>
+        {console.log(isLogin)}
         <MyPageWrapper>
           <MyPageMainHeader isLogin={isLogin} />
           <MyPageMainTag />
