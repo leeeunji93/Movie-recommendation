@@ -25,7 +25,7 @@ class Header extends Component {
   };
 
   render() {
-    const { search } = this.state;
+    const { search, isLogin } = this.state;
     return (
       <div className="Header">
         <div className="header_top">
@@ -55,9 +55,9 @@ class Header extends Component {
               <FontAwesomeIcon className="header_icon" icon={faHeart} />
               <span>MyPage</span>
             </Link>
-            <Link className="header_login" to="/Auth">
+            <Link className="header_login" to="/Login">
               <FontAwesomeIcon className="header_icon" icon={faUserCircle} />
-              <span>Login</span>
+              {isLogin ? "닉네임" : "Login"}
             </Link>
           </div>
         </div>

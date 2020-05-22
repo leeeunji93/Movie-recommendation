@@ -15,7 +15,8 @@ h3{
 }
 
 
-.auth_form .auth_id{
+
+.auth_input{
     border: none;
     border-bottom: 1px solid #262626 ;
     margin-top: 2rem;
@@ -26,26 +27,6 @@ h3{
 
 }
 
-
-.auth_form .auth_password{
-    border: none;
-    border-bottom: 1px solid #262626 ;
-    margin-top: 2rem;
-    padding-bottom: 1.2rem;
-    font-size: 12px;
-    width: 100%;
-    cursor: pointer;
-}
-
-.auth_form .auth_passwordConfirm{
-    border: none;
-    border-bottom: 1px solid #262626 ;
-    margin-top: 2rem;
-    padding-bottom: 1.2rem;
-    font-size: 12px;
-    width: 100%;
-    cursor: pointer;
-}
 
 .auth_form button{
     border: 1px solid #F2F2F2;
@@ -58,8 +39,6 @@ h3{
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
-
-
 }
 
 

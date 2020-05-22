@@ -55,7 +55,6 @@ class App extends Component {
         <Route component={MyPageContainer} path="/MyPageContainer" />
         <Route component={Login} path="/login" />
         <Route component={Register} path="/register" />
-        <Route component={Auth} path="/auth" />
       </div>
     );
   }

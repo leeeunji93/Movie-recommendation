@@ -13,10 +13,11 @@ const Auth = ({ type }) => {
   const [form, setForm] = useState({
     email: "",
     pwd: "",
+    nickname: "",
     passwordConfirm: "",
   });
 
-  const { email, pwd, passwordConfirm } = form;
+  const { email, pwd, nickname, passwordConfirm } = form;
 
   const onChange = (e) => {
     const nextForm = {
@@ -26,16 +27,36 @@ const Auth = ({ type }) => {
     setForm(nextForm);
   };
 
+  const onSafe = (email, pwd) => {
+    const regExpPwEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    const regExpPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+
+    if (email.match(regExpPwEmail)) {
+      if (pwd.match(regExpPw)) {
+        this.props.history.push("/");
+      } else {
+        alert("비밀번호를 다시 입력하세요");
+        /*해당 인풋 포커스 주자*/
+      }
+    } else {
+      alert("이메일 주소를 다시 입력하세요");
+    }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
+    const error = onSafe(email, pwd);
+    if (error) {
+      alert(error);
+    }
   };
 
   // 이메일 주소로 로그인 하기.
   const clickLogin = () => {
     // 필수 email, pwd
 
-    const email = "hyunwoo-21@hanmail.net";
-    const pwd = "123123";
+    /*const email = "hyunwoo-21@hanmail.net";
+    const pwd = "123123";*/
 
     NetTool.request(APIs.userLogin)
       .appendFormData("email", email) // 필수
@@ -63,9 +84,9 @@ const Auth = ({ type }) => {
 
   const clickJoin = () => {
     //필수 데이터 : email, name, pwd
-    const email = "aa@aa.aa";
-    const pwd = "123123";
-    const nickname = "이름" + new Date().getTime();
+    /* const email = "aa@aa.aa";
+    const pwd = "123123";*/
+    /*    const nickname = "이름" + new Date().getTime();*/
 
     NetTool.request(APIs.userJoin)
       .appendFormData("email", email)
@@ -91,15 +112,24 @@ const Auth = ({ type }) => {
       <h1>{text}</h1>
       <form onSubmit={onSubmit} className="auth_form">
         <input
-          className="auth_id"
+          className="auth_input"
           name="email"
-          placeholder="아이디를 입력하세요"
+          placeholder="이메일 주소 입력하세요"
           onChange={onChange}
           value={email}
         />
         <br />
         <input
-          className="auth_password"
+          className="auth_input"
+          name="nickname"
+          placeholder="닉네임을 입력하세요"
+          onChange={onChange}
+          value={nickname}
+        />
+
+        <input
+          type="password"
+          className="auth_input"
           name="pwd"
           placeholder="비밀번호를 입력하세요"
           onChange={onChange}
@@ -108,7 +138,8 @@ const Auth = ({ type }) => {
 
         {type === "register" && (
           <input
-            className="auth_passwordConfirm"
+            type="password"
+            className="auth_input"
             name="passwordConfirm"
             placeholder="비밀번호를 확인하세요"
             onChange={onChange}
@@ -118,16 +149,16 @@ const Auth = ({ type }) => {
 
         <br />
         <footer>
-          {type === "login" ? (
-            <Link onClick={clickJoin} to="/register">
+          <button>
+            <Link onClick={clickJoin} to="/login">
               회원가입
             </Link>
-          ) : (
-            <Link onClick={clickLogin} to="/login">
+          </button>
+          <button>
+            <Link onClick={clickLogin} to="/">
               로그인
             </Link>
-          )}
-          ;
+          </button>
         </footer>
       </form>
     </div>
