@@ -8,10 +8,11 @@ import {
 
 class MyPageContainer extends Component {
   render() {
+    const { isLogin } = this.props;
     return (
       <div>
         <MyPageWrapper>
-          <MyPageMainHeader />
+          <MyPageMainHeader isLogin={isLogin} />
           <MyPageMainTag />
           <MyPageMainReviewAll />
         </MyPageWrapper>

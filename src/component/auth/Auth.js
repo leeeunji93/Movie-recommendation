@@ -7,7 +7,7 @@ const textMap = {
   login: "로그인",
   register: "회원가입",
 };
-const Auth = ({ type }) => {
+const Auth = ({ type, onChangeLoginState, isLogin }) => {
   const text = textMap[type];
 
   const [form, setForm] = useState({
@@ -65,6 +65,8 @@ const Auth = ({ type }) => {
       .then((resultData) => {
         alert("로그인 성공");
         MyAccount.updateMyAccount(resultData);
+        onChangeLoginState();
+        console.log(isLogin);
       })
       .catch((error) => {
         if (error === "UserNotFound") {
@@ -97,6 +99,8 @@ const Auth = ({ type }) => {
         alert("회원 가입 성공");
         console.log("가입 성공, 리절트 : ", resultData);
         MyAccount.updateMyAccount(resultData);
+        onChangeLoginState();
+        console.log(isLogin);
       })
       .catch((error) => {
         if (error === "EmailExists") {
