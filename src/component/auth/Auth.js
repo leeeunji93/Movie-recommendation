@@ -29,7 +29,7 @@ const Auth = ({ type }) => {
 
   const onSafe = (email, pwd) => {
     const regExpPwEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    const regExpPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+    const regExpPw = /^[A-Za-z0-9]{6,12}$/;
 
     if (email.match(regExpPwEmail)) {
       if (pwd.match(regExpPw)) {
@@ -150,7 +150,7 @@ const Auth = ({ type }) => {
         <br />
         <footer>
           <button>
-            <Link onClick={clickJoin} to="/login">
+            <Link onClick={clickJoin} to="/">
               회원가입
             </Link>
           </button>

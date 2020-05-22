@@ -1,37 +1,9 @@
-/*
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 
+class SearchMovie extends Component {
+  render() {
+    return <div>gg</div>;
+  }
+}
 
-function SearchMovie({id, title, poster, director, actor}) {
-    return (
-        <div className='movie'>
-            <img
-                src={poster}
-                alt={title}
-                title={title}/>
-            <h2 className='movie_data'>{
-                title.replace(/<b>/gi, '').replace(/<\/b>/gi, '')
-            }
-            </h2>
-            <p className='movie_director'>
-                {director}
-            </p>
-            <p className='actor'>
-                {actor}
-            </p>
-
-
-        </div>
-
-    )
-};
-
-SearchMovie.propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actor: PropTypes.string.isRequired
-};
-export default SearchMovie;*/
+export default SearchMovie;
