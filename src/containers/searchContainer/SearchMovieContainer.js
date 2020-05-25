@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import { SearchMovie } from "../../component";
+import SearchWrapper from "../../component/searchMovie/SearchWrapper";
+import NeverSearch from "../../component/searchMovie/NeverSearch";
+import SearchDiary from "../../component/searchMovie/SearchDiary";
 
 class SearchMovieContainer extends Component {
   render() {
     return (
       <div>
-        <SearchMovie />
+        <SearchWrapper>
+          <NeverSearch />
+          <SearchDiary />
+        </SearchWrapper>
       </div>
     );
   }

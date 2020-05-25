@@ -47,7 +47,7 @@ class App extends Component {
     const { isLogin } = this.state;
     return (
       <div>
-        <Header />
+        <Header isLogin={isLogin} />
         <Route component={MainContainer} path="/" exact />
         <Route
           component={PosterResultContainer}
@@ -55,7 +55,6 @@ class App extends Component {
         />
         <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
         <Route
-          component={MyPageContainer}
           path="/MyPageContainer"
           render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
         />

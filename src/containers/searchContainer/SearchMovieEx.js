@@ -1,6 +1,6 @@
 import React from "react";
-import { NetTool, APIs } from "../../tool/NetTool";
-import "./SearchMovie.css";
+import { NetTool, APIs } from "../Tool/NetTool";
+import "../App.css";
 
 export default class DiarySave extends React.Component {
   constructor(props) {
@@ -25,8 +25,8 @@ export default class DiarySave extends React.Component {
     };
 
     //다이어리 수정모드 인가?
-    /* this.dId = props.match.params.dId;
-    this.isModify = this.dId > 0;*/
+    this.dId = props.match.params.dId;
+    this.isModify = this.dId > 0;
   }
 
   componentDidMount() {
@@ -97,12 +97,6 @@ export default class DiarySave extends React.Component {
       });
   };
 
-  /* clickKey = (e) => {
-    if (e.key === "Enter") {
-      this.clickSearch();
-    }
-  };*/
-
   //네이버 영화 검색결과 아이템 하나.
   MovieItem = ({ data }) => {
     let className = "MovieItem";
@@ -116,16 +110,12 @@ export default class DiarySave extends React.Component {
 
     return (
       <div className={className} onClick={clickItem}>
-        <div className="never_search_wrapper">
-          <div
-            className="never_search_input"
-            dangerouslySetInnerHTML={{ __html: data.title }}
-          />
-          <div className="never_search_result">
-            <img className="never_search_img" src={data.image} alt="" />
-          </div>
-          <div className="never_search_date">{data.pubDate}</div>
-          <div className="never_search_director">{data.director}</div>
+        <div>
+          <img src={data.image} alt="" />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: data.title }} />
+        <div>
+          ({data.pubDate} - {data.director})
         </div>
       </div>
     );
@@ -206,16 +196,11 @@ export default class DiarySave extends React.Component {
     return (
       <div id="DiarySave">
         <h1>{this.isModify ? "일기 수정" : "일기 새로쓰기"}</h1>
+
         <div>
-          <div className="never_search">
-            <input
-              placeholder="작성하실 영화를 검색하세요"
-              name="keyword"
-              value={keyword}
-              onChange={this.onChangeText}
-            />
-            <button onClick={this.clickSearch}>찾기</button>
-          </div>
+          <h2>네이버 영화검색</h2>
+          <input name="keyword" value={keyword} onChange={this.onChangeText} />
+          <button onClick={this.clickSearch}>찾기</button>
 
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {searchResultArr.map((data, index) => (
@@ -223,7 +208,7 @@ export default class DiarySave extends React.Component {
             ))}
           </div>
         </div>
-        <br />
+
         <div>
           <h3>선택된 영화</h3>
           {!selectedMovie && <strong>없음</strong>}
@@ -256,43 +241,47 @@ export default class DiarySave extends React.Component {
             value={diaryData.notes}
             onChange={this.onChangeDiaryData}
           ></textarea>
-          <div>
-            레이팅 (별점?) :{" "}
-            <input
-              name="rating"
-              value={diaryData.rating}
-              onChange={this.onChangeDiaryData}
-            />
-          </div>
-          <div>
-            영화 본 날짜 :{" "}
-            <input
-              name="watchDate"
-              value={diaryData.watchDate}
-              onChange={this.onChangeDiaryData}
-              type="date"
-            />
-          </div>
-          <div>
-            태그 :{" "}
-            <input
-              style={{ width: "600px" }}
-              name="tags"
-              value={diaryData.tags}
-              onChange={this.onChangeDiaryData}
-            />
-          </div>
-          <div>
-            전체 태그 목록에서 태그를 선택하게 하고, 선택한 모든 태그를 ','로
-            묶어서 저장한다.
-          </div>
-          <div>ex) 우울한,기쁜,차별에 맞서는,구출하는</div>
-          <h2>전체 태그 목록.</h2>
-          {tagsAll.map((tagTypeData, index) => (
-            <this.TagTypeItem tagTypeData={tagTypeData} key={index} />
-          ))}
-          <button onClick={this.clickSave}>일기 저장</button>
         </div>
+        <div>
+          레이팅 (별점?) :{" "}
+          <input
+            name="rating"
+            value={diaryData.rating}
+            onChange={this.onChangeDiaryData}
+          />
+        </div>
+        <div>
+          영화 본 날짜 :{" "}
+          <input
+            name="watchDate"
+            value={diaryData.watchDate}
+            onChange={this.onChangeDiaryData}
+            type="date"
+          />
+        </div>
+
+        <div>
+          태그 :{" "}
+          <input
+            style={{ width: "600px" }}
+            name="tags"
+            value={diaryData.tags}
+            onChange={this.onChangeDiaryData}
+          />
+        </div>
+
+        <div>
+          전체 태그 목록에서 태그를 선택하게 하고, 선택한 모든 태그를 ','로
+          묶어서 저장한다.
+        </div>
+        <div>ex) 우울한,기쁜,차별에 맞서는,구출하는</div>
+
+        <h2>전체 태그 목록.</h2>
+        {tagsAll.map((tagTypeData, index) => (
+          <this.TagTypeItem tagTypeData={tagTypeData} key={index} />
+        ))}
+
+        <button onClick={this.clickSave}>일기 저장</button>
       </div>
     );
   }

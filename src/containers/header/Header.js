@@ -10,6 +10,7 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import "./header.css";
+import MyAccount from "../../tool/MyAccount";
 
 library.add(fab, faSearch, faEdit);
 
@@ -28,7 +29,8 @@ class Header extends Component {
   };
 
   render() {
-    const { search, isLogin } = this.state;
+    const { search } = this.state;
+    const { isLogin } = this.props;
     return (
       <div className="Header">
         <div className="header_top">
@@ -60,7 +62,7 @@ class Header extends Component {
             </Link>
             <Link className="header_login" to="/Login">
               <FontAwesomeIcon className="header_icon" icon={faUserCircle} />
-              {isLogin ? "닉네임" : "Login"}
+              {isLogin ? MyAccount.nickname : "Login"}
             </Link>
           </div>
         </div>

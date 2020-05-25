@@ -63,7 +63,7 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
   const clickJoin = () => {
     //필수 데이터 : email, name, pwd
 
-    const regExpPw = /^[a-zA-z0-9]{4,12}$/;
+    const regExpPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}/;
     if (!email.includes("@")) {
       alert("@을 넣어주세요");
       return false;
@@ -83,7 +83,7 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
         alert("회원 가입 성공");
         console.log("가입 성공, 리절트 : ", resultData);
         MyAccount.updateMyAccount(resultData);
-        this.props.history.push("/");
+        this.props.history.push("/register");
         onChangeLoginState();
       })
       .catch((error) => {
@@ -121,7 +121,7 @@ const Auth = ({ type, onChangeLoginState, isLogin }) => {
           type="password"
           className="auth_input"
           name="pwd"
-          placeholder="비밀번호를 입력하세요(영문 대소문자와 숫자 4~12자)"
+          placeholder="비밀번호를 입력하세요(영문 숫자 특수문자 조합 6-16자리)"
           onChange={onChange}
           value={pwd}
         />
