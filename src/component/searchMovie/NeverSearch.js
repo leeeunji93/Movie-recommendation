@@ -36,7 +36,8 @@ class NeverSearch extends Component {
   MovieItem = ({ searchResult }) => {
     let className = "Movieitem";
     if (this.state.selectedMovie === searchResult) {
-      className += "selected";
+      /*이것은 무엇인가*/
+      className += " selected";
     }
     const clickItem = () => {
       this.setState({
@@ -83,7 +84,7 @@ class NeverSearch extends Component {
         </div>
         <div className="movie_selected">
           <h3>선택된 영화</h3>
-          {/*!!은 대체 무엇인가 */}
+          {/*false인데 왜 옆에가 반환될까 */}
           {!!selectedMovie && <this.MovieItem searchResult={selectedMovie} />}
         </div>
         <hr />

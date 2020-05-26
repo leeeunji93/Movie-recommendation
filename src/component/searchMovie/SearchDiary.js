@@ -5,6 +5,7 @@ import { MdStarBorder, MdDateRange } from "react-icons/md";
 class SearchDiary extends Component {
   state = {
     tagsAll: [],
+    selectedMovie: null,
 
     diaryData: {
       title: "",
@@ -38,10 +39,13 @@ class SearchDiary extends Component {
 
   handleChangeDiaryData = (e) => {
     const { diaryData } = this.state;
+    /*?*/
+    diaryData[e.target.name] = e.target.value;
     this.setState({
       diaryData: diaryData,
     });
   };
+
   TagTypeItem = ({ tagTypeData }) => {
     const TagItem = ({ tag }) => {
       return <div className="TagItem">{tag}</div>;
@@ -62,6 +66,67 @@ class SearchDiary extends Component {
         </div>
       </div>
     );
+  };
+
+  /*  handleRating = ({ ratingData, index }) => {
+    const maxCore = 4;
+    const ratingClick = () => {
+      if (ratingData.length > maxCore) {
+        return;
+      }
+      ratingData[index] += 1;
+      this.setState({
+        rating: ratingData,
+      });
+    };
+    return <div onClick={ratingClick}>[+]</div>;
+  };*/
+
+  handleRating = ({ ratingData, index }) => {
+    const { diaryData } = this.state;
+
+    const ratingClick = () => {
+      if (ratingData[index] > 4) {
+        return;
+      }
+
+      this.setState({
+        ratingData: ++diaryData.rating,
+      });
+    };
+    return (
+      <div>
+        <span onClick={ratingClick}>[+]</span>
+      </div>
+    );
+  };
+
+  handleSave = () => {
+    const { selectedMovie, diaryData } = this.state;
+
+    if (!selectedMovie) {
+      alert("영화를 선택하세요");
+      return;
+    }
+    if (diaryData.title.trim().length === 0) {
+      alert("제목을 작성하세요");
+      return;
+    }
+    const movieJson = JSON.stringify(selectedMovie);
+    const diaryJson = JSON.stringify(diaryData);
+
+    //저장한다.
+    NetTool.request(APIs.filmDiarySave)
+      .appendFormData("movieJson", movieJson) //필수 데이터
+      .appendFormData("diaryJson", diaryJson) //필수 데이터
+      .exec(true)
+      .then((jsonData) => {
+        alert("데이터 저장 성공");
+        this.props.history.push("/diaryList");
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   render() {
@@ -89,13 +154,14 @@ class SearchDiary extends Component {
             />
           </span>
           <span className="write_rating">
-            <MdStarBorder />
             <input
               name="rating"
-              placeholder="별점"
-              onChange={this.handleChangeDiaryData}
               value={diaryData.rating}
+              onChange={this.onChangeDiaryData}
             />
+            {[diaryData.rating].map((ratingData, index) => (
+              <this.handleRating ratingData={ratingData} index={index} />
+            ))}
           </span>
           <div className="write_tags">
             <h2>전체 태그 목록</h2>
@@ -126,6 +192,7 @@ class SearchDiary extends Component {
               value={diaryData.cover}
             />
           </div>
+          <button onClick={this.handleSave}>저장</button>
         </div>
       </div>
     );
