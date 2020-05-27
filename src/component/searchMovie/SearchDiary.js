@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
-import { MdStarBorder, MdDateRange } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
+import { FaStar } from "react-icons/fa";
+import "./SearchDiary.css";
 
 class SearchDiary extends Component {
   state = {
@@ -54,7 +56,6 @@ class SearchDiary extends Component {
     return (
       <div>
         <h3>
-          {/* {/!*여기 이름을 바꾸려면 어떻게 해야 하나요?*!/}*/}
           태그타입: {tagTypeData.tagType} - 태그 설명:
           {tagTypeData.tagTypeDesc}
         </h3>
@@ -68,37 +69,23 @@ class SearchDiary extends Component {
     );
   };
 
-  /*  handleRating = ({ ratingData, index }) => {
-    const maxCore = 4;
-    const ratingClick = () => {
-      if (ratingData.length > maxCore) {
-        return;
-      }
-      ratingData[index] += 1;
-      this.setState({
-        rating: ratingData,
-      });
-    };
-    return <div onClick={ratingClick}>[+]</div>;
-  };*/
-
-  handleRating = ({ ratingData, index }) => {
+  handlePlusRating = () => {
     const { diaryData } = this.state;
+    const maxCore = 4;
+    if (diaryData.rating > maxCore) {
+      return;
+    }
+    this.setState({
+      rating: ++diaryData.rating,
+    });
+  };
 
-    const ratingClick = () => {
-      if (ratingData[index] > 4) {
-        return;
-      }
-
-      this.setState({
-        ratingData: ++diaryData.rating,
-      });
-    };
-    return (
-      <div>
-        <span onClick={ratingClick}>[+]</span>
-      </div>
-    );
+  handleMinusRating = () => {
+    const { diaryData } = this.state;
+    diaryData.rating = diaryData.rating - 1;
+    this.setState({
+      rating: diaryData.rating,
+    });
   };
 
   handleSave = () => {
@@ -154,13 +141,12 @@ class SearchDiary extends Component {
             />
           </span>
           <span className="write_rating">
-            <input
-              name="rating"
-              value={diaryData.rating}
-              onChange={this.onChangeDiaryData}
-            />
-            {[diaryData.rating].map((ratingData, index) => (
-              <this.handleRating ratingData={ratingData} index={index} />
+            <span onClick={this.handlePlusRating}>[+]</span>
+            <span onClick={this.handleMinusRating}>[-]</span>
+            {[...Array(diaryData.rating)].map((x, i) => (
+              <span key={i}>
+                <FaStar />️
+              </span>
             ))}
           </span>
           <div className="write_tags">

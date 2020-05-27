@@ -1,0 +1,39 @@
+
+
+$red:#c0392b;
+$orange:#f39c12;
+$green:#16a085;
+$blue:#2980b9;
+$gray:#7f8c8d;
+
+
+$basicFont:#2c3e50;
+$fontSize:1.3333333333rem;
+
+//1
+@mixin icon($color){
+  text-decoration: none;
+  display: block;
+  color: $color;
+}
+
+/*mixin 이용법
+link {@include icon(blue)}
+*/
+
+
+
+//2
+@mixin icon($word){
+  text-decoration: none;
+  display: block;
+  @if $word == 'a'{
+    color: #2c3e50;
+  }@else{
+  color: #7f8c8d;
+}
+}
+
+/*mixin 이용법
+link {@include icon('a')}
+*/

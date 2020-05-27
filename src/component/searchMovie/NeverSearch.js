@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
 
+/*const DiarySaveBlock = styled.div`
+  box-sizing: border-box;
+  padding-bottom: 3rem;
+  width: 320px;
+  margin: 0 auto;
+/!*  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+    margin: 0 auto;
+  }*!/
+`;*/
+
 class NeverSearch extends Component {
   state = {
     keyword: "",
@@ -61,18 +76,15 @@ class NeverSearch extends Component {
   render() {
     const { keyword, selectedMovie, searchResultArr } = this.state;
     return (
-      <div className="DiarySave">
-        <h1>일기</h1>
-        <div>
-          <div className="movie_search">
-            <input
-              placeholder="작성하실 영화를 검색하세요"
-              name="keyword"
-              value={keyword}
-              onChange={this.handleChangeSearch}
-            />
-            <button onClick={this.handleClickSearch}>찾기</button>
-          </div>
+      <div>
+        <div className="movie_search">
+          <input
+            placeholder="작성하실 영화를 검색하세요"
+            name="keyword"
+            value={keyword}
+            onChange={this.handleChangeSearch}
+          />
+          <button onClick={this.handleClickSearch}>찾기</button>
         </div>
         <div
           className="movie_search_result"

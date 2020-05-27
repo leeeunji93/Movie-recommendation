@@ -33,7 +33,7 @@ class Post extends Component {
 
   DiaryItem = (data) => {
     const clickedItem = () => {
-      this.props.history.push("/diaryDetail/" + data.dId);
+      /*   this.props.history.push("/diaryDetail/" + data.dId);*/
     };
     return (
       <div className="diary">

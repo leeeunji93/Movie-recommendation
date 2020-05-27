@@ -1,22 +1,9 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import {
-  faSearch,
-  faEdit,
-  faHeart,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import "./header.css";
 import MyAccount from "../../tool/MyAccount";
+import { FaSearch, FaEdit, FaHeart, FaUserCircle } from "react-icons/fa";
+import "./header.scss";
 
-library.add(fab, faSearch, faEdit);
-
-/*const Header = () => {
-  const [search, setSerch] = useState("");
-};*/
 class Header extends Component {
   state = {
     search: "",
@@ -44,24 +31,20 @@ class Header extends Component {
               value={search}
             />
             <Link className="header_search_icon" to="/PosterResultContainer">
-              <FontAwesomeIcon
-                icon={faSearch}
-                className="header_icon"
-                type="submit"
-              />
+              <FaSearch />
             </Link>
           </div>
           <div className="header_menu">
             <Link className="header_write" to="/SearchMovieContainer">
-              <FontAwesomeIcon className="header_icon" icon={faEdit} />
+              <FaEdit />
               <span>Write</span>
             </Link>
             <Link className="header_myPage" to="/MyPageContainer">
-              <FontAwesomeIcon className="header_icon" icon={faHeart} />
+              <FaHeart />
               <span>MyPage</span>
             </Link>
             <Link className="header_login" to="/Login">
-              <FontAwesomeIcon className="header_icon" icon={faUserCircle} />
+              <FaUserCircle />
               {isLogin ? MyAccount.nickname : "Login"}
             </Link>
           </div>
