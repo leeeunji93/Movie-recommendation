@@ -1,6 +1,6 @@
 import React from "react";
 import { NetTool, APIs } from "../Tool/NetTool";
-import "../App.css";
+import "../App.scss";
 
 export default class DiarySave extends React.Component {
   constructor(props) {

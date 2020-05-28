@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { NetTool, APIs } from "./tool/NetTool";
+import "./App.scss";
 import MyAccount from "./tool/MyAccount";
 import { Header } from "./component";
-import "./App.css";
-import "./reset.css";
 import {
   Login,
   MainContainer,
