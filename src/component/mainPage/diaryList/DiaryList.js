@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { NetTool, APIs } from "../../../tool/NetTool";
+import { withRouter } from "react-router-dom";
 
 const PAGE_SIZE = 10;
 
-class Post extends Component {
+class DiaryList extends Component {
   state = {
     diaryArr: [],
     page: 0,
@@ -33,12 +34,12 @@ class Post extends Component {
 
   DiaryItem = (data) => {
     const clickedItem = () => {
-      /*   this.props.history.push("/diaryDetail/" + data.dId);*/
+      this.props.history.push("/DiaryDataContainer/" + data.dId);
     };
     return (
-      <div className="diary">
+      <div className="diary" onClick={clickedItem}>
         <img src={data.cover} alt="" />
-        <div className="diary_content" onClick={clickedItem}>
+        <div className="diary_content">
           <span>일기 제목 : {data.title}</span>
           <span>닉네임 : {data.nickname}</span>
           <div>영화 제목 : {data.movieTitle}</div>
@@ -71,4 +72,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default withRouter(DiaryList);

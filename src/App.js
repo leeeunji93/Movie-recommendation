@@ -8,7 +8,7 @@ import {
   Login,
   MainContainer,
   MyPageContainer,
-  PosterResultContainer,
+  DiaryDataContainer,
   Register,
   SearchMovieContainer,
 } from "./containers";
@@ -48,10 +48,7 @@ class App extends Component {
       <div>
         <Header isLogin={isLogin} />
         <Route component={MainContainer} path="/" exact />
-        <Route
-          component={PosterResultContainer}
-          path="/PosterResultContainer"
-        />
+        <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
         <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
         <Route
           path="/MyPageContainer"
@@ -63,7 +60,8 @@ class App extends Component {
             <Login
               {...props}
               onChangeLoginState={this.onChangeLoginState}
-              isLogin={this.isLogin}
+              //this.isLogin 을 바꿔봄
+              isLogin={isLogin}
             />
           )}
         />

@@ -1,28 +1,26 @@
 import Header from "../containers/header/Header";
-import Post from "./mainPage/post/Post";
 import DropdownList from "./mainPage/dropdown/DropdownList";
+import DiaryList from "./mainPage/diaryList/DiaryList";
 import MainPageWrapper from "./mainPage/mainPageWrapper/MainPageWrapper";
-import PosterResultWrapper from "./posterResult/posterResultWrapper/PosterResultWrapper";
-import InformationIcon from "./posterResult/informationIcon/InformationIcon";
-import Diary from "./posterResult/diary/Diary";
+import DiaryDataWrapper from "./diaryData/DiaryDataWrapper";
+import DiaryData from "./diaryData/DiaryData";
 import MyPageMainHeader from "./myPage/myPageMainHeader/MyPageMainHeader";
 import MyPageMainReviewAll from "./myPage/myPageMainReviewAll/MyPageMainReviewAll";
 import MyPageMainTag from "./myPage/myPageMainTag/MyPageMainTag";
 import MyPageWrapper from "./myPage/myPageWrapper/MyPageWrapper";
 import AuthWrapper from "./auth/AuthWrapper";
 import Auth from "./auth/Auth";
-import neverSearch from "./searchMovie/NeverSearch";
-import searchDairy from "./searchMovie/SearchDiary";
-import searchWrapper from "./searchMovie/SearchDiary";
+import neverSearch from "./diarySearch/NeverSearch";
+import searchDairy from "./diarySearch/SearchDiary";
+import searchWrapper from "./diarySearch/SearchDiary";
 
 export {
   Header,
-  Post,
   DropdownList,
+  DiaryList,
   MainPageWrapper,
-  PosterResultWrapper,
-  InformationIcon,
-  Diary,
+  DiaryData,
+  DiaryDataWrapper,
   MyPageMainHeader,
   MyPageMainReviewAll,
   MyPageMainTag,

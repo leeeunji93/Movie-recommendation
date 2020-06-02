@@ -55,7 +55,7 @@ max-width: 960px;
               onChange={this.handleChange}
               value={search}
             />
-            <Link className="header_search_icon" to="/PosterResultContainer">
+            <Link className="header_search_icon" to="/DiaryDataContainer">
               <FaSearch />
             </Link>
           </div>
@@ -94,7 +94,7 @@ max-width: 960px;
                 />
                 <Link
                   className="header_search_icon"
-                  to="/PosterResultContainer"
+                  to="/DiaryDataContainer"
                 >
                   <FaSearch />
                 </Link>
@@ -147,7 +147,7 @@ placeholder="영화 제목, 아이디"
 onChange={this.handleChange}
     value={search}
 />
-<Link className="header_search_icon" to="/PosterResultContainer">
+<Link className="header_search_icon" to="/DiaryDataContainer">
 <FaSearch />
 </Link>
 </div>

@@ -36,10 +36,7 @@ class Header extends Component {
                   onChange={this.handleChange}
                   value={search}
                 />
-                <Link
-                  className="header_search_icon"
-                  to="/PosterResultContainer"
-                >
+                <Link className="header_search_icon" to="/DiaryDataContainer">
                   <SearchRoundedIcon />
                 </Link>
               </div>
