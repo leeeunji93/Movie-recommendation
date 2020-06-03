@@ -5,11 +5,12 @@ import SearchDiary from "../../component/diarySearch/SearchDiary";
 
 class SearchMovieContainer extends Component {
   render() {
+    const { match } = this.props;
     return (
       <div>
         <SearchWrapper>
           <NeverSearch />
-          <SearchDiary />
+          <SearchDiary match={match} />
         </SearchWrapper>
       </div>
     );

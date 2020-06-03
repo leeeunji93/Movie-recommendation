@@ -6,6 +6,7 @@ import EditRoundedIcon from "@material-ui/icons/EditRounded";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 import "./header.scss";
 
 class Header extends Component {
@@ -28,10 +29,11 @@ class Header extends Component {
           <Grid item xs={12}>
             <div className="header">
               <Link to="/" className="header_name">
-                사이트 이름
+                Fogos
               </Link>
-              <div className="header_search">
-                <input
+              <form className="header_search" noValidate autoComplete="off">
+                <TextField
+                  id="standard-basic"
                   placeholder="영화 제목, 아이디"
                   onChange={this.handleChange}
                   value={search}
@@ -39,16 +41,16 @@ class Header extends Component {
                 <Link className="header_search_icon" to="/DiaryDataContainer">
                   <SearchRoundedIcon />
                 </Link>
-              </div>
+              </form>
               <div className="header_menu">
                 <Link className="header_write" to="/SearchMovieContainer">
                   <EditRoundedIcon />
                   <span>Write</span>
                 </Link>
-                <Link className="header_myPage" to="/MyPageContainer">
+                {/*<Link className="header_myPage" to="/MyPageContainer">
                   <FavoriteBorderRoundedIcon />
                   <span>MyPage</span>
-                </Link>
+                </Link>*/}
                 <Link className="header_login" to="/Login">
                   <AccountCircleRoundedIcon />
                   {isLogin ? MyAccount.nickname : "Login"}

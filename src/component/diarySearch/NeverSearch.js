@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
+import "../../App.scss";
 
 /*const DiarySaveBlock = styled.div`
   box-sizing: border-box;
@@ -49,9 +50,8 @@ class NeverSearch extends Component {
   };
 
   MovieItem = ({ searchResult }) => {
-    let className = "Movieitem";
+    let className = "MovieItem";
     if (this.state.selectedMovie === searchResult) {
-      /*이것은 무엇인가*/
       className += " selected";
     }
     const clickItem = () => {
@@ -60,6 +60,7 @@ class NeverSearch extends Component {
         keyword: "",
         searchResultArr: [],
       });
+      console.log(searchResult);
     };
 
     return (
@@ -86,17 +87,13 @@ class NeverSearch extends Component {
           />
           <button onClick={this.handleClickSearch}>찾기</button>
         </div>
-        <div
-          className="movie_search_result"
-          style={{ display: "flex", flexWrap: "wrap" }}
-        >
+        <div className="movie_search_result" style={{ width: "200px" }}>
           {searchResultArr.map((searchResult, index) => (
             <this.MovieItem searchResult={searchResult} key={index} />
           ))}
         </div>
         <div className="movie_selected">
           <h3>선택된 영화</h3>
-          {/*false인데 왜 옆에가 반환될까 */}
           {!!selectedMovie && <this.MovieItem searchResult={selectedMovie} />}
         </div>
         <hr />

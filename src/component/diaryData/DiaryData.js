@@ -1,51 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { NetTool, APIs } from "../../tool/NetTool";
 
-const DiaryData = () => {
+const DiaryData = ({ match }) => {
   const [movie, setMovie] = useState(null);
   const [diary, setDiary] = useState(null);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    NetTool.request(APIs.filmDiaryDetail(this.props.match.params.dId))
+    NetTool.request(APIs.filmDiaryDetail(match.params.dId))
       .exec()
       .then((resultData) => {
-        setMovie({
-          resultData.
-          movie
-        });
-        setDiary({
-          resultData.
-          diary
-        });
-        setUser({
-          resultData.
-          user
-        }).catch((error) => {
-          alert(error);
-        });
+        console.log(resultData);
+        setMovie(resultData.movie);
+        setDiary(resultData.diary);
+        setUser(resultData.user);
+      })
+      .catch((error) => {
+        alert(error);
       });
   });
-  const clickUpdate = () => {
-    this.props.history.push(
-      "/DiaryDataContainer/:dId" + this.props.match.params.dId
-    );
+  /*const clickUpdate = () => {
+    props.history.push("/DiaryDataContainer/:dId" + props.match.params.dId);
   };
 
   const clickDelete = () => {
-    if (window.confirm("정말 삭제??")) {
+    if (window.confirm("삭제할까요?")) {
       NetTool.request(APIs.filmDiaryDelete)
-        .appendFormData("dId", this.props.match.params.dId)
+        .appendFormData("dId", props.match.params.dId)
         .exec(true)
         .then(() => {
           alert("삭제 완료");
-          this.props.history.replace("/");
+          props.history.replace("/");
         })
         .catch((error) => {
           alert(error);
         });
     }
-  };
+  };*/
 
   if (!diary) {
     return null;
@@ -66,8 +57,8 @@ const DiaryData = () => {
 
       <hr />
       <h3>수정, 삭제. (글쓴 사람만 할 수 있도록 처리할것)</h3>
-      <button onClick={clickUpdate}>일기 수정</button>
-      <button onClick={clickDelete}>일기 삭제</button>
+      {/* <button onClick={clickUpdate}>일기 수정</button>
+      <button onClick={clickDelete}>일기 삭제</button>*/}
     </div>
   );
 };
@@ -75,51 +66,55 @@ const DiaryData = () => {
 export default DiaryData;
 
 /*
-* import React from 'react'
-import { NetTool, APIs } from '../Tool/NetTool'
+import React from "react";
+import { NetTool, APIs } from "../../tool/NetTool";
 
 export default class DiaryDetail extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {movie: null, diary: null, user: null}
-    this.dId = this.props.match.params.dId
+    super(props);
+    this.state = { movie: null, diary: null, user: null };
+    this.dId = this.props.match.params.dId;
   }
 
   componentDidMount() {
-
     //일기 상세 정보 가져온다.
     NetTool.request(APIs.filmDiaryDetail(this.dId))
-    .exec()
-    .then((resultData) => {
-      this.setState({movie: resultData.movie, diary: resultData.diary, user: resultData.user})
-    })
-    .catch(error => {alert(error); })
+      .exec()
+      .then((resultData) => {
+        this.setState({
+          movie: resultData.movie,
+          diary: resultData.diary,
+          user: resultData.user,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }
 
   clickUpdate = () => {
-    this.props.history.push('/diarySave/' + this.dId)
-  }
+    this.props.history.push("/diarySave/" + this.dId);
+  };
 
   clickDelete = () => {
-    if(window.confirm('정말 삭제??')) {
+    if (window.confirm("정말 삭제??")) {
       NetTool.request(APIs.filmDiaryDelete)
-      .appendFormData('dId', this.dId)
-      .exec(true)
-      .then(() => {
-        alert('삭제 완료')
-        this.props.history.replace('/diaryList')
-      })
-      .catch( error => {alert(error)})
+        .appendFormData("dId", this.dId)
+        .exec(true)
+        .then(() => {
+          alert("삭제 완료");
+          this.props.history.replace("/diaryList");
+        })
+        .catch((error) => {
+          alert(error);
+        });
     }
-  }
+  };
 
+  render() {
+    const { movie, diary, user } = this.state;
 
-
-  render(){
-
-    const {movie, diary, user} = this.state
-
-    if(!diary) {
+    if (!diary) {
       return null;
     }
 
@@ -136,11 +131,12 @@ export default class DiaryDetail extends React.Component {
         <h3>글쓴이 정보</h3>
         <div>{JSON.stringify(user)}</div>
 
-        <hr/>
+        <hr />
         <h3>수정, 삭제. (글쓴 사람만 할 수 있도록 처리할것)</h3>
         <button onClick={this.clickUpdate}>일기 수정</button>
         <button onClick={this.clickDelete}>일기 삭제</button>
       </div>
-    )
+    );
   }
-}*/
+}
+*/

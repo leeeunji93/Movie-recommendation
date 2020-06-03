@@ -4,9 +4,10 @@ import DiaryData from "../../component/diaryData/DiaryData";
 
 class DiaryDataContainer extends Component {
   render() {
+    const { match } = this.props;
     return (
       <DiaryDataWrapper>
-        <DiaryData />
+        <DiaryData match={match} />
       </DiaryDataWrapper>
     );
   }

@@ -8,6 +8,8 @@ class SearchDiary extends Component {
   state = {
     tagsAll: [],
     selectedMovie: null,
+    dId: this.props.match.params.dId,
+    isModify: this.dId > 0,
 
     diaryData: {
       title: "",
@@ -24,6 +26,24 @@ class SearchDiary extends Component {
   componentDidMount() {
     //서버에서 모든 태그 종류들 가져온다.
     this.refreshTags();
+    if (this.isModify) {
+      //수정할 데이터를 가져온다.
+      this.refreshUpdateData(this.dId);
+    }
+  }
+
+  refreshUpdateData(dId) {
+    const url = APIs.filmDiaryDetail(dId);
+    NetTool.request(url)
+      .exec(true)
+      .then((resultData) => {
+        console.log("수정할 데이터 가져오기 완료", resultData);
+        this.setState({
+          selectedMovie: resultData.movie,
+          diaryData: resultData.diary,
+        });
+      })
+      .catch((error) => alert(error));
   }
 
   //모든 태그들 가져온다.
@@ -90,15 +110,21 @@ class SearchDiary extends Component {
 
   handleSave = () => {
     const { selectedMovie, diaryData } = this.state;
+    console.log(selectedMovie);
 
     if (!selectedMovie) {
       alert("영화를 선택하세요");
       return;
     }
+
     if (diaryData.title.trim().length === 0) {
-      alert("제목을 작성하세요");
+      alert("일기 제목을 쓰세요");
       return;
     }
+
+    //TODO: 기타 등등, Validation 유효성 검사 할것.
+
+    //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
     const movieJson = JSON.stringify(selectedMovie);
     const diaryJson = JSON.stringify(diaryData);
 
@@ -109,7 +135,7 @@ class SearchDiary extends Component {
       .exec(true)
       .then((jsonData) => {
         alert("데이터 저장 성공");
-        this.props.history.push("/diaryList");
+        this.props.history.push("/");
       })
       .catch((error) => {
         alert(error);
@@ -117,11 +143,11 @@ class SearchDiary extends Component {
   };
 
   render() {
-    const { diaryData, tagsAll } = this.state;
+    const { diaryData, tagsAll, isModify, dId } = this.state;
     return (
       <div>
         <div className="write">
-          <h2>일기쓰기</h2>
+          <h2>{isModify ? "일기수정" : "일기쓰기"}</h2>
 
           <div className="write_title">
             <input
@@ -155,7 +181,7 @@ class SearchDiary extends Component {
               style={{ width: "600px" }}
               name="tags"
               value={diaryData.tags}
-              onChange={this.onChangeDiaryData}
+              onChange={this.handleChangeDiaryData}
             />
             {tagsAll.map((tagTypeData, index) => (
               <this.TagTypeItem tagTypeData={tagTypeData} key={index} />
