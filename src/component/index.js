@@ -12,7 +12,6 @@ import AuthWrapper from "./auth/AuthWrapper";
 import Auth from "./auth/Auth";
 import neverSearch from "./diarySearch/NeverSearch";
 import searchDairy from "./diarySearch/SearchDiary";
-import searchWrapper from "./diarySearch/SearchDiary";
 
 export {
   Header,
@@ -29,5 +28,4 @@ export {
   Auth,
   neverSearch,
   searchDairy,
-  searchWrapper,
 };

@@ -1,0 +1,50 @@
+@import '../../../style/utils';
+@import '../../../style/reset';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+
+
+
+
+#outlined-select-currency {
+  color: $basicFont;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: start;
+  padding: 10px;
+
+}
+
+
+
+
+.button {
+
+  a {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: $green;
+    color: $white;
+    padding: 0.5rem;
+    transition: background .3s;
+  }
+}
+
+.button a:hover {
+  color:$black ;
+}
+
+
+

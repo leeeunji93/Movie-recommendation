@@ -19,29 +19,20 @@ body{
 }
 
 
-.header{
+.header {
     display: flex;
-    background-color: $white;
-
-    a {
-        @include Link($black)
+    padding: 20px 20px 20px 0;
+    .header_name {
+        font-family:"Architects Daughter" ;
+        margin-left: 1rem;
     }
-}
-
-.header_search{
-    display: flex;
-    .header_search_icon{
-        margin-top: 1rem;
-    }
-}
-
-.header_menu{
 
 }
 
-@media screen and (min-width:1200px) {
-max-width: 960px;
-}
+
+
+
+
 
 
 /*

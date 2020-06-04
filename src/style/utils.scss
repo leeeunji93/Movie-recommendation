@@ -19,10 +19,10 @@ $basicFont:#2c3e50;
 
 //1
 @mixin Link($color){
+  display: block;
   text-decoration: none;
   outline: none;
   box-shadow: none;
-  display: block;
   color: $color;
 }
 

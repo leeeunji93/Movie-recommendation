@@ -32,7 +32,7 @@ class DiaryList extends Component {
       });
   }
 
-  DiaryItem = (data) => {
+  DiaryItem = ({ data }) => {
     const clickedItem = () => {
       this.props.history.push("/DiaryDataContainer/" + data.dId);
     };

@@ -26,33 +26,41 @@ class Header extends Component {
     return (
       <div>
         <Grid container spacing={0}>
-          <Grid item xs={12}>
+          <Grid item xs={12} lg={12} md={12} sm={12}>
             <div className="header">
               <Link to="/" className="header_name">
                 Fogos
               </Link>
-              <form className="header_search" noValidate autoComplete="off">
+              <form
+                className="header_search"
+                style={{ display: "flex" }}
+                noValidate
+                autoComplete="off"
+              >
                 <TextField
                   id="standard-basic"
                   placeholder="영화 제목, 아이디"
                   onChange={this.handleChange}
                   value={search}
                 />
-                <Link className="header_search_icon" to="/DiaryDataContainer">
-                  <SearchRoundedIcon />
+                <Link to="/DiaryDataContainer" style={{ display: "flex" }}>
+                  <SearchRoundedIcon
+                    color="primary"
+                    style={{ display: "block" }}
+                  />
                 </Link>
               </form>
-              <div className="header_menu">
-                <Link className="header_write" to="/SearchMovieContainer">
-                  <EditRoundedIcon />
-                  <span>Write</span>
+              <div className="header_menu" style={{ display: "flex" }}>
+                <Link to="/SearchMovieContainer" style={{ display: "flex" }}>
+                  <EditRoundedIcon style={{ display: "block" }} />
+                  <p>Write</p>
                 </Link>
                 {/*<Link className="header_myPage" to="/MyPageContainer">
                   <FavoriteBorderRoundedIcon />
                   <span>MyPage</span>
                 </Link>*/}
-                <Link className="header_login" to="/Login">
-                  <AccountCircleRoundedIcon />
+                <Link to="/Login" style={{ display: "flex" }}>
+                  <AccountCircleRoundedIcon style={{ display: "block" }} />
                   {isLogin ? MyAccount.nickname : "Login"}
                 </Link>
               </div>

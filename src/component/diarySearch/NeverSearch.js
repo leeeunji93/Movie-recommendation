@@ -1,22 +1,84 @@
-import React, { Component } from "react";
+import React, { useCallback, useState } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
 import "../../App.scss";
 
-/*const DiarySaveBlock = styled.div`
-  box-sizing: border-box;
-  padding-bottom: 3rem;
-  width: 320px;
-  margin: 0 auto;
-/!*  @media ${(props) => props.theme.tablet} {
-    width: 100%;
-    margin: 0 auto;
-  }
-  @media ${(props) => props.theme.desktop} {
-    width: 100%;
-    margin: 0 auto;
-  }*!/
-`;*/
+const NeverSearch = () => {
+  const [keyword, setKeyword] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [searchResultArr, setSearchResultArr] = useState([]);
 
+  const handleChangeSearch = useCallback((e) => {
+    setKeyword(e.target.value);
+  }, []);
+
+  const handleClickSearch = () => {
+    /* const keyword = keyword.trim();*/
+    const pattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+    if (keyword.match(pattern)) {
+      alert("특수 문자가 포함 됐어요");
+      return;
+    }
+    NetTool.request(APIs.filmSearch)
+      .appendFormData("keyword", keyword)
+      .exec(true)
+      .then((resultData) => {
+        console.log("영화 검색 결과", resultData);
+        setSearchResultArr(resultData);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+  const MovieItem = ({ searchResult }) => {
+    let className = "MovieItem";
+    if (selectedMovie === searchResult) {
+      className += " selected";
+    }
+    const clickItem = () => {
+      setKeyword("");
+      setSelectedMovie(searchResult);
+      setSearchResultArr([]);
+      console.log("선택영화", searchResult);
+    };
+
+    return (
+      <div className={className} onClick={clickItem}>
+        <div>
+          <img src={searchResult.image} alt="" />
+        </div>
+        <span dangerouslySetInnerHTML={{ __html: searchResult.title }} />(
+        {searchResult.pubDate})<div>{searchResult.director}</div>
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      <div className="movie_search">
+        <input
+          placeholder="작성하실 영화를 검색하세요"
+          value={keyword}
+          onChange={handleChangeSearch}
+        />
+        <button onClick={handleClickSearch}>찾기</button>
+      </div>
+      <div className="movie_search_result" style={{ width: "200px" }}>
+        {searchResultArr.map((searchResult, index) => (
+          <MovieItem searchResult={searchResult} key={index} />
+        ))}
+      </div>
+      <div className="movie_selected">
+        <h3>선택된 영화</h3>
+        {!!selectedMovie && <MovieItem searchResult={selectedMovie} />}
+      </div>
+      <hr />
+    </div>
+  );
+};
+
+export default NeverSearch;
+/*
 class NeverSearch extends Component {
   state = {
     keyword: "",
@@ -103,3 +165,4 @@ class NeverSearch extends Component {
 }
 
 export default NeverSearch;
+*/

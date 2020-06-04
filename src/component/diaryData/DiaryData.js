@@ -18,7 +18,8 @@ const DiaryData = ({ match }) => {
       .catch((error) => {
         alert(error);
       });
-  });
+  }, [match]);
+
   /*const clickUpdate = () => {
     props.history.push("/DiaryDataContainer/:dId" + props.match.params.dId);
   };
