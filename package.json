@@ -14,8 +14,6 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "beauty-stars": "^1.1.0",
-    "bootstrap": "^4.5.0",
-    "bootstrap-scss": "^4.5.0",
     "combine-reducers": "^1.0.0",
     "immer": "^6.0.5",
     "prop-types": "^15.7.2",

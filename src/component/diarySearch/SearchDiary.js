@@ -3,6 +3,7 @@ import { APIs, NetTool } from "../../tool/NetTool";
 import { MdDateRange } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import "./SearchDiary.css";
+import { connect } from "react-redux";
 
 class SearchDiary extends Component {
   state = {
@@ -108,16 +109,19 @@ class SearchDiary extends Component {
   };
 
   handleSave = () => {
-    const { selectedMovie, diaryData } = this.state;
-    console.log(selectedMovie);
+    const { search } = this.props;
+    const { never, form } = search;
+    // const { selectedMovie, diaryData } = this.state;
+    console.log("@@@@ save click");
+    console.log(never.selectedMovie);
 
-    if (!selectedMovie) {
-      console.log(selectedMovie);
+    if (!never.selectedMovie) {
+      console.log(never.selectedMovie);
       alert("영화를 선택하세요");
       return;
     }
 
-    if (diaryData.title.trim().length === 0) {
+    if (form.title.trim().length === 0) {
       alert("일기 제목을 쓰세요");
       return;
     }
@@ -125,8 +129,8 @@ class SearchDiary extends Component {
     //TODO: 기타 등등, Validation 유효성 검사 할것.
 
     //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
-    const movieJson = JSON.stringify(selectedMovie);
-    const diaryJson = JSON.stringify(diaryData);
+    const movieJson = JSON.stringify(never.selectedMovie);
+    const diaryJson = JSON.stringify(form);
 
     //저장한다.
     NetTool.request(APIs.filmDiarySave)
@@ -143,7 +147,10 @@ class SearchDiary extends Component {
   };
 
   render() {
-    const { diaryData, tagsAll, isModify, dId } = this.state;
+    // const { diaryData, tagsAll, isModify, dId } = this.state;
+    const { search } = this.props;
+    const { form, never, isModify, dId } = search;
+    console.log(this.props);
     return (
       <div>
         <div className="write">
@@ -154,7 +161,7 @@ class SearchDiary extends Component {
               name="title"
               placeholder="일기 제목"
               onChange={this.handleChangeDiaryData}
-              value={diaryData.title}
+              /* value={diaryData.title}*/
             />
           </div>
           <span className="write_date">
@@ -163,36 +170,36 @@ class SearchDiary extends Component {
               name="watchDate"
               placeholder="날짜"
               onChange={this.handleChangeDiaryData}
-              value={diaryData.watchDate}
+              /* value={diaryData.watchDate}*/
             />
           </span>
           <span className="write_rating">
             <span onClick={this.handlePlusRating}>[+]</span>
             <span onClick={this.handleMinusRating}>[-]</span>
-            {[...Array(diaryData.rating)].map((x, i) => (
+            {/* {[...Array(diaryData.rating)].map((x, i) => (
               <span key={i}>
                 <FaStar />️
               </span>
-            ))}
+            ))}*/}
           </span>
           <div className="write_tags">
             <h2>전체 태그 목록</h2>
             <input
               style={{ width: "600px" }}
               name="tags"
-              value={diaryData.tags}
+              /* value={diaryData.tags}*/
               onChange={this.handleChangeDiaryData}
             />
-            {tagsAll.map((tagTypeData, index) => (
+            {/* {tagsAll.map((tagTypeData, index) => (
               <this.TagTypeItem tagTypeData={tagTypeData} key={index} />
-            ))}
+            ))}*/}
           </div>
           <div className="write_content">
             <input
               name="notes"
               placeholder="일기 내용"
               onChange={this.handleChangeDiaryData}
-              value={diaryData.notes}
+              /* value={diaryData.notes}*/
             />
           </div>
           <div className="write_cover">
@@ -201,7 +208,7 @@ class SearchDiary extends Component {
               name="cover"
               placeholder="https://"
               onChange={this.handleChangeDiaryData}
-              value={diaryData.cover}
+              /*value={diaryData.cover}*/
             />
           </div>
           <button onClick={this.handleSave}>저장</button>
@@ -211,7 +218,13 @@ class SearchDiary extends Component {
   }
 }
 
-export default SearchDiary;
+const mapStateToProps = (state) => {
+  return {
+    search: state.search,
+  };
+};
+
+export default connect(mapStateToProps, null)(SearchDiary);
 
 /*
 const SearchDiary = (props) => {

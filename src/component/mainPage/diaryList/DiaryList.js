@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NetTool, APIs } from "../../../tool/NetTool";
 import { withRouter } from "react-router-dom";
+import "./DiaryList.scss";
 
 const PAGE_SIZE = 10;
 

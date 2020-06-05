@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import MyAccount from "../../tool/MyAccount";
 import { NetTool, APIs } from "../../tool/NetTool";
 import { Link } from "react-router-dom";
+import * as actions from "../../reducers/auth";
 
 const textMap = {
   login: "로그인",
@@ -10,21 +12,26 @@ const textMap = {
 const Auth = ({ type, onChangeLoginState, isLogin }) => {
   const text = textMap[type];
 
-  const [form, setForm] = useState({
-    email: "",
-    pwd: "",
-    nickname: "",
-    passwordConfirm: "",
-  });
+  const { auth } = useSelector((state) => state); //store연결
+  const dispatch = useDispatch(); //액션 발생시키자
 
-  const { email, pwd, nickname, passwordConfirm } = form;
+  useEffect(() => {
+    return () => {
+      dispatch(actions.destroy());
+    };
+  }, []);
+
+  console.log("@@@@ auth : ", auth);
+
+  const { email, pwd, nickname, passwordConfirm } = auth.form; //리듀서에서
 
   const onChange = (e) => {
-    const nextForm = {
-      ...form,
-      [e.target.name]: e.target.value,
-    };
-    setForm(nextForm);
+    dispatch(
+      actions.setForm({
+        key: e.target.name,
+        value: e.target.value,
+      })
+    );
   };
 
   const onSubmit = (e) => {
