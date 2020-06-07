@@ -1,265 +1,108 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
 import { MdDateRange } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import "./SearchDiary.css";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../reducers/search";
 
-class SearchDiary extends Component {
-  state = {
-    tagsAll: [],
-    selectedMovie: null,
-    dId: this.props.match.params.dId,
-    isModify: this.dId > 0,
+const SearchDiary = () => {
+  const { search } = useSelector((state) => state);
+  const dispatch = useDispatch;
+  const { form, never, dId, isModify } = search;
+  const {
+    tagsAll,
+    title,
+    cover,
+    notes,
+    rating,
+    tags,
+    watchDate,
+    createdAt,
+    modifiedAt,
+  } = form;
+  const { selectedMovie } = never;
 
-    diaryData: {
-      title: "",
-      cover: "",
-      notes: "",
-      rating: "",
-      tags: "",
-      watchDate: "",
-      createdAt: "0",
-      modifiedAt: "0",
-    },
-  };
-
-  componentDidMount() {
-    //서버에서 모든 태그 종류들 가져온다.
-    this.refreshTags();
-    if (this.isModify) {
-      //수정할 데이터를 가져온다.
-      this.refreshUpdateData(this.dId);
+  useEffect(() => {
+    refreshTags();
+    if (isModify) {
+      refreshUpdateData(dId);
     }
-  }
+  });
 
-  refreshUpdateData(dId) {
+  const refreshUpdateData = (dId) => {
     const url = APIs.filmDiaryDetail(dId);
     NetTool.request(url)
       .exec(true)
       .then((resultData) => {
         console.log("수정할 데이터 가져오기 완료", resultData);
-        this.setState({
-          selectedMovie: resultData.movie,
-          diaryData: resultData.diary,
-        });
+        console.lot("resultData.diary", resultData.diary);
+        dispatch(
+          actions.setForm({
+            key: "form",
+            value: resultData.diary,
+          }),
+          actions.setNever({
+            key: "selectedMovie",
+            value: resultData.movie,
+          })
+        );
+        /*this.setState({
+            selectedMovie: resultData.movie,
+            diaryData: resultData.diary,
+          });*/
       })
       .catch((error) => alert(error));
-  }
+  };
 
   //모든 태그들 가져온다.
-  refreshTags() {
+  const refreshTags = () => {
     NetTool.request(APIs.filmTags)
       .exec()
       .then((resultData) => {
         console.log("가져온 태그들 데이터 ", resultData);
-        this.setState({ tagsAll: resultData });
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-
-  handleChangeDiaryData = (e) => {
-    const { diaryData } = this.state;
-    diaryData[e.target.name] = e.target.value;
-    this.setState({
-      diaryData: diaryData,
-    });
-  };
-
-  TagTypeItem = ({ tagTypeData }) => {
-    const TagItem = ({ tag }) => {
-      return <div className="TagItem">{tag}</div>;
-    };
-
-    return (
-      <div>
-        <h3>
-          태그타입: {tagTypeData.tagType} - 태그 설명:
-          {tagTypeData.tagTypeDesc}
-        </h3>
-
-        <div className="tags">
-          {tagTypeData.tags.map((tag, index) => (
-            <TagItem tag={tag} key={index} />
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  handlePlusRating = () => {
-    const { diaryData } = this.state;
-    const maxCore = 4;
-    if (diaryData.rating > maxCore) {
-      return;
-    }
-    this.setState({
-      rating: ++diaryData.rating,
-    });
-  };
-
-  handleMinusRating = () => {
-    const { diaryData } = this.state;
-    diaryData.rating = diaryData.rating - 1;
-    this.setState({
-      rating: diaryData.rating,
-    });
-  };
-
-  handleSave = () => {
-    const { search } = this.props;
-    const { never, form } = search;
-    // const { selectedMovie, diaryData } = this.state;
-    console.log("@@@@ save click");
-    console.log(never.selectedMovie);
-
-    if (!never.selectedMovie) {
-      console.log(never.selectedMovie);
-      alert("영화를 선택하세요");
-      return;
-    }
-
-    if (form.title.trim().length === 0) {
-      alert("일기 제목을 쓰세요");
-      return;
-    }
-
-    //TODO: 기타 등등, Validation 유효성 검사 할것.
-
-    //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
-    const movieJson = JSON.stringify(never.selectedMovie);
-    const diaryJson = JSON.stringify(form);
-
-    //저장한다.
-    NetTool.request(APIs.filmDiarySave)
-      .appendFormData("movieJson", movieJson) //필수 데이터
-      .appendFormData("diaryJson", diaryJson) //필수 데이터
-      .exec(true)
-      .then((jsonData) => {
-        alert("데이터 저장 성공");
-        this.props.history.push("/");
+        dispatch(
+          actions.setNever({
+            key: "tagsAll",
+            value: resultData,
+          })
+        );
+        /*this.setState({ tagsAll: resultData });*/
       })
       .catch((error) => {
         alert(error);
       });
   };
 
-  render() {
-    // const { diaryData, tagsAll, isModify, dId } = this.state;
-    const { search } = this.props;
-    const { form, never, isModify, dId } = search;
-    console.log(this.props);
-    return (
-      <div>
-        <div className="write">
-          <h2>{isModify ? "일기수정" : "일기쓰기"}</h2>
-
-          <div className="write_title">
-            <input
-              name="title"
-              placeholder="일기 제목"
-              onChange={this.handleChangeDiaryData}
-              /* value={diaryData.title}*/
-            />
-          </div>
-          <span className="write_date">
-            <MdDateRange />
-            <input
-              name="watchDate"
-              placeholder="날짜"
-              onChange={this.handleChangeDiaryData}
-              /* value={diaryData.watchDate}*/
-            />
-          </span>
-          <span className="write_rating">
-            <span onClick={this.handlePlusRating}>[+]</span>
-            <span onClick={this.handleMinusRating}>[-]</span>
-            {/* {[...Array(diaryData.rating)].map((x, i) => (
-              <span key={i}>
-                <FaStar />️
-              </span>
-            ))}*/}
-          </span>
-          <div className="write_tags">
-            <h2>전체 태그 목록</h2>
-            <input
-              style={{ width: "600px" }}
-              name="tags"
-              /* value={diaryData.tags}*/
-              onChange={this.handleChangeDiaryData}
-            />
-            {/* {tagsAll.map((tagTypeData, index) => (
-              <this.TagTypeItem tagTypeData={tagTypeData} key={index} />
-            ))}*/}
-          </div>
-          <div className="write_content">
-            <input
-              name="notes"
-              placeholder="일기 내용"
-              onChange={this.handleChangeDiaryData}
-              /* value={diaryData.notes}*/
-            />
-          </div>
-          <div className="write_cover">
-            <span>포스터 이미지 주소:</span>
-            <input
-              name="cover"
-              placeholder="https://"
-              onChange={this.handleChangeDiaryData}
-              /*value={diaryData.cover}*/
-            />
-          </div>
-          <button onClick={this.handleSave}>저장</button>
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    search: state.search,
-  };
-};
-
-export default connect(mapStateToProps, null)(SearchDiary);
-
-/*
-const SearchDiary = (props) => {
-  const [tagsAll, setTagsAll] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [diaryData, setDiaryData] = useState({
-    title: "",
-    cover: "",
-    notes: "",
-    rating: "",
-    tags: "",
-    watchDate: "",
-    createdAt: "0",
-    modifiedAt: "0",
-  });
-  const dId = props.match.params.dId;
-  const isModify = dId > 0;
-
-  const handleChangeDiaryData = (e) => {
-    diaryData[e.target.name] = e.target.value;
-    setDiaryData(diaryData);
-  };
+  const handleChangeDiaryData = useCallback((e) => {
+    // setKeyword(e.target.value);
+    actions.setForm({
+      key: e.target.name,
+      value: e.target.value,
+    });
+  }, []);
 
   const handlePlusRating = () => {
     const maxCore = 4;
-    if (diaryData.rating > maxCore) {
+    if (form.rating > maxCore) {
       return;
     }
-    diaryData.rating = diaryData.rating + 1;
-    setDiaryData(diaryData.rating);
+    dispatch(
+      actions.setForm({
+        key: "rating",
+        value: ++form.rating,
+      })
+    );
   };
 
   const handleMinusRating = () => {
-    diaryData.rating = diaryData.rating - 1;
-    setDiaryData(diaryData.rating);
+    console.log("별점 마이너스", rating);
+    dispatch(
+      actions.setForm({
+        key: "rating",
+        value: rating - 1,
+      })
+    );
   };
 
   const handleSave = () => {
@@ -271,7 +114,7 @@ const SearchDiary = (props) => {
       return;
     }
 
-    if (diaryData.title.trim().length === 0) {
+    if (title.trim().length === 0) {
       alert("일기 제목을 쓰세요");
       return;
     }
@@ -280,7 +123,7 @@ const SearchDiary = (props) => {
 
     //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
     const movieJson = JSON.stringify(selectedMovie);
-    const diaryJson = JSON.stringify(diaryData);
+    const diaryJson = JSON.stringify(form);
 
     //저장한다.
     NetTool.request(APIs.filmDiarySave)
@@ -327,7 +170,7 @@ const SearchDiary = (props) => {
             name="title"
             placeholder="일기 제목"
             onChange={handleChangeDiaryData}
-            value={diaryData.title}
+            value={title}
           />
         </div>
         <span className="write_date">
@@ -336,13 +179,13 @@ const SearchDiary = (props) => {
             name="watchDate"
             placeholder="날짜"
             onChange={handleChangeDiaryData}
-            value={diaryData.watchDate}
+            value={watchDate}
           />
         </span>
         <span className="write_rating">
           <span onClick={handlePlusRating}>[+]</span>
           <span onClick={handleMinusRating}>[-]</span>
-          {[...Array(diaryData.rating)].map((x, i) => (
+          {[...Array(rating)].map((x, i) => (
             <span key={i}>
               <FaStar />️
             </span>
@@ -353,7 +196,7 @@ const SearchDiary = (props) => {
           <input
             style={{ width: "600px" }}
             name="tags"
-            value={diaryData.tags}
+            value={tags}
             onChange={handleChangeDiaryData}
           />
           {tagsAll.map((tagTypeData, index) => (
@@ -365,7 +208,7 @@ const SearchDiary = (props) => {
             name="notes"
             placeholder="일기 내용"
             onChange={handleChangeDiaryData}
-            value={diaryData.notes}
+            value={notes}
           />
         </div>
         <div className="write_cover">
@@ -374,7 +217,7 @@ const SearchDiary = (props) => {
             name="cover"
             placeholder="https://"
             onChange={handleChangeDiaryData}
-            value={diaryData.cover}
+            value={cover}
           />
         </div>
         <button onClick={handleSave}>저장</button>
@@ -384,4 +227,3 @@ const SearchDiary = (props) => {
 };
 
 export default SearchDiary;
-*/
