@@ -2,7 +2,6 @@ import Header from "../containers/header/Header";
 import DropdownList from "./mainPage/dropdown/DropdownList";
 import DiaryList from "./mainPage/diaryList/DiaryList";
 import MainPageWrapper from "./mainPage/mainPageWrapper/MainPageWrapper";
-import DiaryDataWrapper from "./diaryData/DiaryDataWrapper";
 import DiaryData from "./diaryData/DiaryData";
 import MyPageMainHeader from "./myPage/myPageMainHeader/MyPageMainHeader";
 import MyPageMainReviewAll from "./myPage/myPageMainReviewAll/MyPageMainReviewAll";
@@ -19,7 +18,6 @@ export {
   DiaryList,
   MainPageWrapper,
   DiaryData,
-  DiaryDataWrapper,
   MyPageMainHeader,
   MyPageMainReviewAll,
   MyPageMainTag,

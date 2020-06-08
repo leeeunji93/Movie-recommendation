@@ -3,12 +3,13 @@ import { APIs, NetTool } from "../../tool/NetTool";
 import { MdDateRange } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import "./SearchDiary.css";
+import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../reducers/search";
 
 const SearchDiary = () => {
   const { search } = useSelector((state) => state);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const { form, never, dId, isModify } = search;
   const {
     tagsAll,
@@ -22,13 +23,14 @@ const SearchDiary = () => {
     modifiedAt,
   } = form;
   const { selectedMovie } = never;
+  const history = useHistory();
 
   useEffect(() => {
     refreshTags();
     if (isModify) {
       refreshUpdateData(dId);
     }
-  });
+  }, []);
 
   const refreshUpdateData = (dId) => {
     const url = APIs.filmDiaryDetail(dId);
@@ -36,7 +38,7 @@ const SearchDiary = () => {
       .exec(true)
       .then((resultData) => {
         console.log("수정할 데이터 가져오기 완료", resultData);
-        console.lot("resultData.diary", resultData.diary);
+        console.log("resultData.diary", resultData.diary);
         dispatch(
           actions.setForm({
             key: "form",
@@ -62,7 +64,7 @@ const SearchDiary = () => {
       .then((resultData) => {
         console.log("가져온 태그들 데이터 ", resultData);
         dispatch(
-          actions.setNever({
+          actions.setForm({
             key: "tagsAll",
             value: resultData,
           })
@@ -74,13 +76,17 @@ const SearchDiary = () => {
       });
   };
 
-  const handleChangeDiaryData = useCallback((e) => {
+  const handleChangeDiaryData = (e) => {
     // setKeyword(e.target.value);
-    actions.setForm({
-      key: e.target.name,
-      value: e.target.value,
-    });
-  }, []);
+    console.log("제목", e.target.name);
+    console.log(e.target.value);
+    dispatch(
+      actions.setForm({
+        key: e.target.name,
+        value: e.target.value,
+      })
+    );
+  };
 
   const handlePlusRating = () => {
     const maxCore = 4;
@@ -132,7 +138,7 @@ const SearchDiary = () => {
       .exec(true)
       .then((jsonData) => {
         alert("데이터 저장 성공");
-        this.props.history.push("/");
+        history.push("/");
       })
       .catch((error) => {
         alert(error);

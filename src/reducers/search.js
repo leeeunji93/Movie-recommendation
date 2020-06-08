@@ -1,12 +1,12 @@
 import { createAction, handleActions } from "redux-actions";
-import { useState } from "react";
+/*import { useState } from "react";*/
 
 const SET_FORM = "search/SET_FORM";
 const DESTROY = "search/DESTROY";
 const SET_NEVER = "search/SET_NEVER";
 
 const initialState = {
-  selectedMovie: null,
+  selectedMovie: null, //이거 지워도 되나?
   dId: 0,
   isModify: 0,
   form: {
