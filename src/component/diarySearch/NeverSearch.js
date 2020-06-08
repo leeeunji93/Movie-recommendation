@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
 import "../../App.scss";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,14 +9,6 @@ const NeverSearch = () => {
   const dispatch = useDispatch(); //액션 발생시키자
   const { never } = search;
   const { keyword, selectedMovie, searchResultArr } = never;
-
-  /*  const handleChangeSearch = useCallback((e) => {
-    // setKeyword(e.target.value);
-    actions.setNever({
-      key: e.target.name,
-      value: e.target.value,
-    });
-  }, []);*/
 
   const handleClickSearch = () => {
     /* const keyword = keyword.trim();*/

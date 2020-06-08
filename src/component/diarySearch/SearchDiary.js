@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { APIs, NetTool } from "../../tool/NetTool";
 import { MdDateRange } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
@@ -28,6 +28,7 @@ const SearchDiary = () => {
   useEffect(() => {
     refreshTags();
     if (isModify) {
+      console.log("dId", dId);
       refreshUpdateData(dId);
     }
   }, []);

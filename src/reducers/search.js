@@ -7,6 +7,7 @@ const SET_NEVER = "search/SET_NEVER";
 
 const initialState = {
   selectedMovie: null, //이거 지워도 되나?
+
   dId: 0,
   isModify: 0,
   form: {

@@ -27,18 +27,24 @@ const DiaryList = () => {
             key: "diaryArr",
             value: resultData.diaryArr,
           }),
-          actions.setDiary({
-            key: "page",
-            value: page,
-          }),
-          actions.setDiary({
-            key: "totalPage",
-            value: resultData.totalPage,
-          }),
-          actions.setDiary({
-            key: "totalCount",
-            value: resultData.totalCount,
-          })
+          dispatch(
+            actions.setDiary({
+              key: "page",
+              value: page,
+            })
+          ),
+          dispatch(
+            actions.setDiary({
+              key: "totalPage",
+              value: resultData.totalPage,
+            })
+          ),
+          dispatch(
+            actions.setDiary({
+              key: "totalCount",
+              value: resultData.totalCount,
+            })
+          )
         );
       })
       .catch((error) => {
@@ -74,10 +80,8 @@ const DiaryList = () => {
         ))}
       </div>
       <footer>
-        <div className="totalPage">
-          {page} / {totalPage}
-        </div>
-        <div className="savePage">{totalCount}</div>
+        (현재 페이지) {page} / {totalPage}(전체 페이지) - 페이지당 일기 갯수 :{" "}
+        {PAGE_SIZE} - 저장된 전체 일기 갯수 : {totalCount}
       </footer>
     </div>
   );
