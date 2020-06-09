@@ -1,5 +1,5 @@
 import React from "react";
-import "./Auth.css";
+import "./Auth.scss";
 
 // eslint-disable-next-line react/prop-types
 const AuthWrapper = ({ children }) => {

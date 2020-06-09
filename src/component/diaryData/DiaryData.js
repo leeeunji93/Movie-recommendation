@@ -7,7 +7,7 @@ import * as actions from "../../reducers/diaryData";
 const DiaryData = ({ match }) => {
   const { diaryData } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { movie, diary, user } = diaryData;
+  const { movie, diary, user } = diaryData.data;
   const dId = match.params.dId;
 
   useEffect(() => {

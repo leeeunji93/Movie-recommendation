@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import { NetTool, APIs } from "./tool/NetTool";
-import "./App.scss";
 import MyAccount from "./tool/MyAccount";
 import { Header } from "./component";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "./reducers/auth";
 import {
   Login,
   MainContainer,
@@ -13,63 +14,56 @@ import {
   SearchMovieContainer,
 } from "./containers";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isLogin: false };
-  }
+import "./App.scss";
 
-  componentDidMount() {
-    this.authAccessToken();
-  }
+const App = () => {
+  const { auth } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { isLogin } = auth.form;
 
-  authAccessToken = () => {
+  useEffect(() => {
+    authAccessToken();
+  }, []);
+
+  const authAccessToken = () => {
     if (MyAccount.atkn) {
       NetTool.request(APIs.userAuth)
         .exec()
         .then((resultData) => {
           console.log("자동 로그인 성공.");
           MyAccount.updateMyAccount(resultData);
-          this.onChangeLoginState();
+          onChangeLoginState();
         })
         .catch((error) => alert(error));
     }
   };
 
-  onChangeLoginState = () => {
+  const onChangeLoginState = () => {
     const isLogin = MyAccount.uId > 0;
-    this.setState({ isLogin });
-    console.log(isLogin);
+    dispatch(actions.setLogin({ isLogin: isLogin }));
+    console.log("@@로그인확인", isLogin);
   };
 
-  render() {
-    const { isLogin } = this.state;
-    return (
-      <div>
-        <Header isLogin={isLogin} />
-        <Route component={MainContainer} path="/" exact />
-        <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
-        <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
-        <Route
-          path="/MyPageContainer"
-          render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
-        />
-        <Route
-          path="/login"
-          render={(props) => (
-            <Login
-              {...props}
-              onChangeLoginState={this.onChangeLoginState}
-              //this.isLogin 을 바꿔봄
-              isLogin={isLogin}
-            />
-          )}
-        />
+  return (
+    <div>
+      <Header />
+      <Route component={MainContainer} path="/" exact />
+      <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
+      <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
+      <Route
+        path="/MyPageContainer"
+        render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
+      />
+      <Route
+        path="/login"
+        render={(props) => (
+          <Login {...props} onChangeLoginState={onChangeLoginState} />
+        )}
+      />
 
-        <Route component={Register} path="/register" />
-      </div>
-    );
-  }
-}
+      <Route component={Register} path="/register" />
+    </div>
+  );
+};
 
 export default App;

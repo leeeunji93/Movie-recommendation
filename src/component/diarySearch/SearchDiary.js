@@ -33,6 +33,12 @@ const SearchDiary = () => {
     }
   }, []);
 
+  useEffect(() => {
+    return () => {
+      dispatch(actions.destroy());
+    };
+  }, []);
+
   const refreshUpdateData = (dId) => {
     const url = APIs.filmDiaryDetail(dId);
     NetTool.request(url)
@@ -50,10 +56,6 @@ const SearchDiary = () => {
             value: resultData.movie,
           })
         );
-        /*this.setState({
-            selectedMovie: resultData.movie,
-            diaryData: resultData.diary,
-          });*/
       })
       .catch((error) => alert(error));
   };
