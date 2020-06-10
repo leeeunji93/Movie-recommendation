@@ -1,7 +1,7 @@
-import { createAction, handleActions } from "redux-actions";
+import { createAction, handleActions } from 'redux-actions';
 /*import { useState } from "react";*/
 
-const SET_DIARY = "diaryList/SET_DIARY";
+const SET_DIARY = 'diaryList/SET_DIARY';
 
 const initialState = {
   list: {
@@ -17,8 +17,8 @@ export const setDiary = createAction(SET_DIARY);
 export default handleActions(
   {
     [SET_DIARY]: (state, action) => {
-      console.log("@@@@ state: ", state);
-      console.log("@@@@ action: ", action);
+      console.log('@@@@ state: ', state);
+      console.log('@@@@ action: ', action);
       return {
         ...state,
         list: {
@@ -28,5 +28,5 @@ export default handleActions(
       };
     },
   },
-  initialState
+  initialState,
 );

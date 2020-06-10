@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { NetTool, APIs } from "../../../tool/NetTool";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../reducers/diaryList";
-import { useHistory } from "react-router";
+import React, { useEffect } from 'react';
+import { NetTool, APIs } from '../../../tool/NetTool';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../../reducers/diaryList';
+import { useHistory } from 'react-router';
 
 const PAGE_SIZE = 10;
 
@@ -21,30 +21,30 @@ const DiaryList = () => {
     NetTool.request(APIs.filmDiaryList(page, PAGE_SIZE))
       .exec()
       .then((resultData) => {
-        console.log("가져온다이어리리스트", resultData);
+        console.log('가져온다이어리리스트', resultData);
         dispatch(
           actions.setDiary({
-            key: "diaryArr",
+            key: 'diaryArr',
             value: resultData.diaryArr,
           }),
-          dispatch(
-            actions.setDiary({
-              key: "page",
-              value: page,
-            })
-          ),
-          dispatch(
-            actions.setDiary({
-              key: "totalPage",
-              value: resultData.totalPage,
-            })
-          ),
-          dispatch(
-            actions.setDiary({
-              key: "totalCount",
-              value: resultData.totalCount,
-            })
-          )
+        );
+        dispatch(
+          actions.setDiary({
+            key: 'page',
+            value: page,
+          }),
+        );
+        dispatch(
+          actions.setDiary({
+            key: 'totalPage',
+            value: resultData.totalPage,
+          }),
+        );
+        dispatch(
+          actions.setDiary({
+            key: 'totalCount',
+            value: resultData.totalCount,
+          }),
         );
       })
       .catch((error) => {
@@ -54,7 +54,7 @@ const DiaryList = () => {
 
   const DiaryItem = ({ data }) => {
     const clickedItem = () => {
-      history.push("/DiaryDataContainer/" + data.dId);
+      history.push('/DiaryDataContainer/' + data.dId);
     };
     return (
       <div className="diary" onClick={clickedItem}>
@@ -80,7 +80,7 @@ const DiaryList = () => {
         ))}
       </div>
       <footer>
-        (현재 페이지) {page} / {totalPage}(전체 페이지) - 페이지당 일기 갯수 :{" "}
+        (현재 페이지) {page} / {totalPage}(전체 페이지) - 페이지당 일기 갯수 :{' '}
         {PAGE_SIZE} - 저장된 전체 일기 갯수 : {totalCount}
       </footer>
     </div>

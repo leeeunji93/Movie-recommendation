@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import MyAccount from "../../tool/MyAccount";
-import { NetTool, APIs } from "../../tool/NetTool";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import * as actions from "../../reducers/auth";
-import "./Auth.scss";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import MyAccount from '../../tool/MyAccount';
+import { NetTool, APIs } from '../../tool/NetTool';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import * as actions from '../../reducers/auth';
+import './Auth.scss';
 
 const textMap = {
-  login: "로그인",
-  register: "회원가입",
+  login: '로그인',
+  register: '회원가입',
 };
 const Auth = ({ type, onChangeLoginState }) => {
   const text = textMap[type];
 
   const { auth } = useSelector((state) => state); //store연결
   const dispatch = useDispatch(); //액션 발생시키자
-  const { form } = auth;
-  const { email, pwd, nickname, pwdConfirm } = form; //리듀서에서
+  const { email, pwd, nickname, pwdConfirm } = auth.form; //리듀서에서
   const history = useHistory();
 
   useEffect(() => {
@@ -26,14 +25,14 @@ const Auth = ({ type, onChangeLoginState }) => {
     };
   }, [dispatch]);
 
-  console.log("@@@@ auth : ", auth);
+  console.log('@@@@ auth : ', auth);
 
   const onChange = (e) => {
     dispatch(
       actions.setForm({
         key: e.target.name,
         value: e.target.value,
-      })
+      }),
     );
   };
 
@@ -46,19 +45,19 @@ const Auth = ({ type, onChangeLoginState }) => {
     // 필수 email, pwd
 
     NetTool.request(APIs.userLogin)
-      .appendFormData("email", email) // 필수
-      .appendFormData("pwd", pwd) // 필수
+      .appendFormData('email', email) // 필수
+      .appendFormData('pwd', pwd) // 필수
       .exec(true)
       .then((resultData) => {
-        alert("로그인 성공");
+        alert('로그인 성공');
         MyAccount.updateMyAccount(resultData);
         onChangeLoginState();
       })
       .catch((error) => {
-        if (error === "UserNotFound") {
-          alert("이메일 주소를 찾을 수 없음");
-        } else if (error === "InvalidPassword") {
-          alert("비밀번호 틀림");
+        if (error === 'UserNotFound') {
+          alert('이메일 주소를 찾을 수 없음');
+        } else if (error === 'InvalidPassword') {
+          alert('비밀번호 틀림');
         } else {
           alert(error);
         }
@@ -66,7 +65,7 @@ const Auth = ({ type, onChangeLoginState }) => {
   };
 
   const clickLogout = () => {
-    console.log("로그아웃 했음. 토큰을 삭제하고 홈화면으로 페이지를 리로드.");
+    console.log('로그아웃 했음. 토큰을 삭제하고 홈화면으로 페이지를 리로드.');
     MyAccount.logout();
   };
 
@@ -83,21 +82,21 @@ const Auth = ({ type, onChangeLoginState }) => {
     }*/
 
     NetTool.request(APIs.userJoin)
-      .appendFormData("email", email)
-      .appendFormData("nickname", nickname)
-      .appendFormData("pwd", pwd)
+      .appendFormData('email', email)
+      .appendFormData('nickname', nickname)
+      .appendFormData('pwd', pwd)
       .exec(true)
       .then((resultData) => {
-        alert("회원 가입 성공, 로그인해주세요");
-        console.log("가입 성공, 리절트 : ", resultData);
+        alert('회원 가입 성공, 로그인해주세요');
+        console.log('가입 성공, 리절트 : ', resultData);
         MyAccount.updateMyAccount(resultData);
-        history.push("/login");
+        history.push('/login');
         onChangeLoginState();
       })
       .catch((error) => {
-        if (error === "EmailExists") {
-          alert("이메일주소가 이미 가입되어 있음");
-          history.push("/register");
+        if (error === 'EmailExists') {
+          alert('이메일주소가 이미 가입되어 있음');
+          history.push('/register');
         } else {
           alert(error);
         }
@@ -116,7 +115,7 @@ const Auth = ({ type, onChangeLoginState }) => {
           value={email}
         />
         <br />
-        {type === "register" && (
+        {type === 'register' && (
           <input
             className="auth_input"
             name="nickname"
@@ -135,7 +134,7 @@ const Auth = ({ type, onChangeLoginState }) => {
           value={pwd}
         />
 
-        {type === "register" && (
+        {type === 'register' && (
           <input
             type="password"
             className="auth_input"
@@ -145,7 +144,7 @@ const Auth = ({ type, onChangeLoginState }) => {
             value={pwdConfirm}
           />
         )}
-        {type === "login" ? (
+        {type === 'login' ? (
           <Link to="/">
             <button onClick={clickLogin}>로그인</button>
             <button onClick={clickLogout}>로그아웃</button>
@@ -154,7 +153,7 @@ const Auth = ({ type, onChangeLoginState }) => {
 
         <br />
         <footer>
-          {type === "login" ? (
+          {type === 'login' ? (
             <Link to="/register">회원가입</Link>
           ) : (
             <Link onClick={clickJoin} to="/">

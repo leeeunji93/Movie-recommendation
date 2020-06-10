@@ -1,6 +1,6 @@
-import { createAction, handleActions } from "redux-actions";
+import { createAction, handleActions } from 'redux-actions';
 
-const SET_DETAIL = "diaryData/SET_DETAIL";
+const SET_DETAIL = 'diaryData/SET_DETAIL';
 
 const initialState = {
   data: {
@@ -15,16 +15,16 @@ export const setDetail = createAction(SET_DETAIL);
 export default handleActions(
   {
     [SET_DETAIL]: (state, action) => {
-      console.log("@@@@ state: ", state);
-      console.log("@@@@ action: ", action);
+      console.log('@@@@ state: ', state);
+      console.log('@@@@ action: ', action);
       return {
         ...state,
         data: {
-          ...state.list,
+          ...state.data,
           [action.payload.key]: action.payload.value,
         },
       };
     },
   },
-  initialState
+  initialState,
 );

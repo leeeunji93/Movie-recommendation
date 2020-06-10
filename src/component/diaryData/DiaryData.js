@@ -1,44 +1,63 @@
-import React, { useEffect, useState } from "react";
-import { NetTool, APIs } from "../../tool/NetTool";
+import React, { useEffect } from 'react';
+import { NetTool, APIs } from '../../tool/NetTool';
 
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../reducers/diaryData";
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../reducers/diaryData';
 
 const DiaryData = ({ match }) => {
   const { diaryData } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { movie, diary, user } = diaryData.data;
+  const { data } = diaryData;
+  const { movie, diary, user } = data;
   const dId = match.params.dId;
+
+  // useEffect(() => {
+  //   NetTool.request(APIs.filmDiaryDetail(dId))
+  //     .exec()
+  //     .then((resultData) => {
+  //       console.log('상세데이터', resultData);
+  //       console.log('dId', dId);
+  //       dispatch(
+  //         actions.setDetail({
+  //           key: 'movie',
+  //           value: resultData.movie,
+  //         }),
+  //       );
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     });
+  // }, [dispatch]);
 
   useEffect(() => {
     NetTool.request(APIs.filmDiaryDetail(dId))
       .exec()
       .then((resultData) => {
-        console.log("상세데이터", resultData);
-        console.log("dId", dId);
+        console.log('상세데이터', resultData);
+        console.log('dId', dId);
         dispatch(
           actions.setDetail({
-            key: "movie",
+            key: 'diary',
+            value: resultData.diary,
+          }),
+        );
+        dispatch(
+          actions.setDetail({
+            key: 'movie',
             value: resultData.movie,
           }),
-          dispatch(
-            actions.setDetail({
-              key: "diary",
-              value: resultData.diary,
-            })
-          ),
-          dispatch(
-            actions.setDetail({
-              key: "user",
-              value: resultData.user,
-            })
-          )
+        );
+        dispatch(
+          actions.setDetail({
+            key: 'user',
+            value: resultData.user,
+          }),
         );
       })
       .catch((error) => {
         alert(error);
       });
-  }, []);
+  }, [dispatch]);
 
   /*  const clickUpdate = () => {
     props.history.push("/DiaryDataContainer/:dId" + props.match.params.dId);
@@ -68,7 +87,7 @@ const DiaryData = ({ match }) => {
       <h1>다이어리 상세페이지.</h1>
 
       <h3>영화 데이터.</h3>
-      <div>{movie}</div>
+      <div>{JSON.stringify(movie)}</div>
 
       <h3>일기 데이터</h3>
       <div>{JSON.stringify(diary)}</div>
