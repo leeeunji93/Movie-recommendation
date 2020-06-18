@@ -1,0 +1,72 @@
+@import '../../style/utils.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Lato', 'Noto Sans KR';
+}
+
+//never search
+.movie_search {
+  display: flex;
+  justify-content: center;
+
+  input {
+    @include input;
+    background: inherit;
+    margin: 1rem;
+    // background-image: url('../../search.jpg');
+  }
+  button {
+    width: 50px;
+    text-decoration: none;
+    background: none;
+  }
+}
+
+.MovieItem {
+  border: 0.1rem solid $black;
+  cursor: pointer;
+  width: 15rem;
+  height: 24.5rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+  // img {
+  //   width: 10rem;
+  //   height: 10rem;
+  // }
+}
+
+.movie_search_result {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
+  @media only screen and (min-width: 1025px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+  }
+}
+
+// .write {
+//   input {
+//     @include input;
+//     margin: 1rem;
+//     // background-image: url('../../search.jpg');
+//   }
+// }
+
+// button {
+//   @include button;
+// }
+
+//write

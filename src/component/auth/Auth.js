@@ -71,15 +71,17 @@ const Auth = ({ type, onChangeLoginState }) => {
 
   const clickJoin = () => {
     //필수 데이터 : email, name, pwd
-    /*
-        const patten = /^(?=\w{6,}$)(?=.*[a-z])(?=.*[A-Z])/;
-      if (!patten.test(pwd)) {
-      return "대소문자를 넣어주세요!";
+
+    const patten = /^(?=\w{6,}$)(?=.*[a-z])(?=.*[A-Z])/;
+    if (!patten.test(pwd)) {
+      alert('대소문자를 넣어주세요!');
+      return;
     }
 
-    if (!email.includes("@")) {
-      return "유효한 이메일 값이 아닙니다!";
-    }*/
+    if (!email.includes('@')) {
+      alert('유효한 이메일 값이 아닙니다!');
+      return;
+    }
 
     NetTool.request(APIs.userJoin)
       .appendFormData('email', email)
@@ -156,9 +158,7 @@ const Auth = ({ type, onChangeLoginState }) => {
           {type === 'login' ? (
             <Link to="/register">회원가입</Link>
           ) : (
-            <Link onClick={clickJoin} to="/">
-              로그인
-            </Link>
+            <button onClick={clickJoin}>로그인</button>
           )}
         </footer>
       </form>

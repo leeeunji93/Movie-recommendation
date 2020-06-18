@@ -1,33 +1,37 @@
-import React, { useState } from "react";
-import { APIs, NetTool } from "../../tool/NetTool";
-import "../../App.scss";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../reducers/search";
+import React, { useState } from 'react';
+import { APIs, NetTool } from '../../tool/NetTool';
+import '../../App.scss';
+import './Search.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../reducers/search';
+import SearchIcon from '@material-ui/icons/Search';
+import Grid from '@material-ui/core/Grid';
 
 const NeverSearch = () => {
   const { search } = useSelector((state) => state); //store연결
   const dispatch = useDispatch(); //액션 발생시키자
   const { never } = search;
+  const [clickState, setClickState] = useState(false);
   const { keyword, selectedMovie, searchResultArr } = never;
 
   const handleClickSearch = () => {
     /* const keyword = keyword.trim();*/
-    console.log("change");
+    console.log('change');
     const pattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
     if (keyword.match(pattern)) {
-      alert("특수 문자가 포함 됐어요");
+      alert('특수 문자가 포함 됐어요');
       return;
     }
     NetTool.request(APIs.filmSearch)
-      .appendFormData("keyword", keyword)
+      .appendFormData('keyword', keyword)
       .exec(true)
       .then((resultData) => {
-        console.log("영화 검색 결과", resultData);
+        console.log('영화 검색 결과', resultData);
         dispatch(
           actions.setNever({
-            key: "searchResultArr",
+            key: 'searchResultArr',
             value: resultData,
-          })
+          }),
         );
         /* setSearchResultArr(resultData);*/
       })
@@ -37,9 +41,9 @@ const NeverSearch = () => {
   };
 
   const MovieItem = ({ searchResult }) => {
-    let className = "MovieItem";
+    let className = 'MovieItem';
     if (selectedMovie === searchResult) {
-      className += " selected";
+      className += ' selected';
     }
     const clickItem = () => {
       /*setKeyword("");
@@ -47,62 +51,83 @@ const NeverSearch = () => {
       setSearchResultArr([]);*/
       dispatch(
         actions.setNever({
-          key: "searchResultArr",
+          key: 'searchResultArr',
           value: [],
-        })
+        }),
       );
       dispatch(
         actions.setNever({
-          key: "selectedMovie",
+          key: 'selectedMovie',
           value: searchResult,
-        })
+        }),
       );
-
-      console.log("선택영화", searchResult);
+      setClickState(!clickState);
+      console.log('선택영화', searchResult);
     };
 
     return (
-      <div className={className} onClick={clickItem}>
-        <div>
-          <img src={searchResult.image} alt="" />
-        </div>
-        <span dangerouslySetInnerHTML={{ __html: searchResult.title }} />(
-        {searchResult.pubDate})<div>{searchResult.director}</div>
-      </div>
+      <Grid container spacing={1}>
+        <Grid item xs={12} lg={6}>
+          <div className={className} onClick={clickItem}>
+            <di className="Item">
+              <img src={searchResult.image} alt="" />
+            </di>
+            <div>
+              <b
+                className="Item_info"
+                dangerouslySetInnerHTML={{ __html: searchResult.title }}
+              />
+            </div>
+
+            <span className="Item_director">{searchResult.director}</span>
+            <span className="Item_date">{searchResult.pubDate}</span>
+          </div>
+        </Grid>
+      </Grid>
     );
   };
 
   return (
     <div>
       <div className="movie_search">
-        <input
-          name="keyword"
-          placeholder="작성하실 영화를 검색하세요"
-          value={keyword}
-          // onChange={handleChangeSearch}
-          onChange={(e) => {
-            console.log(e.target.value);
-            console.log(e.target.name);
-            dispatch(
-              actions.setNever({
-                key: e.target.name,
-                value: e.target.value,
-              })
-            );
-          }}
-        />
-        <button onClick={handleClickSearch}>찾기</button>
+        {clickState ? (
+          ''
+        ) : (
+          <div>
+            <input
+              name="keyword"
+              placeholder="작성하실 영화를 검색하세요"
+              value={keyword}
+              // onChange={handleChangeSearch}
+              onChange={(e) => {
+                console.log(e.target.value);
+                console.log(e.target.name);
+                dispatch(
+                  actions.setNever({
+                    key: e.target.name,
+                    value: e.target.value,
+                  }),
+                );
+              }}
+            />
+
+            <button onClick={handleClickSearch}>
+              <SearchIcon style={{ fontSize: 30 }} />
+            </button>
+          </div>
+        )}
       </div>
-      <div className="movie_search_result" style={{ width: "200px" }}>
+
+      <div className="movie_search_result">
         {searchResultArr.map((searchResult, index) => (
           <MovieItem searchResult={searchResult} key={index} />
         ))}
       </div>
+
       <div className="movie_selected">
         <h3>선택된 영화</h3>
         {!!selectedMovie && <MovieItem searchResult={selectedMovie} />}
       </div>
-      <hr />
     </div>
   );
 };

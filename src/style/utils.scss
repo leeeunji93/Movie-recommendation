@@ -1,24 +1,22 @@
+$red: #c0392b;
+$orange: #f39c12;
+$green: #16a085;
+$blue: #2980b9;
+$gray: #7f8c8d;
 
+$white: #f2f2f2;
+$black: #0d0d0d;
+$skyblue: #8a9ea6;
+$beige: #d9af8b;
+$pink: #bf9393;
 
-$red:#c0392b;
-$orange:#f39c12;
-$green:#16a085;
-$blue:#2980b9;
-$gray:#7f8c8d;
+$basicFont: #2c3e50;
 
-$white:#f2f2f2;
-$black:#0D0D0D;
-$skyblue:#8A9EA6;
-$beige:#D9AF8B;
-$pink:#BF9393;
-
-$basicFont:#2c3e50;
-
-
-
+$phone: 320px;
+$desktop: 321px;
 
 //1
-@mixin Link($color){
+@mixin Link($color) {
   display: block;
   text-decoration: none;
   outline: none;
@@ -26,21 +24,54 @@ $basicFont:#2c3e50;
   color: $color;
 }
 
-/*mixin 이용법
-link {@include icon(blue)}
-*/
+@mixin input {
+  width: 20rem;
+  border: 1px solid $gray;
+  border-radius: 3px;
+  box-shadow: none;
+  outline: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  &:hover {
+    border: 1px solid $green;
+    background: #fff;
+  }
+}
+::placeholder {
+  color: $basicFont;
+  font-size: 1.2rem;
+}
 
+@mixin button {
+  display: inline-flex;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.3s;
 
+  height: 2.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.25rem;
+
+  background: $black;
+  &:hover {
+    background: lighten($black, 5%);
+  }
+}
 
 //2
-@mixin icon($word){
+@mixin icon($word) {
   text-decoration: none;
   display: block;
-  @if $word == 'a'{
+  @if $word == 'a' {
     color: #2c3e50;
-  }@else{
-  color: #7f8c8d;
-}
+  } @else {
+    color: #7f8c8d;
+  }
 }
 
 /*mixin 이용법
