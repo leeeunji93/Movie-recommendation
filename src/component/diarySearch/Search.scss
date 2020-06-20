@@ -13,7 +13,12 @@
 .movie_search {
   display: flex;
   justify-content: center;
-
+  align-items: center;
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   input {
     @include input;
     background: inherit;
@@ -70,5 +75,59 @@
     display: flex;
     justify-content: space-between;
     width: 5rem;
+  }
+}
+
+.write_content {
+  height: 10vh;
+  border-radius: 3px;
+  list-style: none;
+  box-shadow: none;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+.tags {
+  display: flex;
+}
+
+.TagItem {
+  width: 5rem;
+  color: $black;
+  text-align: center;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: 1px solid $black;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 4px;
+  &:hover {
+    background: $black;
+    color: $white;
+  }
+}
+
+.search_button {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s;
+    width: auto;
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+    margin-right: 1.5rem;
+
+    background: $black;
+    &:hover {
+      background: lighten($black, 5%);
+    }
   }
 }

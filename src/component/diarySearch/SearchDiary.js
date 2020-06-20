@@ -171,11 +171,7 @@ const SearchDiary = () => {
 
     return (
       <div>
-        <h3>
-          태그타입: {tagTypeData.tagType} - 태그 설명:
-          {tagTypeData.tagTypeDesc}
-        </h3>
-
+        {tagTypeData.tagType}
         <div className="tags">
           {tagTypeData.tags.map((tag, index) => (
             <TagItem tag={tag} key={index} />
@@ -194,7 +190,7 @@ const SearchDiary = () => {
       marginTop: '1.5rem',
 
       '& .MuiInput-underline:after': {
-        borderBottomColor: '#16a085',
+        borderBottomColor: '#0d0d0d',
       },
     },
 
@@ -202,7 +198,10 @@ const SearchDiary = () => {
       width: 150,
 
       '& .MuiInput-underline:after': {
-        borderBottomColor: '#16a085',
+        borderBottomColor: '#0d0d0d',
+      },
+      '&:hover fieldset': {
+        borderColor: '#16a085',
       },
       '& label.Mui-focused': {
         color: '#16a085',
@@ -215,7 +214,7 @@ const SearchDiary = () => {
   return (
     <div>
       <div className="write_full">
-        <Card className={classes.root} elevation={5}>
+        <Card className={classes.root} elevation={0}>
           <CardContent>
             <Typography className={classes.title}>
               <h2>{isModify ? '일기수정' : 'Write'}</h2>
@@ -250,7 +249,7 @@ const SearchDiary = () => {
               </div>
               <div className="write_rating">
                 <span className="icon" onClick={handlePlusRating}>
-                  <ThumbUpAltIcon style={{color:#7f8c8d}} />
+                  <ThumbUpAltIcon />
                 </span>
                 <span className="icon" onClick={handleMinusRating}>
                   <ThumbDownIcon />
@@ -263,18 +262,19 @@ const SearchDiary = () => {
                 ))}
               </div>
             </div>
-
             <div className="write_tags">
-              <h2>전체 태그 목록</h2>
               <input
                 name="tags"
                 value={tags}
                 onChange={handleChangeDiaryData}
               />
+
+              {/* 보여는거 우린 보여줄 이유가 없다 */}
               {tagsAll.map((tagTypeData, index) => (
                 <TagTypeItem tagTypeData={tagTypeData} key={index} />
               ))}
             </div>
+
             <div className="write_content">
               <input
                 name="notes"
@@ -284,17 +284,19 @@ const SearchDiary = () => {
               />
             </div>
             <div className="write_cover">
-              <span>포스터 이미지 주소:</span>
+              {/* <span>포스터 이미지 주소:</span>
               <input
                 name="cover"
                 placeholder="https://"
                 onChange={handleChangeDiaryData}
                 value={cover}
-              />
+              /> */}
             </div>
           </CardContent>
         </Card>
-        <button onClick={handleSave}>저장</button>
+        <div className="search_button">
+          <button onClick={handleSave}>저장</button>
+        </div>
       </div>
     </div>
   );

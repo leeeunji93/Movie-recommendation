@@ -93,7 +93,7 @@ const NeverSearch = () => {
         {clickState ? (
           ''
         ) : (
-          <div>
+          <div className="search">
             <input
               name="keyword"
               placeholder="작성하실 영화를 검색하세요"
@@ -125,7 +125,6 @@ const NeverSearch = () => {
       </div>
 
       <div className="movie_selected">
-        <h3>선택된 영화</h3>
         {!!selectedMovie && <MovieItem searchResult={selectedMovie} />}
       </div>
     </div>
