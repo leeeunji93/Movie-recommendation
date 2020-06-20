@@ -57,16 +57,18 @@
   }
 }
 
-// .write {
-//   input {
-//     @include input;
-//     margin: 1rem;
-//     // background-image: url('../../search.jpg');
-//   }
-// }
+//write_date
 
-// button {
-//   @include button;
-// }
+.write_rating {
+  display: flex;
+  margin-top: 1rem;
 
-//write
+  .icon {
+    width: 5rem;
+  }
+  .star {
+    display: flex;
+    justify-content: space-between;
+    width: 5rem;
+  }
+}

@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { APIs, NetTool } from '../../tool/NetTool';
-import { MdDateRange } from 'react-icons/md';
-import { FaStar, FaBlackTie } from 'react-icons/fa';
+import Grid from '@material-ui/core/Grid';
 import './Search.scss';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/search';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Card, CardContent, CardActions, TextField } from '@material-ui/core';
+import { Card, CardContent, TextField } from '@material-ui/core';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import StarIcon from '@material-ui/icons/Star';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 const SearchDiary = () => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { form, never, dId, isModify } = search;
+  const { form, never, dId, isModify, watchDate } = search;
   const {
     tagsAll,
     title,
@@ -21,10 +29,11 @@ const SearchDiary = () => {
     notes,
     rating,
     tags,
-    watchDate,
+    // watchDate,
     createdAt,
     modifiedAt,
   } = form;
+
   const { selectedMovie } = never;
   const history = useHistory();
 
@@ -84,7 +93,7 @@ const SearchDiary = () => {
 
   const handleChangeDiaryData = (e) => {
     // setKeyword(e.target.value);
-    console.log('@@제목', e.target.name);
+    console.log('@@onChane값', e.target.name);
     console.log(e.target.value);
     dispatch(
       actions.setForm({
@@ -92,6 +101,10 @@ const SearchDiary = () => {
         value: e.target.value,
       }),
     );
+  };
+
+  const handleDateChange = (date) => {
+    dispatch(actions.setDate(date));
   };
 
   const handlePlusRating = () => {
@@ -172,67 +185,85 @@ const SearchDiary = () => {
     );
   };
 
-  //mui
-  const CssTextField = withStyles({
+  const useStyles = makeStyles((theme) => ({
     root: {
-      '& label.Mui-focused': {
-        color: '#2c3e50',
-      },
+      display: 'flex',
+    },
+    dateInput: {
+      width: 150,
+      marginTop: '1.5rem',
+
       '& .MuiInput-underline:after': {
         borderBottomColor: '#16a085',
       },
     },
-  })(TextField);
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    margin: {
-      margin: theme.spacing(1),
+    inputTitle: {
+      width: 150,
+
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#16a085',
+      },
+      '& label.Mui-focused': {
+        color: '#16a085',
+      },
     },
   }));
 
   const classes = useStyles();
+
   return (
     <div>
       <div className="write_full">
         <Card className={classes.root} elevation={5}>
           <CardContent>
             <Typography className={classes.title}>
-              <h2>{isModify ? '일기수정' : '일기쓰기'}</h2>
+              <h2>{isModify ? '일기수정' : 'Write'}</h2>
             </Typography>
-            <CssTextField
-              className={classes.inputTitle}
-              name="title"
-              label="제목"
-              onChange={handleChangeDiaryData}
-              value={title}
-              InputProps={{
-                className: classes.input,
-              }}
-            />
-
-            <span className="write_date">
-              <MdDateRange />
-              <input
-                type="date"
-                name="watchDate"
-                placeholder="날짜"
+            <div className="write_header">
+              <TextField
+                className={classes.inputTitle}
+                name="title"
+                label="Title"
                 onChange={handleChangeDiaryData}
-                value={watchDate}
+                value={title}
               />
-            </span>
-            <span className="write_rating">
-              <span onClick={handlePlusRating}>[+]</span>
-              <span onClick={handleMinusRating}>[-]</span>
-              {[...Array(rating)].map((x, i) => (
-                <span key={i}>
-                  <FaStar />️
+
+              <div className="dateDate">
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <Grid item xs={6} lg={12} className={classes.container}>
+                    <KeyboardDatePicker
+                      className={classes.dateInput}
+                      id="date-picker-inline"
+                      format="MM/dd/yyyy"
+                      // margin="normal"
+                      value={watchDate}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                      }}
+                      // InputProps={{ className: classes.input }}
+                      // />
+                    />
+                  </Grid>
+                </MuiPickersUtilsProvider>
+              </div>
+              <div className="write_rating">
+                <span className="icon" onClick={handlePlusRating}>
+                  <ThumbUpAltIcon style={{color:#7f8c8d}} />
                 </span>
-              ))}
-            </span>
+                <span className="icon" onClick={handleMinusRating}>
+                  <ThumbDownIcon />
+                </span>
+
+                {[...Array(rating)].map((x, i) => (
+                  <span className="star" key={i}>
+                    <StarIcon />️
+                  </span>
+                ))}
+              </div>
+            </div>
+
             <div className="write_tags">
               <h2>전체 태그 목록</h2>
               <input
