@@ -103,9 +103,9 @@ const SearchDiary = () => {
     );
   };
 
-  const handleDateChange = (date) => {
-    dispatch(actions.setDate(date));
-  };
+  // const handleDateChange = (date) => {
+  //   dispatch(actions.setDate(date));
+  // };
 
   const handlePlusRating = () => {
     const maxCore = 4;
@@ -170,8 +170,8 @@ const SearchDiary = () => {
     };
 
     return (
-      <div>
-        {tagTypeData.tagType}
+      <div className="tagName">
+        <p>{tagTypeData.tagType}</p>
         <div className="tags">
           {tagTypeData.tags.map((tag, index) => (
             <TagItem tag={tag} key={index} />
@@ -185,17 +185,18 @@ const SearchDiary = () => {
     root: {
       display: 'flex',
     },
-    dateInput: {
-      width: 150,
-      marginTop: '1.5rem',
+    // dateInput: {
+    //   width: 150,
+    //   marginTop: '1.5rem',
 
-      '& .MuiInput-underline:after': {
-        borderBottomColor: '#0d0d0d',
-      },
-    },
+    //   '& .MuiInput-underline:after': {
+    //     borderBottomColor: '#0d0d0d',
+    //   },
+    // },
 
     inputTitle: {
       width: 150,
+      marginLeft: '0.4rem',
 
       '& .MuiInput-underline:after': {
         borderBottomColor: '#0d0d0d',
@@ -204,7 +205,7 @@ const SearchDiary = () => {
         borderColor: '#16a085',
       },
       '& label.Mui-focused': {
-        color: '#16a085',
+        color: '#0d0d0d',
       },
     },
   }));
@@ -213,7 +214,7 @@ const SearchDiary = () => {
 
   return (
     <div>
-      <div className="write_full">
+      <section className="write_full">
         <Card className={classes.root} elevation={0}>
           <CardContent>
             <Typography className={classes.title}>
@@ -229,9 +230,10 @@ const SearchDiary = () => {
               />
 
               <div className="dateDate">
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <Grid item xs={6} lg={12} className={classes.container}>
                     <KeyboardDatePicker
+                      name="watchDate"
                       className={classes.dateInput}
                       id="date-picker-inline"
                       format="MM/dd/yyyy"
@@ -241,12 +243,19 @@ const SearchDiary = () => {
                       KeyboardButtonProps={{
                         'aria-label': 'change date',
                       }}
-                      // InputProps={{ className: classes.input }}
-                      // />
+                      InputProps={{ className: classes.input }}
+                      />
                     />
                   </Grid>
-                </MuiPickersUtilsProvider>
+                </MuiPickersUtilsProvider> */}
+                <input
+                  name="watchDate"
+                  value={watchDate}
+                  onChange={handleChangeDiaryData}
+                  type="date"
+                />
               </div>
+
               <div className="write_rating">
                 <span className="icon" onClick={handlePlusRating}>
                   <ThumbUpAltIcon />
@@ -294,10 +303,10 @@ const SearchDiary = () => {
             </div>
           </CardContent>
         </Card>
-        <div className="search_button">
+        <div className="write_button">
           <button onClick={handleSave}>저장</button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

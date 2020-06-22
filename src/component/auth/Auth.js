@@ -64,10 +64,10 @@ const Auth = ({ type, onChangeLoginState }) => {
       });
   };
 
-  const clickLogout = () => {
-    console.log('로그아웃 했음. 토큰을 삭제하고 홈화면으로 페이지를 리로드.');
-    MyAccount.logout();
-  };
+  // const clickLogout = () => {
+  //   console.log('로그아웃 했음. 토큰을 삭제하고 홈화면으로 페이지를 리로드.');
+  //   MyAccount.logout();
+  // };
 
   const clickJoin = () => {
     //필수 데이터 : email, name, pwd
@@ -108,6 +108,7 @@ const Auth = ({ type, onChangeLoginState }) => {
   return (
     <div className="authForm_wrapper">
       <h1>{text}</h1>
+
       <form onSubmit={onSubmit} className="auth_form">
         <input
           className="auth_input"
@@ -146,19 +147,22 @@ const Auth = ({ type, onChangeLoginState }) => {
             value={pwdConfirm}
           />
         )}
-        {type === 'login' ? (
-          <Link to="/">
-            <button onClick={clickLogin}>로그인</button>
-            <button onClick={clickLogout}>로그아웃</button>
-          </Link>
-        ) : null}
+        <div className="button">
+          {type === 'login' ? (
+            <Link to="/">
+              <button onClick={clickLogin}>로그인</button>
+            </Link>
+          ) : null}
+        </div>
 
         <br />
         <footer>
           {type === 'login' ? (
             <Link to="/register">회원가입</Link>
           ) : (
-            <button onClick={clickJoin}>로그인</button>
+            <button className="registerbtn" onClick={clickJoin}>
+              로그인
+            </button>
           )}
         </footer>
       </form>

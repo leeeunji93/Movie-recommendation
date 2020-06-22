@@ -1,6 +1,6 @@
-import React from "react";
-import { AuthWrapper } from "../../component";
-import Auth from "../../component/auth/Auth";
+import React from 'react';
+import { AuthWrapper } from '../../component';
+import Auth from '../../component/auth/Auth';
 
 const Login = ({ onChangeLoginState, isLogin }) => {
   return (

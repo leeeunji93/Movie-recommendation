@@ -28,13 +28,11 @@ $desktop: 321px;
   width: 20rem;
   border: 1px solid $gray;
   border-radius: 3px;
-  box-shadow: none;
-  outline: none;
   font-size: 1.5rem;
   padding: 1rem;
   background: #fff;
   &:hover {
-    border: 1px solid $green;
+    border: 1px solid $black;
     background: #fff;
   }
 }

@@ -89,7 +89,7 @@ const NeverSearch = () => {
 
   return (
     <div>
-      <div className="movie_search">
+      <section className="movie_search">
         {clickState ? (
           ''
         ) : (
@@ -116,7 +116,7 @@ const NeverSearch = () => {
             </button>
           </div>
         )}
-      </div>
+      </section>
 
       <div className="movie_search_result">
         {searchResultArr.map((searchResult, index) => (
@@ -124,9 +124,9 @@ const NeverSearch = () => {
         ))}
       </div>
 
-      <div className="movie_selected">
+      <d className="movie_selected">
         {!!selectedMovie && <MovieItem searchResult={selectedMovie} />}
-      </div>
+      </d>
     </div>
   );
 };

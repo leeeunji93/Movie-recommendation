@@ -1,22 +1,12 @@
-import React, { Component } from "react";
-import {
-  MyPageMainHeader,
-  MyPageMainReviewAll,
-  MyPageMainTag,
-  MyPageWrapper,
-} from "../../component";
+import React, { Component } from 'react';
+import { MyPage } from '../../component';
 
 class MyPageContainer extends Component {
   render() {
     const { isLogin } = this.props;
     return (
       <div>
-        {console.log(isLogin)}
-        <MyPageWrapper>
-          <MyPageMainHeader isLogin={isLogin} />
-          <MyPageMainTag />
-          <MyPageMainReviewAll />
-        </MyPageWrapper>
+        <MyPage isLogin={isLogin} />
       </div>
     );
   }

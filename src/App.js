@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { Route } from "react-router-dom";
-import { NetTool, APIs } from "./tool/NetTool";
-import MyAccount from "./tool/MyAccount";
-import { Header } from "./component";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "./reducers/auth";
+import React, { useEffect } from 'react';
+import { Route } from 'react-router-dom';
+import { NetTool, APIs } from './tool/NetTool';
+import MyAccount from './tool/MyAccount';
+import { Header } from './component';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from './reducers/auth';
 import {
   Login,
   MainContainer,
@@ -12,9 +12,9 @@ import {
   DiaryDataContainer,
   Register,
   SearchMovieContainer,
-} from "./containers";
+} from './containers';
 
-import "./App.scss";
+import './App.scss';
 
 const App = () => {
   const { auth } = useSelector((state) => state);
@@ -30,7 +30,7 @@ const App = () => {
       NetTool.request(APIs.userAuth)
         .exec()
         .then((resultData) => {
-          console.log("자동 로그인 성공.");
+          console.log('자동 로그인 성공.');
           MyAccount.updateMyAccount(resultData);
           onChangeLoginState();
         })
@@ -41,7 +41,7 @@ const App = () => {
   const onChangeLoginState = () => {
     const isLogin = MyAccount.uId > 0;
     dispatch(actions.setLogin({ isLogin: isLogin }));
-    console.log("@@로그인확인", isLogin);
+    console.log('@@로그인확인', isLogin);
   };
 
   return (
@@ -51,7 +51,7 @@ const App = () => {
       <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
       <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
       <Route
-        path="/MyPageContainer"
+        path="/mypage"
         render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
       />
       <Route

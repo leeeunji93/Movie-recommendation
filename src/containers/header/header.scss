@@ -1,166 +1,123 @@
 @import '../../style/utils.scss';
-@import "../../style/reset.scss";
+@import '../../style/reset.scss';
 
-
-
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-    width: 100%;
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
+.wrapper {
+  .logo {
+    height: 4rem;
+    background-color: $black;
+    width: 100vw;
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
+.menu_wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 8rem;
 
-.header {
+  .search {
+    width: 35rem;
     display: flex;
-    padding: 20px 20px 20px 0;
-    .header_name {
-        width: 3rem;
-        font-family:"Architects Daughter" ;
-        margin-left: 1rem;
+    align-items: center;
+    margin-right: 1.2rem;
+    margin-left: 1rem;
+
+    input {
+      border: none;
+      border-bottom: 1px solid $gray;
+      text-align: center;
+      padding-bottom: 0.5rem;
     }
-
+    input::placeholder {
+      color: $basicFont;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+  }
 }
 
+.list {
+  display: flex;
+  justify-content: center;
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    margin-right: 1rem;
 
-
-
-
-
-
-/*
- <Link to="/" className="header_name">
-            사이트 이름
-          </Link>
-          <div className="header_search">
-            <input
-              placeholder="영화 제목, 아이디"
-              onChange={this.handleChange}
-              value={search}
-            />
-            <Link className="header_search_icon" to="/DiaryDataContainer">
-              <FaSearch />
-            </Link>
-          </div>
-          <div className="header_menu">
-            <Link className="header_write" to="/SearchMovieContainer">
-              <FaEdit />
-              <span>Write</span>
-            </Link>
-            <Link className="header_myPage" to="/MyPageContainer">
-              <FaHeart />
-              <span>MyPage</span>
-            </Link>
-            <Link className="header_login" to="/Login">
-              <FaUserCircle />
-              {isLogin ? MyAccount.nickname : "Login"}
-            </Link>
-            </div>
-
-*/
-
-/*
- <Table>
-        <TableHead>
-          <TableRow className="header">
-            <TableCell>
-              <Link to="/" className="header_name">
-                사이트 이름
-              </Link>
-            </TableCell>
-            <TableCell>
-              <div className="header_search">
-                <input
-                  placeholder="영화 제목, 아이디"
-                  onChange={this.handleChange}
-                  value={search}
-                />
-                <Link
-                  className="header_search_icon"
-                  to="/DiaryDataContainer"
-                >
-                  <FaSearch />
-                </Link>
-              </div>
-            </TableCell>
-            <TableCell>
-              <div className="header_menu">
-                <Link className="header_write" to="/SearchMovieContainer">
-                  <FaEdit />
-                  <span>Write</span>
-                </Link>
-                <Link className="header_myPage" to="/MyPageContainer">
-                  <FaHeart />
-                  <span>MyPage</span>
-                </Link>
-                <Link className="header_login" to="/Login">
-                  <FaUserCircle />
-                  {isLogin ? MyAccount.nickname : "Login"}
-                </Link>
-              </div>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-      </Table>*/
-
-/*class Header extends Component {
-    state = {
-    search: "",
-};
-
-    handleChange = (e) => {
-    this.setState({
-    search: e.target.value,
-});
-};
-
-render() {
-    const { search } = this.state;
-    const { isLogin } = this.props;
-    return (
-    <section>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" style={{ flex: 1 }}>
-Static Website
-</Typography>
-<div className="header_search">
-<input
-placeholder="영화 제목, 아이디"
-onChange={this.handleChange}
-    value={search}
-/>
-<Link className="header_search_icon" to="/DiaryDataContainer">
-<FaSearch />
-</Link>
-</div>
-<div className="header_menu">
-<Link className="header_write" to="/SearchMovieContainer">
-<FaEdit />
-<span>Write</span>
-</Link>
-<Link className="header_myPage" to="/MyPageContainer">
-<FaHeart />
-<span>MyPage</span>
-</Link>
-<Link className="header_login" to="/Login">
-<FaUserCircle />
-{isLogin ? MyAccount.nickname : "Login"}
-</Link>
-</div>
-</Toolbar>
-</AppBar>
-</section>
-);
-}
+    button {
+      width: 2rem;
+      background: none;
+      border: none;
+      box-shadow: none;
+      font-size: 1.2rem;
+      margin-top: 0.2rem;
+    }
+  }
+  .icon {
+    margin-right: 1rem;
+  }
 }
 
-export default Header;*/
+.text {
+  width: 100%;
+}
+
+.logout {
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+// >1024px
+@media only screen and (min-width: 1024px) {
+  .menu_wrapper {
+    .search {
+      input {
+        padding: 0.5rem;
+      }
+      input::placeholder {
+        color: $basicFont;
+        font-size: 1.6rem;
+        font-style: italic;
+      }
+    }
+  }
+  .list {
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+
+      button {
+        width: 2rem;
+        background: none;
+        border: none;
+        box-shadow: none;
+        font-size: 1.2rem;
+        margin-top: 0.2rem;
+      }
+    }
+    .icon {
+      width: 15rem;
+      margin-right: 1rem;
+    }
+  }
+}

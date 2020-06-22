@@ -5,19 +5,21 @@ const SET_FORM = 'search/SET_FORM';
 const DESTROY = 'search/DESTROY';
 const SET_NEVER = 'search/SET_NEVER';
 const SET_DATE = 'search/SET_DATE';
-const date = new Date();
+
 const initialState = {
   selectedMovie: null, //이거 지워도 되나?
   dId: 0,
   isModify: 0,
-  watchDate: date,
+  // watchDate: new Date('2020-06-23T21:11:54'),
   form: {
     tagsAll: [],
+
     title: '',
     cover: '',
     notes: '',
     rating: '',
     tags: '',
+    watchDate: '',
 
     createdAt: '0',
     modifiedAt: '0',
@@ -36,13 +38,13 @@ export const setNever = createAction(SET_NEVER);
 
 export default handleActions(
   {
-    [SET_DATE]: (state, action) => {
-      console.log('@@@@datestate:', state);
-      return {
-        ...state,
-        watchDate: action.payload,
-      };
-    },
+    // [SET_DATE]: (state, action) => {
+    //   console.log('@@@@datestate:', state);
+    //   return {
+    //     ...state,
+    //     watchDate: action.payload,
+    //   };
+    // },
     [SET_FORM]: (state, action) => {
       console.log('@@@@ state: ', state);
       console.log('@@@@ action: ', action);

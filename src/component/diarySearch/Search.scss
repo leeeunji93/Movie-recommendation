@@ -1,11 +1,10 @@
 @import '../../style/utils.scss';
+@import '../../style//reset.scss';
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  list-style: none;
-  text-decoration: none;
   font-family: 'Lato', 'Noto Sans KR';
 }
 
@@ -32,6 +31,7 @@
   }
 }
 
+// never search_영화 검색 결과
 .MovieItem {
   border: 0.1rem solid $black;
   cursor: pointer;
@@ -45,28 +45,24 @@
   // }
 }
 
+.dateDate {
+  margin-top: 2rem;
+}
+
 .movie_search_result {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
-  @media only screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
-  }
-  @media only screen and (min-width: 1025px) {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
-  }
 }
 
-//write_date
+// searchDiary
+
+//write_rate
 
 .write_rating {
   display: flex;
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   .icon {
     width: 5rem;
@@ -78,17 +74,16 @@
   }
 }
 
-.write_content {
-  height: 10vh;
-  border-radius: 3px;
-  list-style: none;
-  box-shadow: none;
-  outline: none;
-  font-size: 1.5rem;
-}
-
-.tags {
-  display: flex;
+.tagName {
+  p {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+  .tags {
+    display: flex;
+    margin-top: 1rem;
+  }
 }
 
 .TagItem {
@@ -107,7 +102,21 @@
   }
 }
 
-.search_button {
+.write_content {
+  margin-top: 3rem;
+  height: 10vh;
+  font-size: 1.5rem;
+  input {
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+  }
+  &:hover {
+    border: 1px solid lighten($black, 5%);
+  }
+}
+
+.write_button {
   display: flex;
   justify-content: flex-end;
 
@@ -124,10 +133,43 @@
     padding-right: 1rem;
     font-size: 1.25rem;
     margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
 
     background: $black;
     &:hover {
       background: lighten($black, 5%);
     }
+  }
+}
+
+// > 768px
+@media only screen and (min-width: 768px) {
+  .movie_search_result {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
+  .write_content {
+    height: 10vh;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    input {
+      outline: none;
+      box-shadow: none;
+      text-decoration: none;
+      border: none;
+    }
+    &:hover {
+      border: 1px solid lighten($black, 5%);
+    }
+  }
+}
+
+// >
+@media only screen and (min-width: 1024px) {
+  .movie_search_result {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
   }
 }

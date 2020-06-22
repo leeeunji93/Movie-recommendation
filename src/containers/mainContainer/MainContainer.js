@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import MainPageWrapper from "../../component/mainPage/mainPageWrapper/MainPageWrapper";
+import React, { Component } from 'react';
+import MainPageWrapper from '../../component/mainPage/mainPageWrapper/MainPageWrapper';
 // eslint-disable-next-line import/no-cycle
-import { DiaryList, DropdownList } from "../../component";
+import { DiaryList, DropdownList } from '../../component';
 
 class MainContainer extends Component {
   render() {
     return (
       <div>
         <MainPageWrapper>
-          <DropdownList />
+          {/* <DropdownList /> */}
           <DiaryList />
         </MainPageWrapper>
       </div>

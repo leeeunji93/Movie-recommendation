@@ -1,0 +1,25 @@
+@import '../../style/utils.scss';
+@import '../../style//reset.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', 'Noto Sans KR';
+}
+
+.user {
+  border-bottom: 2px solid $black;
+  margin-top: 2rem;
+  width: 140px;
+
+  p {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $black;
+    padding: 1rem;
+  }
+}
