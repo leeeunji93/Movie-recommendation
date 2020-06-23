@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
 import './diaryList.scss';
-import { makeStyles } from '@material-ui/core/styles';
+import StarIcon from '@material-ui/icons/Star';
 
 const PAGE_SIZE = 10;
 
@@ -54,21 +54,6 @@ const DiaryList = () => {
       });
   };
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-      width: 500,
-      height: 450,
-    },
-  }));
-  const classes = useStyles();
-
   const DiaryItem = ({ data }) => {
     console.log('@@data.id', data.id);
     const clickedItem = () => {
@@ -78,21 +63,27 @@ const DiaryList = () => {
     return (
       <div className="main_wrapper">
         <div className="diary" onClick={clickedItem}>
-          <img src={data.cover} alt="" />
-          <div className="diary_content">
-            {/* <p>Title : {data.title}</p>
-  <p>User : {data.nickname}</p> */}
-            <div>
-              <b>{data.movieTitle}</b>
-            </div>
-            <div className="tag">
-              {tags.map((tag) => {
-                return `# ${tag} `;
-              })}
-            </div>
-            {/* <div>Rating : {data.rating}</div>
-  <div>Date : {data.watchDate}</div> */}
-          </div>
+          <img
+            src={data.cover}
+            alt=""
+            onMouseOver={(e) => {
+              console.log('jjjujuju');
+              return (
+                <div className="diary_content">
+                  <div>
+                    <b>{data.title}</b>
+                  </div>
+                  <div className="tag">
+                    {tags.map((tag) => {
+                      return `# ${tag} `;
+                    })}
+                  </div>
+                </div>
+              );
+            }}
+            onMouseOut={(e) => <div>{data.movieTitle}</div>}
+            // <div>🌟x{data.rating}</div>}
+          />
         </div>
       </div>
     );
