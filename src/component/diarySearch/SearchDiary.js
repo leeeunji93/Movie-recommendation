@@ -293,13 +293,12 @@ const SearchDiary = () => {
               />
             </div>
             <div className="write_cover">
-              {/* <span>포스터 이미지 주소:</span>
               <input
                 name="cover"
                 placeholder="https://"
                 onChange={handleChangeDiaryData}
                 value={cover}
-              /> */}
+              />
             </div>
           </CardContent>
         </Card>

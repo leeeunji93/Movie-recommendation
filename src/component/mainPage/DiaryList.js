@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { NetTool, APIs } from '../../../tool/NetTool';
+import { NetTool, APIs } from '../../tool/NetTool';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../reducers/diaryList';
+import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
+import './diaryList.scss';
+import { makeStyles } from '@material-ui/core/styles';
 
 const PAGE_SIZE = 10;
 
@@ -52,21 +54,45 @@ const DiaryList = () => {
       });
   };
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: theme.palette.background.paper,
+    },
+    gridList: {
+      width: 500,
+      height: 450,
+    },
+  }));
+  const classes = useStyles();
+
   const DiaryItem = ({ data }) => {
     console.log('@@data.id', data.id);
     const clickedItem = () => {
       history.push('/DiaryDataContainer/' + data.dId);
     };
+    let tags = data.tags.split(',');
     return (
-      <div className="diary" onClick={clickedItem}>
-        <img src={data.cover} alt="" />
-        <div className="diary_content">
-          <span>일기 제목 : {data.title}</span>
-          <span>닉네임 : {data.nickname}</span>
-          <div>영화 제목 : {data.movieTitle}</div>
-          <div>태그들 : {data.tags}</div>
-          <div>레이팅 : {data.rating}</div>
-          <div>본 날짜 : {data.watchDate}</div>
+      <div className="main_wrapper">
+        <div className="diary" onClick={clickedItem}>
+          <img src={data.cover} alt="" />
+          <div className="diary_content">
+            {/* <p>Title : {data.title}</p>
+  <p>User : {data.nickname}</p> */}
+            <div>
+              <b>{data.movieTitle}</b>
+            </div>
+            <div className="tag">
+              {tags.map((tag) => {
+                return `# ${tag} `;
+              })}
+            </div>
+            {/* <div>Rating : {data.rating}</div>
+  <div>Date : {data.watchDate}</div> */}
+          </div>
         </div>
       </div>
     );
@@ -74,16 +100,17 @@ const DiaryList = () => {
 
   return (
     <div>
-      <h1>다이어리 리스트</h1>
-      <div>
+      <section>
         {diaryArr.map((data) => (
           <DiaryItem data={data} key={data.id} />
         ))}
-      </div>
-      <footer>
-        (현재 페이지) {page} / {totalPage}(전체 페이지) - 페이지당 일기 갯수 :{' '}
-        {PAGE_SIZE} - 저장된 전체 일기 갯수 : {totalCount}
-      </footer>
+      </section>
+      <header>
+        {page} / {totalPage}
+        {/* - 페이지당 일기 갯수 :{' '}
+        {PAGE_SIZE} -  */}
+        저장된 전체 일기 갯수 : {totalCount}
+      </header>
     </div>
   );
 };

@@ -1,0 +1,93 @@
+@import '../../style/reset.scss';
+@import '../../style/utils.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.main_wrapper {
+  display: flex;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.diary {
+  width: 15rem;
+  height: 27rem;
+  border: 1px solid $black;
+  &:hover {
+    border: 1px solid $black;
+  }
+  img {
+    width: 100%;
+    padding: 0.5rem;
+    // margin-left: 2.2rem;
+  }
+  .diary_content {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+  }
+}
+
+h1 {
+  color: $red;
+}
+
+@media only screen and (min-width: 768px) {
+  section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 0.5rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+
+  .diary {
+    &:hover {
+      border: 1px solid $black;
+    }
+    img {
+      width: 15rem;
+      height: 22rem;
+    }
+    .diary_content {
+      font-size: 1.3rem;
+      width: 100%;
+      text-align: center;
+
+      line-height: 1.5;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+// /*
+
+// !* 스마트폰 가로+세로 *!
+
+// @media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+// }
+
+// !* 스마트폰 세로 *!
+// @media only screen and (max-width : 320px) {
+// }
+
+// !* 데스크탑 브라우저 가로 *!
+// @media only screen and (min-width : 1224px) {
+// }
+
+// !* 큰 모니터 *!
+// @media only screen and (min-width : 1824px) {
+// }
