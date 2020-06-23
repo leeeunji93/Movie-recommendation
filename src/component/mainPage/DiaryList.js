@@ -5,6 +5,7 @@ import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
 import './diaryList.scss';
 import StarIcon from '@material-ui/icons/Star';
+import { useState } from 'react';
 
 const PAGE_SIZE = 10;
 
@@ -14,7 +15,7 @@ const DiaryList = () => {
   const { list } = diaryList;
   const { diaryArr, page, totalPage, totalCount } = list;
   const history = useHistory();
-
+  const [hangOver, setHangingOver] = useState(false);
   useEffect(() => {
     refreshDiaryArr(1);
   }, []);
@@ -56,34 +57,48 @@ const DiaryList = () => {
 
   const DiaryItem = ({ data }) => {
     console.log('@@data.id', data.id);
+
+    const handleOnMouseOver = () => {
+      setHangingOver(!hangOver);
+    };
+
+    const handleOnMouseLeave = () => {
+      setHangingOver(!hangOver);
+    };
+
     const clickedItem = () => {
       history.push('/DiaryDataContainer/' + data.dId);
     };
     let tags = data.tags.split(',');
     return (
       <div className="main_wrapper">
-        <div className="diary" onClick={clickedItem}>
-          <img
-            src={data.cover}
-            alt=""
-            onMouseOver={(e) => {
-              console.log('jjjujuju');
-              return (
-                <div className="diary_content">
-                  <div>
-                    <b>{data.title}</b>
-                  </div>
-                  <div className="tag">
-                    {tags.map((tag) => {
-                      return `# ${tag} `;
-                    })}
-                  </div>
-                </div>
-              );
-            }}
-            onMouseOut={(e) => <div>{data.movieTitle}</div>}
-            // <div>🌟x{data.rating}</div>}
-          />
+        <div
+          className="diary"
+          onMouseEnter={handleOnMouseOver}
+          onMouseLeave={handleOnMouseLeave}
+          onClick={clickedItem}
+        >
+          <img className="diary_image" src={data.cover} alt="" />
+
+          {hangOver ? (
+            <div className="diary_content">
+              <b>{data.movieTitle}</b>
+              <div>
+                <b>{data.rating}</b>/5
+              </div>
+            </div>
+          ) : (
+            <div className="diary_content">
+              <div>
+                <b className="userTitle">{data.title}</b>
+              </div>
+              <div className="tag">
+                {tags.map((tag) => {
+                  return `# ${tag} `;
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -91,7 +106,7 @@ const DiaryList = () => {
 
   return (
     <div>
-      <section>
+      <section className="diary_data">
         {diaryArr.map((data) => (
           <DiaryItem data={data} key={data.id} />
         ))}

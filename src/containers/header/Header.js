@@ -42,12 +42,12 @@ const Header = () => {
           {isLogin ? (
             <Link className="menu" to="/SearchMovieContainer">
               <EditRoundedIcon className="icon" />
-              <div>Write</div>
+              <div className="text"> Write</div>
             </Link>
           ) : (
             <Link className="menu" to="/login">
               <EditRoundedIcon className="icon" />
-              <div className="">Write</div>
+              <div className="text">Write</div>
             </Link>
           )}
 
