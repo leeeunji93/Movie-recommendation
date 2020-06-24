@@ -87,7 +87,6 @@ const DiaryData = ({ match }) => {
       <p>{dId}</p>
 
       <h3>영화 데이터.</h3>
-      {/* <div>{resultData.movie.title}</div> */}
 
       <h3>일기 데이터</h3>
       <div>{JSON.stringify(diary)}</div>
