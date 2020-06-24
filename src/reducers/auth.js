@@ -21,8 +21,8 @@ export const setLogin = createAction(SET_LOGIN);
 export default handleActions(
   {
     [SET_FORM]: (state, action) => {
-      console.log('@@@@ state: ', state);
-      console.log('@@@@ action: ', action);
+      // console.log('@@@@ state: ', state);
+      // console.log('@@@@ action: ', action);
       return {
         ...state,
         form: {
@@ -31,11 +31,15 @@ export default handleActions(
         },
       };
     },
-    [SET_LOGIN]: (state, action) => ({
-      ...state,
-      //action.payoad하면 왜 안먹지
-      isLogin: action.payload,
-    }),
+    [SET_LOGIN]: (state, action) => {
+      console.log('@@@@ state: ', state);
+      console.log('@@@@ action: ', action);
+      return {
+        ...state,
+        //action.payoad하면 왜 안먹지
+        isLogin: action.payload,
+      };
+    },
     [DESTROY]: (state, action) => initialState,
   },
   initialState,

@@ -15,11 +15,12 @@ import {
 } from './containers';
 
 import './App.scss';
+// import { useState } from 'react';
 
 const App = () => {
   const { auth } = useSelector((state) => state);
-  const dispatch = useDispatch();
   const { isLogin } = auth;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     authAccessToken();
@@ -40,7 +41,8 @@ const App = () => {
 
   const onChangeLoginState = () => {
     const isLogin = MyAccount.uId > 0;
-    dispatch(actions.setLogin({ isLogin: isLogin }));
+    dispatch(actions.setLogin({ isLogin }));
+
     console.log('@@로그인확인', isLogin);
   };
 
@@ -48,12 +50,12 @@ const App = () => {
     <div>
       <Header />
       <Switch>
-        <Route component={MainContainer} path="/" />
+        <Route component={MainContainer} exact path="/" />
         <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
         <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
         <Route
           component={MyPageContainer}
-          path="/mypage/:nickName"
+          path="/mypage/:dId"
           // render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
         />
         <Route
@@ -63,6 +65,7 @@ const App = () => {
           )}
         />
         <Route component={Register} path="/register" />
+        <Route path="/">Not found</Route>
       </Switch>
     </div>
   );

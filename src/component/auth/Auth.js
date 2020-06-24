@@ -42,14 +42,13 @@ const Auth = ({ type, onChangeLoginState }) => {
 
   // 이메일 주소로 로그인 하기.
   const clickLogin = () => {
-    
-
     NetTool.request(APIs.userLogin)
       .appendFormData('email', email) // 필수
       .appendFormData('pwd', pwd) // 필수
       .exec(true)
       .then((resultData) => {
         alert('로그인 성공');
+        console.log('@@@@ auth확인 : ', auth);
         MyAccount.updateMyAccount(resultData);
         onChangeLoginState();
       })

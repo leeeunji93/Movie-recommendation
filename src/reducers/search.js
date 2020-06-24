@@ -8,7 +8,7 @@ const SET_DATE = 'search/SET_DATE';
 
 const initialState = {
   selectedMovie: null, //이거 지워도 되나?
-  dId: 0,
+  // dId: 0,
   isModify: 0,
   // watchDate: new Date('2020-06-23T21:11:54'),
   form: {

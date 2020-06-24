@@ -18,10 +18,10 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-const SearchDiary = () => {
+const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { form, never, dId, isModify, watchDate } = search;
+  const { form, never, isModify, watchDate } = search;
   const {
     tagsAll,
     title,
@@ -33,14 +33,14 @@ const SearchDiary = () => {
     createdAt,
     modifiedAt,
   } = form;
-
+  const dId = match.params.dId;
   const { selectedMovie } = never;
   const history = useHistory();
 
   useEffect(() => {
     refreshTags();
     if (isModify) {
-      console.log('dId', dId);
+      console.log('@@dId', dId);
       refreshUpdateData(dId);
     }
   }, []);
@@ -84,7 +84,6 @@ const SearchDiary = () => {
             value: resultData,
           }),
         );
-        /*this.setState({ tagsAll: resultData });*/
       })
       .catch((error) => {
         alert(error);

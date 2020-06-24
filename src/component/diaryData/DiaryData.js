@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { NetTool, APIs } from '../../tool/NetTool';
-
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/diaryData';
 
@@ -35,6 +34,7 @@ const DiaryData = ({ match }) => {
       .then((resultData) => {
         console.log('상세데이터', resultData);
         console.log('dId', dId);
+        console.log('@@error', resultData.movie);
         dispatch(
           actions.setDetail({
             key: 'diary',
@@ -87,7 +87,7 @@ const DiaryData = ({ match }) => {
       <p>{dId}</p>
 
       <h3>영화 데이터.</h3>
-      <div>{JSON.stringify(movie)}</div>
+      {/* <div>{resultData.movie.title}</div> */}
 
       <h3>일기 데이터</h3>
       <div>{JSON.stringify(diary)}</div>

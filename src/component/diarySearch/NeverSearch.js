@@ -11,8 +11,8 @@ const NeverSearch = () => {
   const { search } = useSelector((state) => state); //store연결
   const dispatch = useDispatch(); //액션 발생시키자
   const { never } = search;
-  const [clickState, setClickState] = useState(false);
   const { keyword, selectedMovie, searchResultArr } = never;
+  const [clickState, setClickState] = useState(false);
 
   const handleClickSearch = () => {
     /* const keyword = keyword.trim();*/

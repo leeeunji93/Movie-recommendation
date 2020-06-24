@@ -24,10 +24,6 @@ class APIs {
     return `${DOMAIN}flm/diaryDetail/${dId}`;
   }
 
-  // static filmDiaryDetail(nickName) {
-  //   return `${DOMAIN}flm/diaryDetail/${nickName}`;
-  // };
-
   // 모든 태그 정보 가져오기.
   static filmTags = `${DOMAIN}flm/tags`;
 
