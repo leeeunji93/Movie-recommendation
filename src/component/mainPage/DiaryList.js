@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
 import './diaryList.scss';
-import StarIcon from '@material-ui/icons/Star';
 import { useState } from 'react';
 
 const PAGE_SIZE = 10;
@@ -63,7 +62,7 @@ const DiaryList = () => {
     };
 
     const handleOnMouseLeave = () => {
-      setHangingOver(!hangOver);
+      setHangingOver(hangOver);
     };
 
     const clickedItem = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { NetTool, APIs } from './tool/NetTool';
 import MyAccount from './tool/MyAccount';
 import { Header } from './component';
@@ -19,7 +19,7 @@ import './App.scss';
 const App = () => {
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { isLogin } = auth.form;
+  const { isLogin } = auth;
 
   useEffect(() => {
     authAccessToken();
@@ -47,21 +47,23 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Route component={MainContainer} path="/" exact />
-      <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
-      <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
-      <Route
-        path="/mypage"
-        render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
-      />
-      <Route
-        path="/login"
-        render={(props) => (
-          <Login {...props} onChangeLoginState={onChangeLoginState} />
-        )}
-      />
-
-      <Route component={Register} path="/register" />
+      <Switch>
+        <Route component={MainContainer} path="/" />
+        <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
+        <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
+        <Route
+          component={MyPageContainer}
+          path="/mypage/:nickName"
+          // render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
+        />
+        <Route
+          path="/login"
+          render={(props) => (
+            <Login {...props} onChangeLoginState={onChangeLoginState} />
+          )}
+        />
+        <Route component={Register} path="/register" />
+      </Switch>
     </div>
   );
 };

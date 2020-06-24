@@ -1,79 +1,16 @@
-### Movie-recommendation 
+# Fogos
 
+Film + Logos의 합성어로 영화를 보고 나만의 생각을 적어보는 홈페이지입니다. <br/>
+추후 일기장 데이터가 쌓이면 **_유저들이 걸어둔 태그_**를 이용해
+영화를 추천 받을 수 있는 시스템을 만들 예정입니다.
 
-dropdown 두가지 방법
+### 사용 언어
 
-```javascript
+- React (Class + Hook)
+- Redux
+- SCSS
+- Matrial-Ui
 
-import React, {Component} from 'react';
-/*import { dropdown } from 'semantic-ui-react'*/
-import {Link} from "react-router-dom";
-import Header from "../header/header";
+### Basic
 
-class DropdownList extends Component{
-
-    state = {
-        vibe:'',
-        situations:['a','b','c'],
-        search:''
-    };
-
-    handleChange= e => {
-        this.setState({
-    [e.target.name]: e.target.value
-        });
-    }
-
-
-   handleSubmit = e => {
-       e.preventDefault();
-   }
-
-    render(){
-        const { vibe , situation ,search} =this.state;
-        return(
-            <div>
-                <form onSubmit={this.handleSubmit} >
-                    <label>
-                        오늘 나는
-                        <select
-                            name='vibe'
-                            value={vibe}
-                            onChange={this.handleChange}
-                            placeholder={vibe}
-                        >
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
-                        </select>
-                    </label>
-                    <label>
-                        <select>
-                            {this.state.situations.map(situation => (
-                                <option key={situation} value={situation}>
-                                    {situation}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                    <button type="submit">등록</button>
-                    <br/>
-                    <br/>
-                    <input
-                        name='search'
-                        placeholder='영화 제목, 아이디,'
-                        onChange={this.handleChange}
-                        value={search}
-                    />
-                    <button type="submit">등록</button>
-                </form>
-            </div>
-        )
-    }
-}
-
-export default DropdownList;
-
-```
-
+- Mobile 기준 (아이폰 5/SE) \* 반응형 제작 중

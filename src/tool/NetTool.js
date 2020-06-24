@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-import MyAccount from "./MyAccount";
+import MyAccount from './MyAccount';
 
-const isProduction = process.env.NODE_ENV === "production";
-const DOMAIN = isProduction ? "/" : "https://fogos1982.iwinv.net/";
+const isProduction = process.env.NODE_ENV === 'production';
+const DOMAIN = isProduction ? '/' : 'https://fogos1982.iwinv.net/';
 
 class APIs {
   static userLogin = `${DOMAIN}usr/login`; // 로그인
@@ -23,6 +23,10 @@ class APIs {
   static filmDiaryDetail(dId) {
     return `${DOMAIN}flm/diaryDetail/${dId}`;
   }
+
+  // static filmDiaryDetail(nickName) {
+  //   return `${DOMAIN}flm/diaryDetail/${nickName}`;
+  // };
 
   // 모든 태그 정보 가져오기.
   static filmTags = `${DOMAIN}flm/tags`;
@@ -52,12 +56,12 @@ class NetTool {
 
   progressStart = () => {
     // TODO: 통신이 시작되었다는걸 화면에 표시.
-    console.log("통신이 시작되었다는걸 화면에 표시.");
+    console.log('통신이 시작되었다는걸 화면에 표시.');
   };
 
   progressStop = () => {
     // TODO: 프로그레스 끝났음을 알려주기.
-    console.log("통신 프로그레스 끝.");
+    console.log('통신 프로그레스 끝.');
   };
 
   appendFormData = (name, value) => {
@@ -79,9 +83,9 @@ class NetTool {
 
       let opt;
       if (this.mFormData == null) {
-        opt = { method: "get", url };
+        opt = { method: 'get', url };
       } else {
-        opt = { method: "post", url, data: this.mFormData };
+        opt = { method: 'post', url, data: this.mFormData };
       }
 
       if (MyAccount.atkn != null) {

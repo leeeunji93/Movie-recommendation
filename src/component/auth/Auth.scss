@@ -8,12 +8,13 @@
   font-family: 'Lato', 'Noto Sans KR';
 }
 
-h1 {
-  margin-top: 3rem;
-  text-align: center;
-}
-
 .authForm_wrapper {
+  h1 {
+    margin-top: 3rem;
+    text-align: center;
+    color: $black;
+  }
+
   form {
     margin-top: 3rem;
     display: flex;

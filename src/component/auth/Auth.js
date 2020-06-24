@@ -42,7 +42,7 @@ const Auth = ({ type, onChangeLoginState }) => {
 
   // 이메일 주소로 로그인 하기.
   const clickLogin = () => {
-    // 필수 email, pwd
+    
 
     NetTool.request(APIs.userLogin)
       .appendFormData('email', email) // 필수
