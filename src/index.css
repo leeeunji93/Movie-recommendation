@@ -11,27 +11,29 @@ body {
   min-height: 100%;
 }
 */
-@import "./style/utils.scss";
-#root{
+@import './style/utils.scss';
+#root {
   min-height: 100%;
 }
 
-html{
+html {
   height: 100vh;
-  font-size:10px;
+  font-size: 10px;
 }
 
-a{
+/* positon-fixed해주려면 필요한 작업 */
+body {
+  padding-top: 15rem;
+}
+
+a {
   color: inherit;
   text-decoration: none;
   outline: none;
   box-shadow: none;
 }
 
-
 /*code {
   font-family: 'Roboto',source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }*/
-
-

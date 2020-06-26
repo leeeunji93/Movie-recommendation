@@ -25,8 +25,10 @@ const Header = () => {
 
   return (
     <div className="wrapper">
-      <div className="logo">
-        <Link to="/">Fogos</Link>
+      <div className="header_logo">
+        <h1 className="header_logo_title">
+          <Link to="/">Fogos</Link>
+        </h1>
       </div>
       <div className="menu_wrapper">
         <form className="search">

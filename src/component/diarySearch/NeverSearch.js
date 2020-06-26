@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { APIs, NetTool } from '../../tool/NetTool';
-import '../../App.scss';
 import './Search.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/search';
