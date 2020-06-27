@@ -17,27 +17,78 @@
 // &:hover {
 //   background: $lightgreen;
 //   color: #ffffff;
+
 .dairyData_diary {
-  .dairyData_diary_user {
-    font-size: 2rem;
-    color: white;
+  position: relative;
+  .dairyData_diary_data {
     position: absolute;
     top: 50%;
     left: 50%;
-  }
+    transform: translate(-50%, -50%);
+    // z-index: 2;
+    color: $white;
+    line-height: 3.5;
+    width: 95%;
 
-  img {
-    // padding: 0.5rem;
-    width: 100%;
-    height: 40rem;
-    filter: brightness(40%);
+    .dairyData_diary_user {
+      font-weight: 600;
+      font-size: 3.5rem;
+      line-height: 1.5;
+    }
+    .dairyData_diary_title {
+      font-weight: 600;
+      font-size: 2rem;
+    }
+    .dairyData_diary_tags {
+      p {
+        font-weight: 600;
+        color: $white;
+      }
+    }
+  }
+}
+.dairyData_diary_notes {
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 90%;
+  p {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    letter-spacing: 0.2;
+    text-align: justify;
   }
 }
 
-// .dairyData_nates {
-//   width: 100%;
-//   text-align: center;
-//   margin: 0.5rem auto;
-//   line-height: 1.5;
-//   letter-spacing: 0.15em;
-// }
+.dairyData_diary_user_img img {
+  // padding: 0.5rem;
+  width: 100%;
+  height: 40rem;
+  filter: brightness(40%);
+}
+
+.dairyData_movieData {
+  padding: 1rem;
+  border-bottom: 1px solid $black;
+  h4 {
+    font-size: 1.5rem;
+    // border-bottom: 1px solid $gray;
+    background: $black;
+    color: $white;
+    width: 136gpx;
+    padding: 0.4rem;
+    letter-spacing: 0.5rem;
+  }
+
+  .movieInfo_text {
+    font-size: 1.3rem;
+    line-height: 2;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+  }
+}
+
+.movieInfo_text_title {
+  padding-right: 0.5rem;
+  margin-top: 0.5rem;
+}

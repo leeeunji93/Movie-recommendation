@@ -83,35 +83,43 @@ const DiaryData = ({ match }) => {
   let tags = diary.tags.split(',');
   return (
     <div className="dairyData_wrapper">
-      <div className="dairyData_dataZip">
-        <div className="dairyData_diary">
+      <div className="dairyData_diary">
+        <div className="dairyData_diary_user_img">
           <img src={diary.cover} alt="" />
-          <h3 className="dairyData_diary_user">{user.nickname}의 Note</h3>
-
-          <p>제목 : {diary.title}</p>
-          <div>
-            태그 :{' '}
-            {tags.map((tag) => {
-              return `#${tag}`;
-            })}
-          </div>
-          <div>별점 : {diary.rating}점</div>
         </div>
-        <div className="dairyData_nates"> 내용 : {diary.notes}</div>
+        <div className="dairyData_diary_data">
+          <div className="dairyData_diary_user">{user.nickname}님의 Note</div>
+          <div className="dairyData_diary_title">{diary.title}</div>
+          <div className="dairyData_diary_tags">
+            <p>
+              {tags.map((tag) => {
+                return `# ${tag}`;
+              })}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="dairyData_diary_notes">
+        <div className="dairyData_movieData">
+          <h4>Movie Info</h4>
+          <span className="movieInfo_text  movieInfo_text_title">
+            {movie.title}
+          </span>
+          <span className="movieInfo_text">{movie.pubDate} 개봉</span>
+          <div className="movieInfo_text">
+            감독 : {movie.director.split('|')}
+          </div>
+          <div className="movieInfo_text">
+            배우 : {movie.actor.slice(0, -1)}
+          </div>
+        </div>
+        <p> {diary.notes}</p>
+      </div>
 
-        {/* <div className="movie_data">
-          <img src={movie.image} alt="" />
-          <div>{movie.title}</div>
-          <div>{movie.pubDate}</div>
-          <div>{movie.director.split('|')}</div>
-          <div>{movie.actor}</div>
-        </div> */}
-
-        {/*      <h3>수정, 삭제. (글쓴 사람만 할 수 있도록 처리할것)</h3>
+      {/*      <h3>수정, 삭제. (글쓴 사람만 할 수 있도록 처리할것)</h3>
         
       <button onClick={clickUpdate}>일기 수정</button>
       <button onClick={clickDelete}>일기 삭제</button>*/}
-      </div>
     </div>
   );
 };

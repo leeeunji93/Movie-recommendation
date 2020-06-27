@@ -24,61 +24,62 @@ const Header = () => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="header_logo">
-        <h1 className="header_logo_title">
-          <Link to="/">Fogos</Link>
-        </h1>
-      </div>
-      <div className="menu_wrapper">
-        <form className="search">
-          <input
-            placeholder="영화 검색"
-            onChange={handleChange}
-            value={search}
-          />
-          <SearchRoundedIcon />
-        </form>
+    <div className="header_full">
+      <div className="header_wrapper">
+        <div className="header_logo">
+          <h1 className="header_logo_title">
+            <Link to="/">Fogos</Link>
+          </h1>
+        </div>
+        <div className="header_menu">
+          <form className="search">
+            <input
+              placeholder="영화 검색"
+              onChange={handleChange}
+              value={search}
+            />
+            <SearchRoundedIcon />
+          </form>
+          <div className="list">
+            {isLogin ? (
+              <Link className="menu" to="/SearchMovieContainer">
+                <EditRoundedIcon className="icon" />
+                <div className="text"> Write</div>
+              </Link>
+            ) : (
+              <Link className="menu" to="/login">
+                <EditRoundedIcon className="icon" />
+                <div className="text">Write</div>
+              </Link>
+            )}
 
-        <div className="list">
-          {isLogin ? (
-            <Link className="menu" to="/SearchMovieContainer">
-              <EditRoundedIcon className="icon" />
-              <div className="text"> Write</div>
-            </Link>
-          ) : (
-            <Link className="menu" to="/login">
-              <EditRoundedIcon className="icon" />
-              <div className="text">Write</div>
-            </Link>
-          )}
+            {isLogin ? (
+              <Link className="menu" to="/mypage">
+                {' '}
+                <AccountCircleRoundedIcon className="icon" />
+                <div className="text">
+                  {isLogin ? MyAccount.nickname : 'Login'}
+                </div>
+              </Link>
+            ) : (
+              <Link className="menu" to="/login">
+                <AccountCircleRoundedIcon className="icon" />
+                <div className="text">
+                  {isLogin ? MyAccount.nickname : 'Login'}
+                </div>
+              </Link>
+            )}
 
-          {isLogin ? (
-            <Link className="menu" to="/mypage">
-              {' '}
-              <AccountCircleRoundedIcon className="icon" />
-              <div className="text">
-                {isLogin ? MyAccount.nickname : 'Login'}
+            {isLogin ? (
+              <div className="menu logout">
+                <button onClick={clickLogout}>
+                  <ExitToAppIcon />
+                </button>
               </div>
-            </Link>
-          ) : (
-            <Link className="menu" to="/login">
-              <AccountCircleRoundedIcon className="icon" />
-              <div className="text">
-                {isLogin ? MyAccount.nickname : 'Login'}
-              </div>
-            </Link>
-          )}
-
-          {isLogin ? (
-            <div className="menu logout">
-              <button onClick={clickLogout}>
-                <ExitToAppIcon />
-              </button>
-            </div>
-          ) : (
-            ''
-          )}
+            ) : (
+              ''
+            )}
+          </div>
         </div>
       </div>
     </div>
