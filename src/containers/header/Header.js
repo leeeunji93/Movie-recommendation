@@ -28,7 +28,7 @@ const Header = () => {
       <div className="header_wrapper">
         <div className="header_logo">
           <h1 className="header_logo_title">
-            <Link to="/">Fogos</Link>
+            <Link to="/">Suddnly</Link>
           </h1>
         </div>
         <div className="header_menu">
@@ -69,13 +69,10 @@ const Header = () => {
                 </div>
               </Link>
             )}
-
             {isLogin ? (
-              <div className="menu logout">
-                <button onClick={clickLogout}>
-                  <ExitToAppIcon />
-                </button>
-              </div>
+              <Link className="menu" to="/">
+                <ExitToAppIcon className="icon" onClick={clickLogout} />
+              </Link>
             ) : (
               ''
             )}

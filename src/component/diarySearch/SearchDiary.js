@@ -11,12 +11,7 @@ import { Card, CardContent, TextField } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import StarIcon from '@material-ui/icons/Star';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+import Chip from '@material-ui/core/Chip';
 
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
@@ -184,14 +179,6 @@ const SearchDiary = ({ match }) => {
     root: {
       display: 'flex',
     },
-    // dateInput: {
-    //   width: 150,
-    //   marginTop: '1.5rem',
-
-    //   '& .MuiInput-underline:after': {
-    //     borderBottomColor: '#0d0d0d',
-    //   },
-    // },
 
     inputTitle: {
       width: 150,
@@ -229,24 +216,6 @@ const SearchDiary = ({ match }) => {
               />
 
               <div className="dateDate">
-                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <Grid item xs={6} lg={12} className={classes.container}>
-                    <KeyboardDatePicker
-                      name="watchDate"
-                      className={classes.dateInput}
-                      id="date-picker-inline"
-                      format="MM/dd/yyyy"
-                      // margin="normal"
-                      value={watchDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        'aria-label': 'change date',
-                      }}
-                      InputProps={{ className: classes.input }}
-                      />
-                    />
-                  </Grid>
-                </MuiPickersUtilsProvider> */}
                 <input
                   name="watchDate"
                   value={watchDate}
