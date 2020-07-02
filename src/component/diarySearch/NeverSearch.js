@@ -18,9 +18,10 @@ const NeverSearch = () => {
     console.log('change');
     const pattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
     if (keyword.match(pattern)) {
-      alert('특수 문자가 포함 됐어요');
+      alert('특수 문자가 포함 됐습니다');
       return;
     }
+
     NetTool.request(APIs.filmSearch)
       .appendFormData('keyword', keyword)
       .exec(true)
