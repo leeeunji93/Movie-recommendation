@@ -82,37 +82,41 @@ const DiaryData = ({ match }) => {
   }
   let tags = diary.tags.split(',');
   return (
-    <div className="dairyData_wrapper">
-      <div className="dairyData_diary">
-        <div className="dairyData_diary_user_img">
-          <img src={diary.cover} alt="" />
+    <div>
+      <div className="dairyData_wrapper">
+        <div className="dairyData_diary">
+          <div className="dairyData_diary_user_img">
+            <img src={diary.cover} alt="" />
+          </div>
+          <div className="dairyData_diary_data">
+            <div className="dairyData_diary_user">{user.nickname}님의 Note</div>
+            <div className="dairyData_diary_title">{diary.title}</div>
+            <div className="dairyData_diary_tags">
+              <p>
+                {tags.map((tag) => {
+                  return `# ${tag}`;
+                })}
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="dairyData_diary_data">
-          <div className="dairyData_diary_user">{user.nickname}님의 Note</div>
-          <div className="dairyData_diary_title">{diary.title}</div>
-          <div className="dairyData_diary_tags">
-            <p>
-              {tags.map((tag) => {
-                return `# ${tag}`;
-              })}
-            </p>
+        <div className="dairyData_diary_notes">
+          <div className="dairyData_movieData">
+            <h4>Movie Info</h4>
+            <span className="movieInfo_text  movieInfo_text_title">
+              {movie.title}
+            </span>
+            <span className="movieInfo_text">{movie.pubDate} 개봉</span>
+            <div className="movieInfo_text">
+              감독 : {movie.director.split('|')}
+            </div>
+            <div className="movieInfo_text">
+              배우 : {movie.actor.slice(0, -1)}
+            </div>
           </div>
         </div>
       </div>
-      <div className="dairyData_diary_notes">
-        <div className="dairyData_movieData">
-          <h4>Movie Info</h4>
-          <span className="movieInfo_text  movieInfo_text_title">
-            {movie.title}
-          </span>
-          <span className="movieInfo_text">{movie.pubDate} 개봉</span>
-          <div className="movieInfo_text">
-            감독 : {movie.director.split('|')}
-          </div>
-          <div className="movieInfo_text">
-            배우 : {movie.actor.slice(0, -1)}
-          </div>
-        </div>
+      <div style={{ whiteSpace: 'pre-wrap' }} className="movieInfo_note">
         <p> {diary.notes}</p>
       </div>
 

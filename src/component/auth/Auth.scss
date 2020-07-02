@@ -77,3 +77,29 @@
     cursor: pointer;
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .authForm_wrapper {
+    h1 {
+      margin-top: 5rem;
+      text-align: center;
+      color: $black;
+    }
+
+    form {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .auth_input {
+      margin: 0 auto;
+      border: 1px solid #262626;
+      padding: 1.2rem;
+      font-size: 12px;
+      width: 50%;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}

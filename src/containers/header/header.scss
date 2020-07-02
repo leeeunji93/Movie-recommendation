@@ -17,7 +17,7 @@
   left: 0;
   //positon 겹침 현상 해소
   z-index: 1;
-  background-color: $green;
+  background-color: $lightgreen;
 }
 
 .header_logo {
@@ -41,15 +41,13 @@
   height: 8rem;
 
   .search {
-    width: 35rem;
+    // width: 16rem;
     display: flex;
     align-items: center;
-    margin-right: 1.2rem;
-    margin-left: 1rem;
+    margin-right: 5rem;
 
     input {
       border: none;
-      border-bottom: 1px solid $gray;
       text-align: center;
       padding-bottom: 0.5rem;
     }
@@ -63,7 +61,7 @@
 
 .list {
   display: flex;
-  width: 25rem;
+
   .menu {
     display: flex;
     align-items: center;
@@ -72,29 +70,10 @@
     transition: background-color 0.3s;
     text-decoration: none;
     // margin-right: 1rem;
-
-    button {
-      width: 2rem;
-      background: none;
-      border: none;
-      box-shadow: none;
-      font-size: 1.2rem;
-      margin-top: 0.2rem;
-    }
   }
   .icon {
     margin-right: 1rem;
   }
-}
-
-.text {
-  width: 100%;
-  margin-right: 1rem;
-}
-
-.logout {
-  width: 3rem;
-  margin-right: 1rem;
 }
 
 // >768
@@ -103,7 +82,7 @@
     display: flex;
     justify-content: space-around;
     .search {
-      width: 30rem;
+      width: 40rem;
       margin-left: 10rem;
 
       input {
@@ -117,6 +96,7 @@
     }
   }
   .list {
+    width: 30rem;
     .menu {
       font-size: 1.6rem;
       cursor: pointer;

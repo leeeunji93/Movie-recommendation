@@ -38,7 +38,7 @@ const Header = () => {
               onChange={handleChange}
               value={search}
             />
-            <SearchRoundedIcon />
+            <SearchRoundedIcon className="icon" />
           </form>
           <div className="list">
             {isLogin ? (
@@ -70,8 +70,9 @@ const Header = () => {
               </Link>
             )}
             {isLogin ? (
-              <Link className="menu" to="/">
-                <ExitToAppIcon className="icon" onClick={clickLogout} />
+              <Link className="menu" to="/" onClick={clickLogout}>
+                <ExitToAppIcon className="icon" />
+                <div className="text">Logout</div>
               </Link>
             ) : (
               ''
