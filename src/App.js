@@ -12,6 +12,7 @@ import {
   DiaryDataContainer,
   Register,
   SearchMovieContainer,
+  HeaderSearchContainer,
 } from './containers';
 
 import './App.scss';
@@ -65,6 +66,8 @@ const App = () => {
           )}
         />
         <Route component={Register} path="/register" />
+        <Route component={HeaderSearchContainer} path="/headersearch" />
+
         <Route path="/">Not found</Route>
       </Switch>
     </div>

@@ -158,9 +158,25 @@ const SearchDiary = ({ match }) => {
       });
   };
 
+  const TagItems = (tags) => {
+    console.log('태그스', tags);
+
+    tags.map((dat) => {
+      return <option value={dat.tags}>{dat.tags}</option>;
+    });
+  };
+
   const TagTypeItem = ({ tagTypeData }) => {
     const TagItem = ({ tag }) => {
-      return <div className="TagItem">{tag}</div>;
+      {
+        let sel_value = document.getElementById('sel_value');
+        if (sel_value !== null) sel_value.innerHTML = tag;
+      }
+      return (
+        <div id="sel_value" className="TagItem">
+          {tag}
+        </div>
+      );
     };
 
     return (
@@ -239,19 +255,37 @@ const SearchDiary = ({ match }) => {
                 ))}
               </div>
             </div>
-            <div className="write_tags">
+            {/* <div className="write_tags">
               <input
                 name="tags"
                 value={tags}
                 onChange={handleChangeDiaryData}
               />
 
-              {/* 보여는거 우린 보여줄 이유가 없다 */}
+              
+              {tagsAll.map((tagTypeData, index) => (
+                <TagTypeItem tagTypeData={tagTypeData} key={index} />
+              ))}
+            </div> */}
+
+            <div className="write_tags">
+              <select
+                name="tags_sta"
+                onChange={handleChangeDiaryData}
+                value={tags}
+              >
+                {TagItems(tagsAll)}
+              </select>
+              {/* <input
+                name="tags"
+                value={tags}
+                onChange={handleChangeDiaryData}
+              /> */}
+
               {tagsAll.map((tagTypeData, index) => (
                 <TagTypeItem tagTypeData={tagTypeData} key={index} />
               ))}
             </div>
-
             <div className="write_content">
               <input
                 name="notes"

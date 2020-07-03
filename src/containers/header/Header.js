@@ -38,7 +38,9 @@ const Header = () => {
               onChange={handleChange}
               value={search}
             />
-            <SearchRoundedIcon className="icon" />
+            <Link className="menu" to="/headersearch">
+              <SearchRoundedIcon className="icon" />
+            </Link>
           </form>
           <div className="list">
             {isLogin ? (

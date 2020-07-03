@@ -1,9 +1,11 @@
-import MainContainer from "./mainContainer/MainContainer";
-import DiaryDataContainer from "./diaryDataContainer/DiaryDataContainer";
-import SearchMovieContainer from "./searchContainer/SearchMovieContainer";
-import MyPageContainer from "./myPageContainer/MyPageContainer";
-import Login from "./AuthContainer/Login";
-import Register from "./AuthContainer/Register";
+import MainContainer from './mainContainer/MainContainer';
+import DiaryDataContainer from './diaryDataContainer/DiaryDataContainer';
+import SearchMovieContainer from './searchContainer/SearchMovieContainer';
+import MyPageContainer from './myPageContainer/MyPageContainer';
+import Login from './AuthContainer/Login';
+import Register from './AuthContainer/Register';
+import HeaderSearchContainer from './headerSearchContainer/HeaderSearchContainer';
+
 export {
   MainContainer,
   DiaryDataContainer,
@@ -11,4 +13,5 @@ export {
   MyPageContainer,
   Login,
   Register,
+  HeaderSearchContainer,
 };
