@@ -44,7 +44,6 @@
     // width: 16rem;
     display: flex;
     align-items: center;
-    margin-right: 5rem;
 
     input {
       border: none;
@@ -61,7 +60,7 @@
 
 .list {
   display: flex;
-
+  width: 70rem;
   .menu {
     display: flex;
     align-items: center;
