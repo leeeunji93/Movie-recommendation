@@ -87,7 +87,7 @@ const SearchDiary = ({ match }) => {
 
   const handleChangeDiaryData = (e) => {
     // setKeyword(e.target.value);
-    console.log('@@onChane값', e.target.name);
+    console.log('@@onChane값', e.target.value);
     console.log(e.target.value);
     dispatch(
       actions.setForm({
@@ -96,10 +96,6 @@ const SearchDiary = ({ match }) => {
       }),
     );
   };
-
-  // const handleDateChange = (date) => {
-  //   dispatch(actions.setDate(date));
-  // };
 
   const handlePlusRating = () => {
     const maxCore = 4;
@@ -224,11 +220,7 @@ const SearchDiary = ({ match }) => {
             </div>
 
             <div className="write_tags">
-              <select
-                name="tags_st"
-                onChange={handleChangeDiaryData}
-                value={tags}
-              >
+              <select name="tags_st" onChange={handleChangeDiaryData}>
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;
@@ -236,11 +228,7 @@ const SearchDiary = ({ match }) => {
                   : ''}
               </select>
 
-              <select
-                name="tags_si"
-                onChange={handleChangeDiaryData}
-                value={tags}
-              >
+              <select name="tags_si" onChange={handleChangeDiaryData}>
                 {tagsAll[1] !== undefined
                   ? tagsAll[1].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;

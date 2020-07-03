@@ -1,4 +1,4 @@
-const LOCAL_STORAGE_ATKN_KEY = "at";
+const LOCAL_STORAGE_ATKN_KEY = 'at';
 
 let instance;
 
@@ -32,7 +32,7 @@ class MyAccount {
 
   logout() {
     localStorage.removeItem(LOCAL_STORAGE_ATKN_KEY);
-    window.location.href = "/";
+    window.location.href = '/';
   }
 }
 
