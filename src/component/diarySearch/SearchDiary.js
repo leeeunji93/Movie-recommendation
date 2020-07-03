@@ -158,39 +158,6 @@ const SearchDiary = ({ match }) => {
       });
   };
 
-  const TagItems = (tags) => {
-    console.log('태그스', tags);
-
-    tags.map((dat) => {
-      return <option value={dat.tags}>{dat.tags}</option>;
-    });
-  };
-
-  const TagTypeItem = ({ tagTypeData }) => {
-    const TagItem = ({ tag }) => {
-      {
-        let sel_value = document.getElementById('sel_value');
-        if (sel_value !== null) sel_value.innerHTML = tag;
-      }
-      return (
-        <div id="sel_value" className="TagItem">
-          {tag}
-        </div>
-      );
-    };
-
-    return (
-      <div className="tagName">
-        <p>{tagTypeData.tagType}</p>
-        <div className="tags">
-          {tagTypeData.tags.map((tag, index) => (
-            <TagItem tag={tag} key={index} />
-          ))}
-        </div>
-      </div>
-    );
-  };
-
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -255,36 +222,31 @@ const SearchDiary = ({ match }) => {
                 ))}
               </div>
             </div>
-            {/* <div className="write_tags">
-              <input
-                name="tags"
-                value={tags}
-                onChange={handleChangeDiaryData}
-              />
-
-              
-              {tagsAll.map((tagTypeData, index) => (
-                <TagTypeItem tagTypeData={tagTypeData} key={index} />
-              ))}
-            </div> */}
 
             <div className="write_tags">
               <select
-                name="tags_sta"
+                name="tags_st"
                 onChange={handleChangeDiaryData}
                 value={tags}
               >
-                {TagItems(tagsAll)}
+                {tagsAll[0] !== undefined
+                  ? tagsAll[0].tags.map((tagTypeData) => {
+                      return <option value={tagTypeData}>{tagTypeData}</option>;
+                    })
+                  : ''}
               </select>
-              {/* <input
-                name="tags"
-                value={tags}
-                onChange={handleChangeDiaryData}
-              /> */}
 
-              {tagsAll.map((tagTypeData, index) => (
-                <TagTypeItem tagTypeData={tagTypeData} key={index} />
-              ))}
+              <select
+                name="tags_si"
+                onChange={handleChangeDiaryData}
+                value={tags}
+              >
+                {tagsAll[1] !== undefined
+                  ? tagsAll[1].tags.map((tagTypeData) => {
+                      return <option value={tagTypeData}>{tagTypeData}</option>;
+                    })
+                  : ''}
+              </select>
             </div>
             <div className="write_content">
               <input
