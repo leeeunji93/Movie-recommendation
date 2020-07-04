@@ -11,7 +11,6 @@ import { Card, CardContent, TextField } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import StarIcon from '@material-ui/icons/Star';
-import Chip from '@material-ui/core/Chip';
 
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
@@ -31,6 +30,7 @@ const SearchDiary = ({ match }) => {
   const dId = match.params.dId;
   const { selectedMovie } = never;
   const history = useHistory();
+  const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     refreshTags();
@@ -83,6 +83,10 @@ const SearchDiary = ({ match }) => {
       .catch((error) => {
         alert(error);
       });
+  };
+
+  const handleTagSelect = (e) => {
+    return setSelectedTags(selectedTags.concat(e.target.value));
   };
 
   const handleChangeDiaryData = (e) => {
@@ -220,7 +224,11 @@ const SearchDiary = ({ match }) => {
             </div>
 
             <div className="write_tags">
-              <select name="tags_st" onChange={handleChangeDiaryData}>
+              <select
+                name="tags_st"
+                onChange={handleChangeDiaryData}
+                onClick={handleTagSelect}
+              >
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;

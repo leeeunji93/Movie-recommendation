@@ -85,7 +85,10 @@ const DiaryData = ({ match }) => {
     <div>
       <div className="dairyData_wrapper">
         <div className="dairyData_diary">
-          <div className="dairyData_diary_user_img">
+          <div
+            className="dairyData_diary_user_img"
+            style={{ backgroundImage: diary.cover }}
+          >
             <img src={diary.cover} alt="" />
           </div>
           <div className="dairyData_diary_data">
