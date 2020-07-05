@@ -30,7 +30,7 @@ const SearchDiary = ({ match }) => {
   const dId = match.params.dId;
   const { selectedMovie } = never;
   const history = useHistory();
-  const [selectedTags, setSelectedTags] = useState([]);
+  // const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     refreshTags();
@@ -85,9 +85,9 @@ const SearchDiary = ({ match }) => {
       });
   };
 
-  const handleTagSelect = (e) => {
-    return setSelectedTags(selectedTags.concat(e.target.value));
-  };
+  // const handleTagSelect = (e) => {
+  //   return setSelectedTags(selectedTags.concat(e.target.value));
+  // };
 
   const handleChangeDiaryData = (e) => {
     // setKeyword(e.target.value);
@@ -128,6 +128,7 @@ const SearchDiary = ({ match }) => {
     console.log(selectedMovie);
 
     if (!selectedMovie) {
+      // const arrayTags = selectedTags.join(',');
       console.log(selectedMovie);
       alert('영화를 선택하세요');
       return;
@@ -227,7 +228,7 @@ const SearchDiary = ({ match }) => {
               <select
                 name="tags_st"
                 onChange={handleChangeDiaryData}
-                onClick={handleTagSelect}
+                // onClick={handleTagSelect}
               >
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {

@@ -105,7 +105,7 @@
     align-items: center;
     img {
       // padding: 0.5rem;
-      width: 50rem;
+      // width: 50rem;
       height: 40rem;
       filter: brightness(40%);
     }
@@ -147,18 +147,14 @@
   .dairyData_diary {
     position: relative;
     .dairyData_diary_data {
+      width: 45rem;
       position: absolute;
-      top: 50%;
-      left: 80%;
-      transform: translate(-50%, -70%);
-      // z-index: 2;
+      padding: 1rem;
       color: $white;
       line-height: 3.5;
     }
   }
   .dairyData_diary_user_img {
-    display: flex;
-    justify-content: center;
     img {
       // padding: 0.5rem;
       width: 50rem;
