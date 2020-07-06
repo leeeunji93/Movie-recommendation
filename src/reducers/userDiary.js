@@ -1,14 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 
-const SET_DETAIL = 'diaryData/SET_DETAIL';
 const SET_USERDIARY = 'userDiary/SET_USERDIARY';
 
 const initialState = {
-  data: {
-    movie: null,
-    diary: null,
-    user: null,
-  },
   userDiary: {
     userDiaryArr: [],
     userDiaryPage: 0,
@@ -17,25 +11,13 @@ const initialState = {
   },
 };
 
-export const setDetail = createAction(SET_DETAIL);
 export const setUserDiary = createAction(SET_USERDIARY);
 
 export default handleActions(
   {
-    [SET_DETAIL]: (state, action) => {
-      console.log('@@@@ diarystate: ', state);
-      console.log('@@@@ diaryaction: ', action);
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [action.payload.key]: action.payload.value,
-        },
-      };
-    },
     [SET_USERDIARY]: (state, action) => {
-      console.log('@@@@ uerstate: ', state);
-      console.log('@@@@ useraction: ', action);
+      console.log('@@@@ state: ', state);
+      console.log('@@@@ action: ', action);
       return {
         ...state,
         userDiary: {

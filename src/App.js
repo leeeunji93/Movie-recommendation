@@ -54,11 +54,7 @@ const App = () => {
         <Route component={MainContainer} exact path="/" />
         <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
         <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
-        <Route
-          component={MyPageContainer}
-          path="/mypage/:dId"
-          // render={(props) => <MyPageContainer {...props} isLogin={isLogin} />}
-        />
+        <Route component={MyPageContainer} path="/mypage" />
         <Route
           path="/login"
           render={(props) => (
