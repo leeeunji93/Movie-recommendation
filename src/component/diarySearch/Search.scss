@@ -47,6 +47,10 @@
 
 .dateDate {
   margin-top: 2rem;
+  input {
+    border: none;
+    text-decoration: none;
+  }
 }
 
 .movie_search_result {
@@ -78,6 +82,14 @@
   }
 }
 
+// tag
+.write_tags {
+  select {
+    text-decoration: none;
+    border: none;
+    margin-top: 1rem;
+  }
+}
 .tagName {
   p {
     font-weight: 600;
@@ -106,6 +118,7 @@
   }
 }
 
+//일기내용
 .write_content {
   margin-top: 3rem;
   height: 10vh;
@@ -114,6 +127,7 @@
     outline: none;
     box-shadow: none;
     text-decoration: none;
+    border: none;
   }
   &:hover {
     border: 1px solid lighten($black, 5%);
@@ -148,6 +162,11 @@
 
 .write_cover {
   margin-top: 2rem;
+  input {
+    border: none;
+    border-bottom: 1px solid $black;
+    width: 20rem;
+  }
 }
 
 // > 768px

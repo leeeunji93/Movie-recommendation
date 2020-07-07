@@ -10,10 +10,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useSelector, useDispatch } from 'react-redux';
 import * as authActions from '../../reducers/auth';
 import * as actions from '../../reducers/headerSearch';
+import HeaderSearch from '../../component/headerSearch/HeaderSearch';
 
 const Header = () => {
-  // const [keyword, setKeyword] = useState('');
-  // const [searchArr, serSearchArr] = useState([]);
   const { auth } = useSelector((state) => state);
   const { headerSearch } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -43,7 +42,7 @@ const Header = () => {
         console.log('search결과', resultData);
         dispatch(
           actions.setHeaderSearch({
-            key: searchArr,
+            key: 'searchArr',
             value: resultData,
           }),
         );

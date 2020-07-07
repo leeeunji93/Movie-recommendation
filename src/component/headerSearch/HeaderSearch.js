@@ -12,22 +12,6 @@ const HeaderSearch = () => {
   const history = useHistory();
 
   const DiaryItem = (data) => {
-    useEffect(() => {
-      console.log('data', data);
-      NetTool.request(APIs.filmDiarySearch)
-        .appendFormData('keyword', keyword)
-        .exec(true)
-        .then((resultData) => {
-          console.log('search결과', resultData);
-          dispatch(
-            actions.setHeaderSearch({
-              key: searchArr,
-              value: resultData,
-            }),
-          );
-        });
-    });
-
     const clickItem = () => {
       if (!!history) {
         history.push('/diaryDetail/' + data.dId);
@@ -40,14 +24,14 @@ const HeaderSearch = () => {
 
     return (
       <div className="DiaryItem" onClick={clickItem}>
-        <img src={data.cover} alt="" />
+        <img src={data.data.cover} alt="" />
         <div>
-          <div>일기 제목 : {data.title}</div>
-          <div>쓴사람 닉네임 : {data.nickname}</div>
-          <div>태그들 : {data.tags}</div>
-          <div>레이팅 : {data.rating}</div>
-          <div>본 날짜 : {data.watchDate}</div>
-          <div>영화 제목 : {data.movieTitle}</div>
+          <div>일기 제목 : {data.data.title}</div>
+          <div>쓴사람 닉네임 : {data.data.nickname}</div>
+          <div>태그들 : {data.data.tags}</div>
+          <div>레이팅 : {data.data.rating}</div>
+          <div>본 날짜 : {data.data.watchDate}</div>
+          <div>영화 제목 : {data.data.movieTitle}</div>
         </div>
       </div>
     );
@@ -55,7 +39,6 @@ const HeaderSearch = () => {
 
   return (
     <div>
-      ㄴㄴ
       {searchArr.map((data, index) => (
         <DiaryItem data={data} key={index} />
       ))}
