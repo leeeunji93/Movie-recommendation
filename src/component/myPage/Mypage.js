@@ -11,37 +11,7 @@ const MyPage = () => {
   const { user } = data;
   const { userDiaryArr, userDiaryTotalCount } = userDiary;
 
-  // useEffect(() => {
-  //   const uId = user.uId;
-  //   NetTool.request(APIs.userDiaryList(1, uId))
-  //     .exec(true)
-  //     .then((resultData) => {
-  //       console.log('user상세데이터', resultData.user);
-  //       dispatch(
-  //         actions.setUserDiary({
-  //           key: 'userDiaryArr',
-  //           value: resultData.userDiaryArr,
-  //         }),
-  //       );
-  //       dispatch(
-  //         actions.setUserDiary({
-  //           key: 'userDiaryTotalCount',
-  //           value: resultData.userDiaryTotalCount,
-  //         }),
-  //       );
-  //       dispatch(
-  //         actions.setDetail({
-  //           key: 'user',
-  //           value: resultData.user,
-  //         }),
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // }, []);
-
-  const handleClick = () => {
+  useEffect(() => {
     const uId = user.uId;
     NetTool.request(APIs.userDiaryList(1, uId))
       .exec(true)
@@ -69,16 +39,16 @@ const MyPage = () => {
       .catch((error) => {
         alert(error);
       });
-  };
+  }, []);
 
-  // if (!userDiaryArr || !userDiaryTotalCount || !user) {
-  //   return null;
-  // }
+  if (!userDiaryArr || !userDiaryTotalCount || !user) {
+    return null;
+  }
 
   return (
     <div>
       <div className="user">아직 하는중입니다</div>
-      <button onClick={handleClick}>은지님의 기록</button>
+      {user.nickname}
     </div>
   );
 };

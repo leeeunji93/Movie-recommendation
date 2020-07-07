@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 
 const SET_HEADERSEARCH = 'header/SET_HEADERSEARCH';
-// const SET_KEYWORD = 'header/SET_KEYWORD';
+const DESTROY = 'header/DESTROY';
 
 const initialState = {
   search: {
@@ -11,7 +11,7 @@ const initialState = {
 };
 
 export const setHeaderSearch = createAction(SET_HEADERSEARCH);
-// export const setKeyword = createAction(SET_KEYWORD);
+export const destroy = createAction(DESTROY);
 
 export default handleActions(
   {
@@ -25,13 +25,7 @@ export default handleActions(
         },
       };
     },
-    // [SET_KEYWORD]: (state, action) => {
-    //   console.log('@@헤더검색', state);
-    //   return {
-    //     ...state,
-    //     searchArr: action.payload,
-    //   };
-    // },
+    [DESTROY]: (state, action) => initialState,
   },
   initialState,
 );

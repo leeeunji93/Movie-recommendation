@@ -4,34 +4,67 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/headerSearch';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import '../mainPage/DiaryList.scss';
 
 const HeaderSearch = () => {
   const { headerSearch } = useSelector((state) => state);
   const dispatch = useDispatch();
   const { keyword, searchArr } = headerSearch.search;
   const history = useHistory();
+  const [hangOver, setHangingOver] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      dispatch(actions.destroy());
+    };
+  }, [dispatch]);
 
   const DiaryItem = (data) => {
-    const clickItem = () => {
-      if (!!history) {
-        history.push('/diaryDetail/' + data.dId);
-      }
+    const handleOnMouseOver = () => {
+      setHangingOver(!hangOver);
     };
 
-    if (!searchArr) {
-      return null;
-    }
+    const handleOnMouseLeave = () => {
+      setHangingOver(hangOver);
+    };
+
+    const clickedItem = () => {
+      if (!!history) {
+        history.push('/DiaryDataContainer/' + data.data.dId);
+      }
+    };
+    let tags = data.data.tags.split(',');
 
     return (
-      <div className="DiaryItem" onClick={clickItem}>
-        <img src={data.data.cover} alt="" />
-        <div>
-          <div>일기 제목 : {data.data.title}</div>
-          <div>쓴사람 닉네임 : {data.data.nickname}</div>
-          <div>태그들 : {data.data.tags}</div>
-          <div>레이팅 : {data.data.rating}</div>
-          <div>본 날짜 : {data.data.watchDate}</div>
-          <div>영화 제목 : {data.data.movieTitle}</div>
+      <div className="main_wrapper">
+        <div
+          className="diary"
+          onMouseEnter={handleOnMouseOver}
+          onMouseLeave={handleOnMouseLeave}
+          onClick={clickedItem}
+        >
+          <img className="diary_image" src={data.data.cover} alt="" />
+
+          {hangOver ? (
+            <div className="diary_content">
+              <b>{data.data.title}</b>
+              <div>
+                <b>{data.data.rating}</b>/5
+              </div>
+            </div>
+          ) : (
+            <div className="diary_content">
+              <div>
+                <b className="userTitle">{data.data.movieTitle}</b>
+              </div>
+              <div className="tag">
+                {tags.map((tag) => {
+                  return `# ${tag} `;
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );

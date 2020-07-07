@@ -3,7 +3,7 @@ import { NetTool, APIs } from '../../tool/NetTool';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
-import './diaryList.scss';
+import './DiaryList.scss';
 import { useState } from 'react';
 
 const PAGE_SIZE = 10;

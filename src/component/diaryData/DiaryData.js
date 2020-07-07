@@ -34,7 +34,6 @@ const DiaryData = ({ match }) => {
       .exec()
       .then((resultData) => {
         console.log('상세데이터', resultData);
-        console.log('@@user', resultData.user);
         dispatch(
           actions.setDetail({
             key: 'diary',
