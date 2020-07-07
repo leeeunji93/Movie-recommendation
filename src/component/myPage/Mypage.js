@@ -11,35 +11,35 @@ const MyPage = () => {
   const { user } = data;
   const { userDiaryArr, userDiaryTotalCount } = userDiary;
 
-  // useEffect(() => {
-  //   const uId = user.uId;
-  //   NetTool.request(APIs.userDiaryList(1, uId))
-  //     .exec(true)
-  //     .then((resultData) => {
-  //       console.log('user상세데이터', resultData.user);
-  //       dispatch(
-  //         actions.setUserDiary({
-  //           key: 'userDiaryArr',
-  //           value: resultData.userDiaryArr,
-  //         }),
-  //       );
-  //       dispatch(
-  //         actions.setUserDiary({
-  //           key: 'userDiaryTotalCount',
-  //           value: resultData.userDiaryTotalCount,
-  //         }),
-  //       );
-  //       dispatch(
-  //         actions.setDetail({
-  //           key: 'user',
-  //           value: resultData.user,
-  //         }),
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const uId = user.uId;
+    NetTool.request(APIs.userDiaryList(1, uId))
+      .exec(true)
+      .then((resultData) => {
+        console.log('user상세데이터', resultData.user);
+        dispatch(
+          actions.setUserDiary({
+            key: 'userDiaryArr',
+            value: resultData.userDiaryArr,
+          }),
+        );
+        dispatch(
+          actions.setUserDiary({
+            key: 'userDiaryTotalCount',
+            value: resultData.userDiaryTotalCount,
+          }),
+        );
+        dispatch(
+          actions.setDetail({
+            key: 'user',
+            value: resultData.user,
+          }),
+        );
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, []);
 
   const handleClick = () => {
     const uId = user.uId;
