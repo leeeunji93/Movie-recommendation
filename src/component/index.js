@@ -1,5 +1,4 @@
 import Header from '../containers/header/Header';
-import DropdownList from './mainPage/dropdown/DropdownList';
 import DiaryList from './mainPage/DiaryList';
 import DiaryData from './diaryData/DiaryData';
 import AuthWrapper from './auth/AuthWrapper';
@@ -11,7 +10,6 @@ import HeaderSearch from './headerSearch/HeaderSearch';
 
 export {
   Header,
-  DropdownList,
   DiaryList,
   DiaryData,
   AuthWrapper,

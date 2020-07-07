@@ -11,9 +11,39 @@ const MyPage = () => {
   const { user } = data;
   const { userDiaryArr, userDiaryTotalCount } = userDiary;
 
-  useEffect(() => {
-    // const uId = user.uId;
-    NetTool.request(APIs.userDiaryList(1, user.uId))
+  // useEffect(() => {
+  //   const uId = user.uId;
+  //   NetTool.request(APIs.userDiaryList(1, uId))
+  //     .exec(true)
+  //     .then((resultData) => {
+  //       console.log('user상세데이터', resultData.user);
+  //       dispatch(
+  //         actions.setUserDiary({
+  //           key: 'userDiaryArr',
+  //           value: resultData.userDiaryArr,
+  //         }),
+  //       );
+  //       dispatch(
+  //         actions.setUserDiary({
+  //           key: 'userDiaryTotalCount',
+  //           value: resultData.userDiaryTotalCount,
+  //         }),
+  //       );
+  //       dispatch(
+  //         actions.setDetail({
+  //           key: 'user',
+  //           value: resultData.user,
+  //         }),
+  //       );
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     });
+  // }, []);
+
+  const handleClick = () => {
+    const uId = user.uId;
+    NetTool.request(APIs.userDiaryList(1, uId))
       .exec(true)
       .then((resultData) => {
         console.log('user상세데이터', resultData.user);
@@ -39,12 +69,18 @@ const MyPage = () => {
       .catch((error) => {
         alert(error);
       });
-  }, []);
+  };
 
-  if (!movie || !diary || !user) {
+  if (!userDiaryArr || !userDiaryTotalCount || !user) {
     return null;
   }
-  return <div className="user">아직 하는중입니다{user}</div>;
+
+  return (
+    <div>
+      <div className="user">아직 하는중입니다{user}</div>
+      <button onClick={handleClick}>은지님의 기록</button>
+    </div>
+  );
 };
 
 export default MyPage;
