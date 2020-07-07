@@ -23,8 +23,7 @@ export const setUserDiary = createAction(SET_USERDIARY);
 export default handleActions(
   {
     [SET_DETAIL]: (state, action) => {
-      console.log('@@@@ diarystate: ', state);
-      console.log('@@@@ diaryaction: ', action);
+  
       return {
         ...state,
         data: {
@@ -34,8 +33,7 @@ export default handleActions(
       };
     },
     [SET_USERDIARY]: (state, action) => {
-      console.log('@@@@ uerstate: ', state);
-      console.log('@@@@ useraction: ', action);
+  
       return {
         ...state,
         userDiary: {

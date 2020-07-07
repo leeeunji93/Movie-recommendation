@@ -43,6 +43,7 @@ const Header = () => {
         dispatch(
           actions.setHeaderSearch({
             key: 'searchArr',
+            //이것만 배열로 보이게 나옴
             value: resultData,
           }),
         );

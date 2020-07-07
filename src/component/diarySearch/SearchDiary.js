@@ -27,6 +27,7 @@ const SearchDiary = ({ match }) => {
     createdAt,
     modifiedAt,
   } = form;
+
   const dId = match.params.dId;
   const { selectedMovie } = never;
   const history = useHistory();
@@ -86,13 +87,15 @@ const SearchDiary = ({ match }) => {
   };
 
   // const handleTagSelect = (e) => {
-  //   return setSelectedTags(selectedTags.concat(e.target.value));
+  //   const tag = selectedTags.join(',');
+  //   console.log('태그 선택값', e.target.value);
+  //   setSelectedTags(tag.concat(e.target.value));
+  //   console.log('selectedTags', selectedTags.join(','));
   // };
 
   const handleChangeDiaryData = (e) => {
     // setKeyword(e.target.value);
     console.log('@@onChane값', e.target.value);
-    console.log(e.target.value);
     dispatch(
       actions.setForm({
         key: e.target.name,
@@ -126,6 +129,8 @@ const SearchDiary = ({ match }) => {
 
   const handleSave = () => {
     console.log(selectedMovie);
+
+    // setSelectedTags(tags.join(','));
 
     if (!selectedMovie) {
       // const arrayTags = selectedTags.join(',');
@@ -228,7 +233,7 @@ const SearchDiary = ({ match }) => {
               <select
                 name="tags_st"
                 onChange={handleChangeDiaryData}
-                // onClick={handleTagSelect}
+                value={tags}
               >
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {
@@ -237,7 +242,11 @@ const SearchDiary = ({ match }) => {
                   : ''}
               </select>
 
-              <select name="tags_si" onChange={handleChangeDiaryData}>
+              <select
+                name="tags_si"
+                onChange={handleChangeDiaryData}
+                value={tags}
+              >
                 {tagsAll[1] !== undefined
                   ? tagsAll[1].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;

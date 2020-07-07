@@ -55,8 +55,6 @@ const DiaryList = () => {
   };
 
   const DiaryItem = ({ data }) => {
-    console.log('@@data.id', data.id);
-
     const handleOnMouseOver = () => {
       setHangingOver(!hangOver);
     };

@@ -32,8 +32,7 @@ export default handleActions(
       };
     },
     [SET_LOGIN]: (state, action) => {
-      console.log('@@@@ state: ', state);
-      console.log('@@@@ action: ', action);
+ 
       return {
         ...state,
         //action.payoad하면 왜 안먹지

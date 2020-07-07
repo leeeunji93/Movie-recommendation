@@ -25,7 +25,7 @@ const Auth = ({ type, onChangeLoginState }) => {
     };
   }, [dispatch]);
 
-  console.log('@@@@ auth : ', auth);
+  console.log('@@@@auth : ', auth);
 
   const onChange = (e) => {
     dispatch(

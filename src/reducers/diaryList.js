@@ -17,8 +17,7 @@ export const setDiary = createAction(SET_DIARY);
 export default handleActions(
   {
     [SET_DIARY]: (state, action) => {
-      console.log('@@@@ state: ', state);
-      console.log('@@@@ action: ', action);
+      
       return {
         ...state,
         list: {

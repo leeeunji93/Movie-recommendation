@@ -16,7 +16,13 @@ const MyPage = () => {
     NetTool.request(APIs.userDiaryList(1, uId))
       .exec(true)
       .then((resultData) => {
-        console.log('user상세데이터', resultData.user);
+        console.log('user상세데이터', resultData);
+        dispatch(
+          actions.setUserDiary({
+            key: ' userDiaryPage',
+            value: 1,
+          }),
+        );
         dispatch(
           actions.setUserDiary({
             key: 'userDiaryArr',
@@ -41,14 +47,13 @@ const MyPage = () => {
       });
   }, []);
 
-  if (!userDiaryArr || !userDiaryTotalCount || !user) {
-    return null;
+  if (!userDiaryArr || !userDiaryTotalCount || !user.uId) {
+    return alert('없어요');
   }
 
   return (
     <div>
-      <div className="user">아직 하는중입니다</div>
-      {user.nickname}
+      <div className="user"></div>
     </div>
   );
 };
