@@ -15,18 +15,8 @@ import StarIcon from '@material-ui/icons/Star';
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { form, never, isModify, watchDate } = search;
-  const {
-    tagsAll,
-    title,
-    cover,
-    notes,
-    rating,
-    tags,
-    // watchDate,
-    createdAt,
-    modifiedAt,
-  } = form;
+  const { form, never, watchDate } = search;
+  const { tagsAll, title, cover, notes, rating, tags } = form;
 
   const dId = match.params.dId;
   const { selectedMovie } = never;
@@ -35,10 +25,10 @@ const SearchDiary = ({ match }) => {
 
   useEffect(() => {
     refreshTags();
-    if (isModify) {
-      console.log('@@dId', dId);
-      refreshUpdateData(dId);
-    }
+    // if (isModify) {
+    //   console.log('@@dId', dId);
+    //   refreshUpdateData(dId);
+    // }
   }, []);
 
   useEffect(() => {
@@ -47,26 +37,26 @@ const SearchDiary = ({ match }) => {
     };
   }, []);
 
-  const refreshUpdateData = (dId) => {
-    const url = APIs.filmDiaryDetail(dId);
-    NetTool.request(url)
-      .exec(true)
-      .then((resultData) => {
-        console.log('수정할 데이터 가져오기 완료', resultData);
-        console.log('resultData.diary', resultData.diary);
-        dispatch(
-          actions.setForm({
-            key: 'form',
-            value: resultData.diary,
-          }),
-          actions.setNever({
-            key: 'selectedMovie',
-            value: resultData.movie,
-          }),
-        );
-      })
-      .catch((error) => alert(error));
-  };
+  // const refreshUpdateData = (dId) => {
+  //   const url = APIs.filmDiaryDetail(dId);
+  //   NetTool.request(url)
+  //     .exec(true)
+  //     .then((resultData) => {
+  //       console.log('수정할 데이터 가져오기 완료', resultData);
+  //       console.log('resultData.diary', resultData.diary);
+  //       dispatch(
+  //         actions.setForm({
+  //           key: 'form',
+  //           value: resultData.diary,
+  //         }),
+  //         actions.setNever({
+  //           key: 'selectedMovie',
+  //           value: resultData.movie,
+  //         }),
+  //       );
+  //     })
+  //     .catch((error) => alert(error));
+  // };
 
   //모든 태그들 가져온다.
   const refreshTags = () => {
@@ -193,7 +183,8 @@ const SearchDiary = ({ match }) => {
         <Card className={classes.root} elevation={0}>
           <CardContent>
             <Typography className={classes.title}>
-              <h2>{isModify ? '일기수정' : 'Write'}</h2>
+              {/* <h2>{isModify ? '일기수정' : 'Write'}</h2> */}
+              <h2>Write</h2>
             </Typography>
             <div className="write_header">
               <TextField

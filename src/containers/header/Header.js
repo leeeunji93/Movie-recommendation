@@ -62,7 +62,7 @@ const Header = () => {
           <form className="search">
             <input
               name="keyword"
-              placeholder="영화 검색"
+              placeholder="영화 노트  "
               onChange={handleChange}
               value={keyword}
             />

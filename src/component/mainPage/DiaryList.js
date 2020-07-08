@@ -108,12 +108,12 @@ const DiaryList = () => {
           <DiaryItem data={data} key={data.id} />
         ))}
       </section>
-      <header>
+      {/* <header>
         {page} / {totalPage}
-        {/* - 페이지당 일기 갯수 :{' '}
-        {PAGE_SIZE} -  */}
+        - 페이지당 일기 갯수 :{' '}
+        {PAGE_SIZE} - 
         저장된 전체 일기 갯수 : {totalCount}
-      </header>
+      </header> */}
     </div>
   );
 };

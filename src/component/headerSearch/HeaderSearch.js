@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/headerSearch';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import '../mainPage/DiaryList.scss';
+import '../headerSearch/HeaderSearch.scss';
 
 const HeaderSearch = () => {
   const { headerSearch } = useSelector((state) => state);
@@ -72,9 +72,11 @@ const HeaderSearch = () => {
 
   return (
     <div>
-      {searchArr.map((data, index) => (
-        <DiaryItem data={data} key={index} />
-      ))}
+      <section className="diary_data">
+        {searchArr.map((data, index) => (
+          <DiaryItem data={data} key={index} />
+        ))}
+      </section>
     </div>
   );
 };

@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { NetTool, APIs } from '../../tool/NetTool';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/diaryData';
+import { useHistory } from 'react-router-dom';
 import './DiaryData.scss';
 
 const DiaryData = ({ match }) => {
   const { diaryData } = useSelector((state) => state);
+  const history = useHistory();
   const dispatch = useDispatch();
   const { data } = diaryData;
   const { movie, diary, user } = data;
@@ -40,23 +42,10 @@ const DiaryData = ({ match }) => {
       });
   }, []);
 
-  /*  const clickUpdate = () => {
-    props.history.push("/DiaryDataContainer/:dId" + props.match.params.dId);
-  };
-  const clickDelete = () => {
-    if (window.confirm("삭제할까요?")) {
-      NetTool.request(APIs.filmDiaryDelete)
-        .appendFormData("dId", props.match.params.dId)
-        .exec(true)
-        .then(() => {
-          alert("삭제 완료");
-          props.history.replace("/");
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
-  };*/
+  // const clickUpdate = () => {
+  //   history.push('/SearchMovieContainer/' + dId);
+  // };
+
 
   if (!movie || !diary || !user) {
     return null;
@@ -101,10 +90,8 @@ const DiaryData = ({ match }) => {
         <p> {diary.notes}</p>
       </div>
 
-      {/*      <h3>수정, 삭제. (글쓴 사람만 할 수 있도록 처리할것)</h3>
-        
-      <button onClick={clickUpdate}>일기 수정</button>
-      <button onClick={clickDelete}>일기 삭제</button>*/}
+      {/* <button onClick={clickUpdate}>일기 수정</button> */}
+
     </div>
   );
 };

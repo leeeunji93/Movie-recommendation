@@ -3,9 +3,10 @@ import { MyPage } from '../../component';
 
 class MyPageContainer extends Component {
   render() {
+    const { match } = this.props;
     return (
       <div>
-        <MyPage />
+        <MyPage match={match} />
       </div>
     );
   }

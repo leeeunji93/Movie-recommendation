@@ -8,12 +8,12 @@ import MyAccount from '../../tool/MyAccount';
 
 const PAGE_SIZE = 100;
 
-const MyPage = () => {
+const MyPage = ({ match }) => {
   const [userDiaryArr, setUserDiaryArr] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
-
+  const dId = match.params.dId;
   const isLogin = useSelector((state) => {
     //isLogin 의 구조가 왜 이렇게 되는걸까
     return state.auth.isLogin.isLogin;
@@ -43,6 +43,21 @@ const MyPage = () => {
     }
   }, [isLogin, page]);
 
+  const clickDelete = () => {
+    if (window.confirm('삭제하세요?🥺')) {
+      NetTool.request(APIs.filmDiaryDelete)
+        .appendFormData('dId', dId)
+        .exec(true)
+        .then(() => {
+          alert('삭제 완료');
+          history.replace('/diaryList');
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+  };
+
   if (!isLogin) {
     //아직 로그인 안된 상태이므로 아무것도 렌더링하지 않는다.
     return null;
@@ -64,6 +79,10 @@ const MyPage = () => {
             <div className="data_list_date">{data.watchDate}</div>
 
             <div className="data_list_rate"> {`⭐${data.rating}.0`}</div>
+
+            <button className="data_list_btn" onClick={clickDelete}>
+              Delete
+            </button>
           </div>
         </div>
       </section>
