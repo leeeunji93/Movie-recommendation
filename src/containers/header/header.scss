@@ -28,7 +28,7 @@
       align-items: center;
       //height값을 부모랑 똑같이 안주면 위로 탁 붙어버림! 자식을 주면 부모는 height값 생략 가능
       min-width: 100%;
-      height: 5rem;
+      height: 8rem;
       font-size: 2.2rem;
       color: white;
     }
@@ -41,7 +41,7 @@
   height: 8rem;
 
   .search {
-    // width: 16rem;
+    margin-left: 4rem;
     display: flex;
     align-items: center;
 

@@ -71,7 +71,7 @@ const DiaryData = ({ match }) => {
           </div>
           <div className="dairyData_diary_data">
             <div className="dairyData_diary_user">{user.nickname}님의 Note</div>
-            <div className="dairyData_diary_title">{diary.title}</div>
+            <div className="dairyData_diary_title">"{diary.title}"</div>
             <div className="dairyData_diary_tags">
               <p>
                 {tags.map((tag) => {
