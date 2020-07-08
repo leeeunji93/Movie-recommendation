@@ -230,11 +230,7 @@ const SearchDiary = ({ match }) => {
             </div>
 
             <div className="write_tags">
-              <select
-                name="tags_st"
-                onChange={handleChangeDiaryData}
-                value={tags}
-              >
+              <select name="tags_st" onChange={handleChangeDiaryData}>
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;
@@ -242,11 +238,7 @@ const SearchDiary = ({ match }) => {
                   : ''}
               </select>
 
-              <select
-                name="tags_si"
-                onChange={handleChangeDiaryData}
-                value={tags}
-              >
+              <select name="tags_si" onChange={handleChangeDiaryData}>
                 {tagsAll[1] !== undefined
                   ? tagsAll[1].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;

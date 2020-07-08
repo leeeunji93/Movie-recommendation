@@ -32,11 +32,11 @@ export default handleActions(
       };
     },
     [SET_LOGIN]: (state, action) => {
- 
       return {
         ...state,
         //action.payoad하면 왜 안먹지
         isLogin: action.payload,
+        // [action.payload.key]: action.payload.value,
       };
     },
     [DESTROY]: (state, action) => initialState,
