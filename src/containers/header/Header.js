@@ -55,7 +55,7 @@ const Header = () => {
       <div className="header_wrapper">
         <div className="header_logo">
           <h1 className="header_logo_title">
-            <Link to="/">Suddnly</Link>
+            <Link to="/">S햣uddenly</Link>
           </h1>
         </div>
         <div className="header_menu">

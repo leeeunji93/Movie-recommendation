@@ -50,7 +50,7 @@ const MyPage = ({ match }) => {
         .exec(true)
         .then(() => {
           alert('삭제 완료');
-          history.replace('/diaryList');
+          history.replace('/mypage');
         })
         .catch((error) => {
           alert(error);

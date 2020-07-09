@@ -21,11 +21,12 @@
     flex-direction: column;
     justify-content: center;
   }
+  input {
+  }
   .auth_input {
-    margin: 0 auto;
+    margin: 0.3rem auto;
     border: none;
     border: 1px solid #262626;
-
     padding: 1.2rem;
     font-size: 12px;
     width: 80%;
