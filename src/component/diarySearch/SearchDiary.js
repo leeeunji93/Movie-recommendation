@@ -15,13 +15,12 @@ import StarIcon from '@material-ui/icons/Star';
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { form, never, watchDate } = search;
-  const { tagsAll, title, cover, notes, rating, tags } = form;
+  const { form, never } = search;
+  const { tagsAll, rating } = form;
 
   const dId = match.params.dId;
   const { selectedMovie } = never;
   const history = useHistory();
-  // const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     refreshTags();
@@ -37,26 +36,26 @@ const SearchDiary = ({ match }) => {
     };
   }, []);
 
-  // const refreshUpdateData = (dId) => {
-  //   const url = APIs.filmDiaryDetail(dId);
-  //   NetTool.request(url)
-  //     .exec(true)
-  //     .then((resultData) => {
-  //       console.log('수정할 데이터 가져오기 완료', resultData);
-  //       console.log('resultData.diary', resultData.diary);
-  //       dispatch(
-  //         actions.setForm({
-  //           key: 'form',
-  //           value: resultData.diary,
-  //         }),
-  //         actions.setNever({
-  //           key: 'selectedMovie',
-  //           value: resultData.movie,
-  //         }),
-  //       );
-  //     })
-  //     .catch((error) => alert(error));
-  // };
+  const refreshUpdateData = (dId) => {
+    const url = APIs.filmDiaryDetail(dId);
+    NetTool.request(url)
+      .exec(true)
+      .then((resultData) => {
+        console.log('수정할 데이터 가져오기 완료', resultData);
+        console.log('resultData.diary', resultData.diary);
+        dispatch(
+          actions.setForm({
+            key: 'form',
+            value: resultData.diary,
+          }),
+          actions.setNever({
+            key: 'selectedMovie',
+            value: resultData.movie,
+          }),
+        );
+      })
+      .catch((error) => alert(error));
+  };
 
   //모든 태그들 가져온다.
   const refreshTags = () => {
@@ -76,22 +75,20 @@ const SearchDiary = ({ match }) => {
       });
   };
 
-  // const handleTagSelect = (e) => {
-  //   const tag = selectedTags.join(',');
-  //   console.log('태그 선택값', e.target.value);
-  //   setSelectedTags(tag.concat(e.target.value));
-  //   console.log('selectedTags', selectedTags.join(','));
-  // };
+  const [input, setInput] = useState({
+    title: '',
+
+    cover: '',
+    notes: '',
+    watchDate: '',
+  });
 
   const handleChangeDiaryData = (e) => {
-    // setKeyword(e.target.value);
-    console.log('@@onChane값', e.target.value);
-    dispatch(
-      actions.setForm({
-        key: e.target.name,
-        value: e.target.value,
-      }),
-    );
+    console.log('name', e.target.name);
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handlePlusRating = () => {
@@ -108,11 +105,11 @@ const SearchDiary = ({ match }) => {
   };
 
   const handleMinusRating = () => {
-    console.log('별점 마이너스', rating);
+    console.log('별점 마이너스', form.rating);
     dispatch(
       actions.setForm({
         key: 'rating',
-        value: rating - 1,
+        value: form.rating - 1,
       }),
     );
   };
@@ -120,16 +117,13 @@ const SearchDiary = ({ match }) => {
   const handleSave = () => {
     console.log(selectedMovie);
 
-    // setSelectedTags(tags.join(','));
-
     if (!selectedMovie) {
-      // const arrayTags = selectedTags.join(',');
       console.log(selectedMovie);
       alert('영화를 선택하세요');
       return;
     }
 
-    if (title.trim().length === 0) {
+    if (input.title.trim().length === 0) {
       alert('일기 제목을 쓰세요');
       return;
     }
@@ -192,13 +186,13 @@ const SearchDiary = ({ match }) => {
                 name="title"
                 label="Title"
                 onChange={handleChangeDiaryData}
-                value={title}
+                value={input.title}
               />
 
               <div className="dateDate">
                 <input
                   name="watchDate"
-                  value={watchDate}
+                  value={input.watchDate}
                   onChange={handleChangeDiaryData}
                   type="date"
                 />
@@ -213,36 +207,19 @@ const SearchDiary = ({ match }) => {
                 </span>
 
                 {[...Array(rating)].map((x, i) => (
-                  <span className="star" key={i}>
+                  <span classNamej="star" key={i}>
                     <StarIcon />️
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="write_tags">
-              <select name="tags_st" onChange={handleChangeDiaryData}>
-                {tagsAll[0] !== undefined
-                  ? tagsAll[0].tags.map((tagTypeData) => {
-                      return <option value={tagTypeData}>{tagTypeData}</option>;
-                    })
-                  : ''}
-              </select>
-
-              <select name="tags_si" onChange={handleChangeDiaryData}>
-                {tagsAll[1] !== undefined
-                  ? tagsAll[1].tags.map((tagTypeData) => {
-                      return <option value={tagTypeData}>{tagTypeData}</option>;
-                    })
-                  : ''}
-              </select>
-            </div>
             <div className="write_content">
               <input
                 name="notes"
                 placeholder="일기 내용"
                 onChange={handleChangeDiaryData}
-                value={notes}
+                value={input.notes}
               />
             </div>
             <div className="write_cover">
@@ -250,7 +227,7 @@ const SearchDiary = ({ match }) => {
                 name="cover"
                 placeholder="https://"
                 onChange={handleChangeDiaryData}
-                value={cover}
+                value={input.cover}
               />
             </div>
           </CardContent>

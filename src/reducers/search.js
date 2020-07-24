@@ -9,12 +9,13 @@ const SET_NEVER = 'search/SET_NEVER';
 const initialState = {
   form: {
     tagsAll: [],
-    title: '',
-    cover: '',
-    notes: '',
     rating: '',
-    tags: '',
-    watchDate: '',
+    // title: '',
+    // cover: '',
+    // notes: '',
+
+    // tags: '',
+    // watchDate: '',
     createdAt: '0',
     modifiedAt: '0',
   },
