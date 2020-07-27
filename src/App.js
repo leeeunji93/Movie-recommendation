@@ -52,8 +52,8 @@ const App = () => {
       <Header />
       <Switch>
         <Route component={MainContainer} exact path="/" />
-        <Route component={DiaryDataContainer} path="/DiaryDataContainer/:dId" />
-        <Route component={SearchMovieContainer} path="/SearchMovieContainer" />
+        <Route component={DiaryDataContainer} path="/diarydata/:dId" />
+        <Route component={SearchMovieContainer} path="/search" />
         <Route component={MyPageContainer} path="/mypage" />
         <Route
           path="/login"

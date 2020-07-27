@@ -5,7 +5,7 @@ import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
 import './DiaryList.scss';
 import { useState } from 'react';
-import './diaryList.scss';
+import './DiaryList.scss';
 
 const PAGE_SIZE = 10;
 

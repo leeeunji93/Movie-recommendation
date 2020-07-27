@@ -21,13 +21,14 @@ const SearchDiary = ({ match }) => {
   const dId = match.params.dId;
   const { selectedMovie } = never;
   const history = useHistory();
+  const isModify = dId > 0;
 
   useEffect(() => {
     refreshTags();
-    // if (isModify) {
-    //   console.log('@@dId', dId);
-    //   refreshUpdateData(dId);
-    // }
+    if (isModify) {
+      console.log('@@dId', dId);
+      refreshUpdateData(dId);
+    }
   }, []);
 
   useEffect(() => {
@@ -77,11 +78,16 @@ const SearchDiary = ({ match }) => {
 
   const [input, setInput] = useState({
     title: '',
-
     cover: '',
     notes: '',
     watchDate: '',
   });
+
+  let selectedTags = [];
+  const handleChangeTags = (e) => {
+    selectedTags = selectedTags.concat(e.target.value);
+    selectedTags.join(',');
+  };
 
   const handleChangeDiaryData = (e) => {
     console.log('name', e.target.name);
@@ -127,8 +133,6 @@ const SearchDiary = ({ match }) => {
       alert('일기 제목을 쓰세요');
       return;
     }
-
-    //TODO: 기타 등등, Validation 유효성 검사 할것.
 
     //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
     const movieJson = JSON.stringify(selectedMovie);
@@ -212,6 +216,24 @@ const SearchDiary = ({ match }) => {
                   </span>
                 ))}
               </div>
+            </div>
+
+            <div className="write_tags">
+              <select name="tags_st" onChange={handleChangeTags}>
+                {tagsAll[0] !== undefined
+                  ? tagsAll[0].tags.map((tagTypeData) => {
+                      return <option value={tagTypeData}>{tagTypeData}</option>;
+                    })
+                  : ''}
+              </select>
+
+              <select name="tags_si" onChange={handleChangeTags}>
+                {tagsAll[1] !== undefined
+                  ? tagsAll[1].tags.map((tagTypeData) => {
+                      return <option value={tagTypeData}>{tagTypeData}</option>;
+                    })
+                  : ''}
+              </select>
             </div>
 
             <div className="write_content">

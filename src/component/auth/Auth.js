@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MyAccount from '../../tool/MyAccount';
 import { NetTool, APIs } from '../../tool/NetTool';
@@ -14,9 +14,8 @@ const textMap = {
 const Auth = ({ type, onChangeLoginState }) => {
   const text = textMap[type];
 
-  const { auth } = useSelector((state) => state); //store연결
   const dispatch = useDispatch(); //액션 발생시키자
-  const { email, pwd, nickname, pwdConfirm } = auth.form; //리듀서에서
+
   const history = useHistory();
 
   useEffect(() => {
@@ -25,15 +24,21 @@ const Auth = ({ type, onChangeLoginState }) => {
     };
   }, [dispatch]);
 
-  console.log('@@@@auth : ', auth);
+  const [info, setInfo] = useState({
+    email: '',
+    nickname: '',
+    pwdConfirm: '',
+    pwd: '',
+  });
 
+  const { email, nickname, pwdConfirm, pwd } = info;
   const onChange = (e) => {
-    dispatch(
-      actions.setForm({
-        key: e.target.name,
-        value: e.target.value,
-      }),
-    );
+    console.log('onChange값', e.target.name);
+    const { name, value } = e.target;
+    setInfo({
+      ...info,
+      [name]: value,
+    });
   };
 
   const onSubmit = (e) => {
@@ -48,7 +53,6 @@ const Auth = ({ type, onChangeLoginState }) => {
       .exec(true)
       .then((resultData) => {
         alert('로그인 성공');
-        console.log('@@@@ auth확인 : ', auth);
         MyAccount.updateMyAccount(resultData);
         onChangeLoginState();
       })
@@ -71,11 +75,11 @@ const Auth = ({ type, onChangeLoginState }) => {
   const clickJoin = () => {
     //필수 데이터 : email, name, pwd
 
-    const patten = /^(?=\w{6,}$)(?=.*[a-z])(?=.*[A-Z])/;
-    if (!patten.test(pwd)) {
-      alert('대소문자를 넣어주세요!');
-      return;
-    }
+    // const patten = /^(?=\w{6,}$)(?=.*[a-z])(?=.*[A-Z])/;
+    // if (!patten.test(pwd)) {
+    //   alert('대소문자를 넣어주세요!');
+    //   return;
+    // }
 
     if (!email.includes('@')) {
       alert('유효한 이메일 값이 아닙니다!');

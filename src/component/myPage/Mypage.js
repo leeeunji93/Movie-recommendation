@@ -14,6 +14,7 @@ const MyPage = ({ match }) => {
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(1);
   const dId = match.params.dId;
+
   const isLogin = useSelector((state) => {
     //isLogin 의 구조가 왜 이렇게 되는걸까
     return state.auth.isLogin.isLogin;
@@ -43,21 +44,6 @@ const MyPage = ({ match }) => {
     }
   }, [isLogin, page]);
 
-  const clickDelete = () => {
-    if (window.confirm('삭제하세요?🥺')) {
-      NetTool.request(APIs.filmDiaryDelete)
-        .appendFormData('dId', dId)
-        .exec(true)
-        .then(() => {
-          alert('삭제 완료');
-          history.replace('/mypage');
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
-  };
-
   if (!isLogin) {
     //아직 로그인 안된 상태이므로 아무것도 렌더링하지 않는다.
     return null;
@@ -65,7 +51,28 @@ const MyPage = ({ match }) => {
 
   const DiaryItem = ({ data }) => {
     const clickedItem = () => {
+      console.log('dId', data.dId);
       history.push('/DiaryDataContainer/' + data.dId);
+    };
+    const clickDelete = () => {
+      if (window.confirm('정말 삭제하세요?')) {
+        console.log('dId', dId);
+        NetTool.request(APIs.filmDiaryDelete)
+          .appendFormData('dId', data.dId)
+          .exec(true)
+          .then(() => {
+            alert('삭제 완료');
+            history.replace('/mypage/' + data.dId);
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
+    };
+
+    //왜 업데이트 안되니?
+    const clickUpdate = () => {
+      history.push('/search/' + data.dId);
     };
 
     return (
@@ -82,6 +89,9 @@ const MyPage = ({ match }) => {
 
             <button className="data_list_btn" onClick={clickDelete}>
               Delete
+            </button>
+            <button className="data_list_btn" onClick={clickUpdate}>
+              Update
             </button>
           </div>
         </div>

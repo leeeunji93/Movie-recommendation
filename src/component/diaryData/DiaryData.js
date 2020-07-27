@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { NetTool, APIs } from '../../tool/NetTool';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/diaryData';
-import { useHistory } from 'react-router-dom';
+
 import './DiaryData.scss';
 
 const DiaryData = ({ match }) => {
   const { diaryData } = useSelector((state) => state);
-  const history = useHistory();
+
   const dispatch = useDispatch();
   const { data } = diaryData;
   const { movie, diary, user } = data;
@@ -41,11 +41,6 @@ const DiaryData = ({ match }) => {
         alert(error);
       });
   }, []);
-
-  // const clickUpdate = () => {
-  //   history.push('/SearchMovieContainer/' + dId);
-  // };
-
 
   if (!movie || !diary || !user) {
     return null;
@@ -89,9 +84,6 @@ const DiaryData = ({ match }) => {
       <div style={{ whiteSpace: 'pre-wrap' }} className="movieInfo_note">
         <p> {diary.notes}</p>
       </div>
-
-      {/* <button onClick={clickUpdate}>일기 수정</button> */}
-
     </div>
   );
 };
