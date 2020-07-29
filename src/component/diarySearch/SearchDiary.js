@@ -25,10 +25,10 @@ const SearchDiary = ({ match }) => {
 
   useEffect(() => {
     refreshTags();
-    if (isModify) {
-      console.log('@@dId', dId);
-      refreshUpdateData(dId);
-    }
+    // if (isModify) {
+    //   console.log('@@dId', dId);
+    //   refreshUpdateData(dId);
+    // }
   }, []);
 
   useEffect(() => {
@@ -37,26 +37,26 @@ const SearchDiary = ({ match }) => {
     };
   }, []);
 
-  const refreshUpdateData = (dId) => {
-    const url = APIs.filmDiaryDetail(dId);
-    NetTool.request(url)
-      .exec(true)
-      .then((resultData) => {
-        console.log('수정할 데이터 가져오기 완료', resultData);
-        console.log('resultData.diary', resultData.diary);
-        dispatch(
-          actions.setForm({
-            key: 'form',
-            value: resultData.diary,
-          }),
-          actions.setNever({
-            key: 'selectedMovie',
-            value: resultData.movie,
-          }),
-        );
-      })
-      .catch((error) => alert(error));
-  };
+  // const refreshUpdateData = (dId) => {
+  //   const url = APIs.filmDiaryDetail(dId);
+  //   NetTool.request(url)
+  //     .exec(true)
+  //     .then((resultData) => {
+  //       console.log('수정할 데이터 가져오기 완료', resultData);
+  //       console.log('resultData.diary', resultData.diary);
+  //       dispatch(
+  //         actions.setForm({
+  //           key: 'form',
+  //           value: resultData.diary,
+  //         }),
+  //         actions.setNever({
+  //           key: 'selectedMovie',
+  //           value: resultData.movie,
+  //         }),
+  //       );
+  //     })
+  //     .catch((error) => alert(error));
+  // };
 
   //모든 태그들 가져온다.
   const refreshTags = () => {
@@ -84,9 +84,12 @@ const SearchDiary = ({ match }) => {
   });
 
   let selectedTags = [];
+
   const handleChangeTags = (e) => {
+    console.log('name', e.target.name);
+    console.log('value', e.target.value);
     selectedTags = selectedTags.concat(e.target.value);
-    selectedTags.join(',');
+    console.log('selectedTags', selectedTags);
   };
 
   const handleChangeDiaryData = (e) => {
@@ -123,20 +126,25 @@ const SearchDiary = ({ match }) => {
   const handleSave = () => {
     console.log(selectedMovie);
 
-    if (!selectedMovie) {
-      console.log(selectedMovie);
-      alert('영화를 선택하세요');
-      return;
-    }
+    // if (!selectedMovie) {
+    //   console.log(selectedMovie);
+    //   alert('영화를 선택하세요');
+    //   return;
+    // }
 
-    if (input.title.trim().length === 0) {
-      alert('일기 제목을 쓰세요');
-      return;
-    }
+    // if (input.title.trim().length === 0) {
+    //   alert('일기 제목을 쓰세요');
+    //   return;
+    // }
 
     //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
     const movieJson = JSON.stringify(selectedMovie);
     const diaryJson = JSON.stringify(form);
+    console.log('movieJson', movieJson);
+    console.log('diaryJson', diaryJson);
+
+    const tags = selectedTags.join(',');
+    console.log('tag', tags);
 
     //저장한다.
     NetTool.request(APIs.filmDiarySave)

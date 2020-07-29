@@ -4,7 +4,7 @@ import SearchMovieContainer from './searchContainer/SearchMovieContainer';
 import MyPageContainer from './myPageContainer/MyPageContainer';
 import Login from './AuthContainer/Login';
 import Register from './AuthContainer/Register';
-import HeaderSearchContainer from './headerSearchContainer/HeaderSearchContainer';
+import HeaderSearchContainer from './HeaderSearchContainer/HeaderSearchContainer';
 
 export {
   MainContainer,
