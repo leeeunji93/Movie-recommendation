@@ -16,7 +16,7 @@ const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
   const { form, never } = search;
-  const { tagsAll, rating } = form;
+  const { tagsAll } = form;
 
   const dId = match.params.dId;
   const { selectedMovie } = never;
@@ -81,6 +81,8 @@ const SearchDiary = ({ match }) => {
     cover: '',
     notes: '',
     watchDate: '',
+    tags: '',
+    rating: '',
   });
 
   let selectedTags = [];
@@ -102,15 +104,16 @@ const SearchDiary = ({ match }) => {
 
   const handlePlusRating = () => {
     const maxCore = 4;
-    if (form.rating > maxCore) {
+    if (input.rating > maxCore) {
       return;
     }
-    dispatch(
-      actions.setForm({
-        key: 'rating',
-        value: ++form.rating,
-      }),
-    );
+    // dispatch(
+    //   actions.setForm({
+    //     key: 'rating',
+    //     value: ++form.rating,
+    //   }),
+    // );
+    setInput(input.rating + 1);
   };
 
   const handleMinusRating = () => {
@@ -137,9 +140,11 @@ const SearchDiary = ({ match }) => {
     //   return;
     // }
 
+    input.tags = selectedTags.join(',');
+
     //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
     const movieJson = JSON.stringify(selectedMovie);
-    const diaryJson = JSON.stringify(form);
+    const diaryJson = JSON.stringify(input);
     console.log('movieJson', movieJson);
     console.log('diaryJson', diaryJson);
 
@@ -152,6 +157,7 @@ const SearchDiary = ({ match }) => {
       .appendFormData('diaryJson', diaryJson) //필수 데이터
       .exec(true)
       .then((jsonData) => {
+        console.log('diaryJson', diaryJson);
         alert('데이터 저장 성공');
         history.push('/');
       })
@@ -227,7 +233,7 @@ const SearchDiary = ({ match }) => {
             </div>
 
             <div className="write_tags">
-              <select name="tags_st" onChange={handleChangeTags}>
+              <select name="tags" onChange={handleChangeTags}>
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;
@@ -235,7 +241,7 @@ const SearchDiary = ({ match }) => {
                   : ''}
               </select>
 
-              <select name="tags_si" onChange={handleChangeTags}>
+              <select name="tags" onChange={handleChangeTags}>
                 {tagsAll[1] !== undefined
                   ? tagsAll[1].tags.map((tagTypeData) => {
                       return <option value={tagTypeData}>{tagTypeData}</option>;
