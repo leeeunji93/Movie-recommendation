@@ -65,7 +65,7 @@ const DiaryList = () => {
     };
 
     const clickedItem = () => {
-      history.push('/DiaryDataContainer/' + data.dId);
+      history.push('/diarydata/' + data.dId);
     };
     let tags = data.tags.split(',');
     return (

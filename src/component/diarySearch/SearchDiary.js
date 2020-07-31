@@ -15,48 +15,40 @@ import StarIcon from '@material-ui/icons/Star';
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { form, never } = search;
-  const { tagsAll } = form;
+  const { never } = search;
+  const { tagsAll } = never;
 
   const dId = match.params.dId;
+  const isModify = dId > 0;
   const { selectedMovie } = never;
   const history = useHistory();
-  const isModify = dId > 0;
 
   useEffect(() => {
     refreshTags();
-    // if (isModify) {
-    //   console.log('@@dId', dId);
-    //   refreshUpdateData(dId);
-    // }
+    if (isModify) {
+      console.log('@@dId', dId);
+      refreshUpdateData(dId);
+    }
+    dispatch(actions.destroy());
   }, []);
 
-  useEffect(() => {
-    return () => {
-      dispatch(actions.destroy());
-    };
-  }, []);
-
-  // const refreshUpdateData = (dId) => {
-  //   const url = APIs.filmDiaryDetail(dId);
-  //   NetTool.request(url)
-  //     .exec(true)
-  //     .then((resultData) => {
-  //       console.log('수정할 데이터 가져오기 완료', resultData);
-  //       console.log('resultData.diary', resultData.diary);
-  //       dispatch(
-  //         actions.setForm({
-  //           key: 'form',
-  //           value: resultData.diary,
-  //         }),
-  //         actions.setNever({
-  //           key: 'selectedMovie',
-  //           value: resultData.movie,
-  //         }),
-  //       );
-  //     })
-  //     .catch((error) => alert(error));
-  // };
+  const refreshUpdateData = (dId) => {
+    const url = APIs.filmDiaryDetail(dId);
+    NetTool.request(url)
+      .exec(true)
+      .then((resultData) => {
+        console.log('수정할 데이터 가져오기 완료', resultData);
+        console.log('resultData.diary', resultData.diary);
+        dispatch(
+          actions.setNever({
+            key: 'selectedMovie',
+            value: resultData.movie,
+          }),
+        );
+        setInput(resultData.diary);
+      })
+      .catch((error) => alert(error));
+  };
 
   //모든 태그들 가져온다.
   const refreshTags = () => {
@@ -65,7 +57,7 @@ const SearchDiary = ({ match }) => {
       .then((resultData) => {
         console.log('가져온 태그들 데이터 ', resultData);
         dispatch(
-          actions.setForm({
+          actions.setNever({
             key: 'tagsAll',
             value: resultData,
           }),
@@ -81,17 +73,17 @@ const SearchDiary = ({ match }) => {
     cover: '',
     notes: '',
     watchDate: '',
-    tags: '',
+    tags: [],
     rating: '',
+    // createdAt: '0',
+    // modifiedAt: '0',
   });
-
-  let selectedTags = [];
 
   const handleChangeTags = (e) => {
     console.log('name', e.target.name);
     console.log('value', e.target.value);
-    selectedTags = selectedTags.concat(e.target.value);
-    console.log('selectedTags', selectedTags);
+    input.tags = input.tags.concat(e.target.value);
+    console.log('  input.tags ', input.tags);
   };
 
   const handleChangeDiaryData = (e) => {
@@ -107,24 +99,10 @@ const SearchDiary = ({ match }) => {
     if (input.rating > maxCore) {
       return;
     }
-    // dispatch(
-    //   actions.setForm({
-    //     key: 'rating',
-    //     value: ++form.rating,
-    //   }),
-    // );
     setInput(input.rating + 1);
   };
 
-  const handleMinusRating = () => {
-    console.log('별점 마이너스', form.rating);
-    dispatch(
-      actions.setForm({
-        key: 'rating',
-        value: form.rating - 1,
-      }),
-    );
-  };
+  const handleMinusRating = () => {};
 
   const handleSave = () => {
     console.log(selectedMovie);
@@ -140,16 +118,14 @@ const SearchDiary = ({ match }) => {
     //   return;
     // }
 
-    input.tags = selectedTags.join(',');
+    input.tags = input.tags.join(',');
+    console.log('@@tag', input.tags);
 
     //영화데이터와, 일기 데이터를 JSON 형식의 문자열로 변경한다.
     const movieJson = JSON.stringify(selectedMovie);
     const diaryJson = JSON.stringify(input);
     console.log('movieJson', movieJson);
     console.log('diaryJson', diaryJson);
-
-    const tags = selectedTags.join(',');
-    console.log('tag', tags);
 
     //저장한다.
     NetTool.request(APIs.filmDiarySave)
@@ -224,7 +200,7 @@ const SearchDiary = ({ match }) => {
                   <ThumbDownIcon />
                 </span>
 
-                {[...Array(rating)].map((x, i) => (
+                {[...Array(input.rating)].map((x, i) => (
                   <span classNamej="star" key={i}>
                     <StarIcon />️
                   </span>

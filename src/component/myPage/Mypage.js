@@ -52,8 +52,12 @@ const MyPage = ({ match }) => {
   const DiaryItem = ({ data }) => {
     const clickedItem = () => {
       console.log('dId', data.dId);
-      history.push('/DiaryDataContainer/' + data.dId);
+      history.push('/diarydata/' + data.dId);
     };
+    const clickUpdate = () => {
+      history.push('/search/' + data.dId);
+    };
+
     const clickDelete = () => {
       if (window.confirm('정말 삭제하세요?')) {
         console.log('dId', dId);
@@ -71,9 +75,6 @@ const MyPage = ({ match }) => {
     };
 
     //왜 업데이트 안되니?
-    const clickUpdate = () => {
-      history.push('/search/' + data.dId);
-    };
 
     return (
       <section>
@@ -86,10 +87,10 @@ const MyPage = ({ match }) => {
             <div className="data_list_date">{data.watchDate}</div>
 
             <div className="data_list_rate"> {`⭐${data.rating}.0`}</div>
-
             <button className="data_list_btn" onClick={clickDelete}>
               Delete
             </button>
+
             <button className="data_list_btn" onClick={clickUpdate}>
               Update
             </button>
