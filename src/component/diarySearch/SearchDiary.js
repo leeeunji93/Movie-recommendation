@@ -16,11 +16,10 @@ const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
   const { never } = search;
-  const { tagsAll } = never;
+  const { tagsAll, selectedMovie } = never;
 
   const dId = match.params.dId;
   const isModify = dId > 0;
-  const { selectedMovie } = never;
   const history = useHistory();
 
   useEffect(() => {
@@ -74,16 +73,14 @@ const SearchDiary = ({ match }) => {
     notes: '',
     watchDate: '',
     tags: [],
-    rating: '',
+    rating: 0,
     // createdAt: '0',
     // modifiedAt: '0',
   });
 
   const handleChangeTags = (e) => {
-    console.log('name', e.target.name);
-    console.log('value', e.target.value);
     input.tags = input.tags.concat(e.target.value);
-    console.log('  input.tags ', input.tags);
+    console.log('  input.tags', input.tags);
   };
 
   const handleChangeDiaryData = (e) => {
@@ -95,14 +92,15 @@ const SearchDiary = ({ match }) => {
   };
 
   const handlePlusRating = () => {
+    console.log('rating', input.rating);
     const maxCore = 4;
-    if (input.rating > maxCore) {
-      return;
-    }
-    setInput(input.rating + 1);
+    input.rating += 1;
   };
 
-  const handleMinusRating = () => {};
+  const handleMinusRating = () => {
+    console.log('rating-', input.rating);
+    input.rating = input.rating - 1;
+  };
 
   const handleSave = () => {
     console.log(selectedMovie);

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { NetTool, APIs } from '../../tool/NetTool';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../reducers/diaryList';
 import { useHistory } from 'react-router';
 import './DiaryList.scss';
 import { useState } from 'react';
@@ -9,13 +7,15 @@ import './DiaryList.scss';
 
 const PAGE_SIZE = 10;
 
-const DiaryList = () => {
-  const { diaryList } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const { list } = diaryList;
-  const { diaryArr, page, totalPage, totalCount } = list;
+const DiaryList = ({ match }) => {
+  const [page, setPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [diaryArr, setDiaryArr] = useState([]);
+
   const history = useHistory();
   const [hangOver, setHangingOver] = useState(false);
+
   useEffect(() => {
     refreshDiaryArr(1);
   }, []);
@@ -25,30 +25,10 @@ const DiaryList = () => {
       .exec()
       .then((resultData) => {
         console.log('가져온다이어리리스트', resultData);
-        dispatch(
-          actions.setDiary({
-            key: 'diaryArr',
-            value: resultData.diaryArr,
-          }),
-        );
-        dispatch(
-          actions.setDiary({
-            key: 'page',
-            value: page,
-          }),
-        );
-        dispatch(
-          actions.setDiary({
-            key: 'totalPage',
-            value: resultData.totalPage,
-          }),
-        );
-        dispatch(
-          actions.setDiary({
-            key: 'totalCount',
-            value: resultData.totalCount,
-          }),
-        );
+        setPage(page);
+        setTotalCount(resultData.totalPage);
+        setTotalPage(resultData.totalPage);
+        setDiaryArr(resultData.diaryArr);
       })
       .catch((error) => {
         alert(error);
@@ -56,6 +36,7 @@ const DiaryList = () => {
   };
 
   const DiaryItem = ({ data }) => {
+    console.log('@@data', data);
     const handleOnMouseOver = () => {
       setHangingOver(!hangOver);
     };
@@ -67,6 +48,7 @@ const DiaryList = () => {
     const clickedItem = () => {
       history.push('/diarydata/' + data.dId);
     };
+
     let tags = data.tags.split(',');
     return (
       <div className="main_wrapper">

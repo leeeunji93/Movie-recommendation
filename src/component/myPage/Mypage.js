@@ -54,6 +54,7 @@ const MyPage = ({ match }) => {
       console.log('dId', data.dId);
       history.push('/diarydata/' + data.dId);
     };
+
     const clickUpdate = () => {
       history.push('/search/' + data.dId);
     };
@@ -74,8 +75,6 @@ const MyPage = ({ match }) => {
       }
     };
 
-    //왜 업데이트 안되니?
-
     return (
       <section>
         <div className="data_list" onClick={clickedItem}>
@@ -90,12 +89,11 @@ const MyPage = ({ match }) => {
             <button className="data_list_btn" onClick={clickDelete}>
               Delete
             </button>
-
-            <button className="data_list_btn" onClick={clickUpdate}>
-              Update
-            </button>
           </div>
         </div>
+        <button className="data_list_btn" onClick={clickUpdate}>
+          Update
+        </button>
       </section>
     );
   };
