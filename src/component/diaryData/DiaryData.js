@@ -1,41 +1,22 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { NetTool, APIs } from '../../tool/NetTool';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../reducers/diaryData';
-
 import './DiaryData.scss';
 
 const DiaryData = ({ match }) => {
-  const { diaryData } = useSelector((state) => state);
-
-  const dispatch = useDispatch();
-  const { data } = diaryData;
-  const { movie, diary, user } = data;
   const dId = match.params.dId;
+  const [diary, setDiary] = useState(null);
+  const [movie, setMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     NetTool.request(APIs.filmDiaryDetail(dId))
       .exec()
       .then((resultData) => {
         console.log('다이어리상세데이터', resultData);
-        dispatch(
-          actions.setDetail({
-            key: 'diary',
-            value: resultData.diary,
-          }),
-        );
-        dispatch(
-          actions.setDetail({
-            key: 'movie',
-            value: resultData.movie,
-          }),
-        );
-        dispatch(
-          actions.setDetail({
-            key: 'user',
-            value: resultData.user,
-          }),
-        );
+        setDiary(resultData.diary);
+        setMovie(resultData.movie);
+        setUser(resultData.user);
       })
       .catch((error) => {
         alert(error);
