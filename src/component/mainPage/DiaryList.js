@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import './DiaryList.scss';
 import { useState } from 'react';
 import './DiaryList.scss';
+import MyAccount from '../../tool/MyAccount';
 
 const PAGE_SIZE = 10;
 
@@ -13,8 +14,10 @@ const DiaryList = ({ match }) => {
   const [totalCount, setTotalCount] = useState(0);
   const [diaryArr, setDiaryArr] = useState([]);
 
-  const history = useHistory();
   const [hangOver, setHangingOver] = useState(false);
+
+  const history = useHistory();
+  const dId = match.params.dId;
 
   useEffect(() => {
     refreshDiaryArr(1);
@@ -35,8 +38,11 @@ const DiaryList = ({ match }) => {
       });
   };
 
+  // if (!movie || !diary) {
+  //   return null;
+  // }
+
   const DiaryItem = ({ data }) => {
-    console.log('@@data', data);
     const handleOnMouseOver = () => {
       setHangingOver(!hangOver);
     };
@@ -71,6 +77,7 @@ const DiaryList = ({ match }) => {
             <div className="diary_content">
               <div>
                 <b className="userTitle">{data.title}</b>
+                <b> {data.director.split('|')}</b>
               </div>
               <div className="tag">
                 {tags.map((tag) => {

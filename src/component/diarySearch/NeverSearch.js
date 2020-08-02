@@ -6,12 +6,14 @@ import * as actions from '../../reducers/search';
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
-const NeverSearch = () => {
+const NeverSearch = ({ match }) => {
   const { search } = useSelector((state) => state); //store연결
   const dispatch = useDispatch(); //액션 발생시키자
   const { never } = search;
-  const { keyword, selectedMovie, searchResultArr } = never;
+  const { selectedMovie, searchResultArr } = never;
   const [clickState, setClickState] = useState(false);
+
+  const [keyword, setKeyword] = useState('');
 
   const handleClickSearch = () => {
     /* const keyword = keyword.trim();*/
@@ -99,16 +101,7 @@ const NeverSearch = () => {
               placeholder="작성하실 영화를 검색하세요"
               value={keyword}
               // onChange={handleChangeSearch}
-              onChange={(e) => {
-                console.log(e.target.value);
-                console.log(e.target.name);
-                dispatch(
-                  actions.setNever({
-                    key: e.target.name,
-                    value: e.target.value,
-                  }),
-                );
-              }}
+              onChange={(e) => setKeyword(e.target.value)}
             />
 
             <button onClick={handleClickSearch}>

@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { NetTool, APIs } from '../../tool/NetTool';
+import { useHistory } from 'react-router';
 import './DiaryData.scss';
+import MyAccount from '../../tool/MyAccount';
 
 const DiaryData = ({ match }) => {
   const dId = match.params.dId;
   const [diary, setDiary] = useState(null);
   const [movie, setMovie] = useState(null);
   const [user, setUser] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
+    console.log('상세dId', dId);
     NetTool.request(APIs.filmDiaryDetail(dId))
       .exec()
       .then((resultData) => {
-        console.log('다이어리상세데이터', resultData);
+        console.log('다이어리상세데이터', resultData.diary);
         setDiary(resultData.diary);
         setMovie(resultData.movie);
         setUser(resultData.user);
@@ -23,9 +27,29 @@ const DiaryData = ({ match }) => {
       });
   }, []);
 
+  const clickDelete = () => {
+    if (window.confirm('정말 삭제하세요?')) {
+      NetTool.request(APIs.filmDiaryDelete)
+        .appendFormData('dId', dId)
+        .exec(true)
+        .then(() => {
+          alert('삭제 완료');
+          history.replace('/mypage/' + dId);
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+  };
+
+  const clickUpdate = () => {
+    history.push('/search/' + dId);
+  };
+
   if (!movie || !diary || !user) {
     return null;
   }
+
   let tags = diary.tags.split(',');
   return (
     <div>
@@ -33,6 +57,21 @@ const DiaryData = ({ match }) => {
         <div className="dairyData_diary">
           <div className="dairyData_diary_user_img">
             <img src={diary.cover} alt="" />
+          </div>
+          {console.log('uId', MyAccount.uId)};
+          <div className="btn">
+            {user.uId === MyAccount.uId ? (
+              <button className="data_list_btn" onClick={clickDelete}>
+                Delete
+              </button>
+            ) : null}
+          </div>
+          <div className="btn">
+            {user.uId === MyAccount.uId ? (
+              <button className="data_list_btn" onClick={clickUpdate}>
+                Update
+              </button>
+            ) : null}
           </div>
           <div className="dairyData_diary_data">
             <div className="dairyData_diary_user">{user.nickname}님의 Note</div>

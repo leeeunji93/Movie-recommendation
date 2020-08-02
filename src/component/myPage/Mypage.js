@@ -55,26 +55,6 @@ const MyPage = ({ match }) => {
       history.push('/diarydata/' + data.dId);
     };
 
-    const clickUpdate = () => {
-      history.push('/search/' + data.dId);
-    };
-
-    const clickDelete = () => {
-      if (window.confirm('정말 삭제하세요?')) {
-        console.log('dId', dId);
-        NetTool.request(APIs.filmDiaryDelete)
-          .appendFormData('dId', data.dId)
-          .exec(true)
-          .then(() => {
-            alert('삭제 완료');
-            history.replace('/mypage/' + data.dId);
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      }
-    };
-
     return (
       <section>
         <div className="data_list" onClick={clickedItem}>
@@ -86,14 +66,8 @@ const MyPage = ({ match }) => {
             <div className="data_list_date">{data.watchDate}</div>
 
             <div className="data_list_rate"> {`⭐${data.rating}.0`}</div>
-            <button className="data_list_btn" onClick={clickDelete}>
-              Delete
-            </button>
           </div>
         </div>
-        <button className="data_list_btn" onClick={clickUpdate}>
-          Update
-        </button>
       </section>
     );
   };

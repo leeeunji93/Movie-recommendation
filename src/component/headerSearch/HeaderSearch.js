@@ -21,6 +21,7 @@ const HeaderSearch = () => {
   }, [dispatch]);
 
   const DiaryItem = (data) => {
+    console.log('data란', data);
     const handleOnMouseOver = () => {
       setHangingOver(!hangOver);
     };
@@ -31,7 +32,7 @@ const HeaderSearch = () => {
 
     const clickedItem = () => {
       if (!!history) {
-        history.push('/DiaryDataContainer/' + data.data.dId);
+        history.push('/diarydata/' + data.data.dId);
       }
     };
     let tags = data.data.tags.split(',');

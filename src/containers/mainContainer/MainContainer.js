@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line import/no-cycle
-import { DiaryList, DropdownList } from '../../component';
+import { DiaryList } from '../../component';
 
 class MainContainer extends Component {
   render() {
+    const { match } = this.props;
     return (
       <div>
-        <DiaryList />
+        <DiaryList match={match} />
       </div>
     );
   }

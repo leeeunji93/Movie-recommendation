@@ -22,13 +22,25 @@ const SearchDiary = ({ match }) => {
   const isModify = dId > 0;
   const history = useHistory();
 
+  const [input, setInput] = useState({
+    title: '',
+    cover: '',
+    notes: '',
+    watchDate: '',
+    tags: [],
+    rating: 0,
+    createdAt: '0',
+    modifiedAt: '0',
+  });
+
   useEffect(() => {
     refreshTags();
     if (isModify) {
       console.log('@@dId', dId);
       refreshUpdateData(dId);
+    } else {
+      console.log('뻐킹');
     }
-    dispatch(actions.destroy());
   }, []);
 
   const refreshUpdateData = (dId) => {
@@ -36,8 +48,7 @@ const SearchDiary = ({ match }) => {
     NetTool.request(url)
       .exec(true)
       .then((resultData) => {
-        console.log('수정할 데이터 가져오기 완료', resultData);
-        console.log('resultData.diary', resultData.diary);
+        console.log('수정데이터', resultData);
         dispatch(
           actions.setNever({
             key: 'selectedMovie',
@@ -49,7 +60,7 @@ const SearchDiary = ({ match }) => {
       .catch((error) => alert(error));
   };
 
-  //모든 태그들 가져온다.
+  //태그
   const refreshTags = () => {
     NetTool.request(APIs.filmTags)
       .exec()
@@ -67,28 +78,17 @@ const SearchDiary = ({ match }) => {
       });
   };
 
-  const [input, setInput] = useState({
-    title: '',
-    cover: '',
-    notes: '',
-    watchDate: '',
-    tags: [],
-    rating: 0,
-    // createdAt: '0',
-    // modifiedAt: '0',
-  });
-
-  const handleChangeTags = (e) => {
-    input.tags = input.tags.concat(e.target.value);
-    console.log('  input.tags', input.tags);
-  };
-
   const handleChangeDiaryData = (e) => {
-    console.log('name', e.target.name);
+    console.log('name', e.target.value);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleChangeTags = (e) => {
+    input.tags = input.tags.concat(e.target.value);
+    console.log('  input.tags', input.tags);
   };
 
   const handlePlusRating = () => {

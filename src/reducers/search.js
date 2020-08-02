@@ -6,7 +6,6 @@ const SET_NEVER = 'search/SET_NEVER';
 
 const initialState = {
   never: {
-    keyword: '',
     selectedMovie: null,
     searchResultArr: [],
     tagsAll: [],
