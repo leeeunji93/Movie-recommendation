@@ -2,6 +2,7 @@
 
 한 뼘씩 적어보는 영화 일기 홈페이지입니다.<br>
 주소 : [Suddenly](https://suddenly.or.kr/)
+> Mobile 기준 (반응형 )
 
 ### Use
 
