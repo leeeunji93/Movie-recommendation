@@ -9,8 +9,8 @@
 1. 로그인 및 회원 가입<br>
 2. 로그인을 하면 MyPage에서 나의 일기 모아보기 기능
 3. 일기는 영화 검색(네이버 영화 검색 API), 제목과 부제목, 별점, 태그 , 포스터 , 일기 내용으로 이루어짐
-4. 다른 유저의 일기 공유 <div>
- ![IMB_YKMv6m](https://user-images.githubusercontent.com/59554635/89487325-18fb7400-d7e0-11ea-8c44-a5ad377b4efe.gif)
+4. 다른 유저의 일기 공유 
+   <img src="https://user-images.githubusercontent.com/59554635/89487325-18fb7400-d7e0-11ea-8c44-a5ad377b4efe.gif" width="250px" height="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 5. 영화 노트 검색 기능을 통해 궁금한 영화와 관련된 일기만 모아보기 가능
 
 ### Skills
