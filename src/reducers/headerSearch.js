@@ -5,7 +5,6 @@ const DESTROY = 'header/DESTROY';
 
 const initialState = {
   search: {
-    keyword: '',
     searchArr: [],
   },
 };

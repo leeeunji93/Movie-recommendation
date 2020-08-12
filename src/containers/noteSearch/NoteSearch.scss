@@ -1,0 +1,32 @@
+@import '../../style/utils.scss';
+@import '../../style//reset.scss';
+
+.note_search {
+  padding: 1rem;
+  padding-top: 4rem;
+  display: flex;
+  align-items: center;
+  input {
+    height: 3.5rem;
+    background: #f1f1f1;
+    border-radius: 1rem;
+    border: none;
+    &:hover {
+      border: 1px solid $gray;
+      background: #f1f1f1;
+    }
+  }
+  ::placeholder {
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 17px;
+    color: #c4c4c4;
+    padding: 1rem;
+  }
+  .menu {
+    margin-left: 2rem;
+    width: 4rem;
+    font-size: 1.4rem;
+    color: $black;
+  }
+}

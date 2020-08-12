@@ -5,6 +5,7 @@ import MyPageContainer from './myPageContainer/MyPageContainer';
 import Login from './AuthContainer/Login';
 import Register from './AuthContainer/Register';
 import HeaderSearchContainer from './HeaderSearchContainer/HeaderSearchContainer';
+import NoteSearch from './noteSearch/NoteSearch';
 
 export {
   MainContainer,
@@ -14,4 +15,5 @@ export {
   Login,
   Register,
   HeaderSearchContainer,
+  NoteSearch,
 };

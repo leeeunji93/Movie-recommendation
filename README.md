@@ -6,9 +6,7 @@
 ### Use
 
 1. 로그인 및 회원 가입<br>
-<div>
-  ![IMB_YKMv6m](https://user-images.githubusercontent.com/59554635/89487325-18fb7400-d7e0-11ea-8c44-a5ad377b4efe.gif)
-</div>
+   <img src="https://user-images.githubusercontent.com/59554635/89487325-18fb7400-d7e0-11ea-8c44-a5ad377b4efe.gif" width="250px" height="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 2. 로그인을 하면 MyPage에서 일기 작성 가능
 3. 일기는 영화 검색(네이버 영화 검색 API), 제목과 부제목, 별점, 태그 , 포스터 , 일기 내용으로 이루어짐
 4. 아이콘을 누르면 다른 유저의 일기 공유

@@ -12,7 +12,7 @@ $beige: #d9af8b;
 $pink: #f2636f;
 $purple: #8344c2;
 
-$basicFont: #2c3e50;
+$basicFont: #121212;
 
 $phone: 320px;
 $desktop: 321px;
@@ -27,7 +27,7 @@ $desktop: 321px;
 }
 
 @mixin input {
-  width: 20rem;
+  width: 34rem;
   border: 1px solid $gray;
   border-radius: 3px;
   font-size: 1.5rem;

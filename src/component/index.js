@@ -7,7 +7,6 @@ import neverSearch from './diarySearch/NeverSearch';
 import searchDairy from './diarySearch/SearchDiary';
 import MyPage from './myPage/Mypage';
 import HeaderSearch from './headerSearch/HeaderSearch';
-
 export {
   Header,
   DiaryList,

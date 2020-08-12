@@ -10,7 +10,7 @@ import '../headerSearch/HeaderSearch.scss';
 const HeaderSearch = () => {
   const { headerSearch } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { keyword, searchArr } = headerSearch.search;
+  const { searchArr } = headerSearch.search;
   const history = useHistory();
   const [hangOver, setHangingOver] = useState(false);
 

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import './DiaryList.scss';
 import { useState } from 'react';
 import './DiaryList.scss';
+import Header from '../../containers/header/Header';
 import MyAccount from '../../tool/MyAccount';
 
 const PAGE_SIZE = 10;
@@ -93,6 +94,7 @@ const DiaryList = ({ match }) => {
 
   return (
     <div>
+      <Header />
       <section className="diary_data">
         {diaryArr.map((data) => (
           <DiaryItem data={data} key={data.id} />
