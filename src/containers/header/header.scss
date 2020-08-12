@@ -6,31 +6,32 @@
   width: 100%;
 }
 
-// .header_full {
-//   position: relative;
-// }
-// .header_wrapper {
-//   // index.css에 padding값 필요함
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   //positon 겹침 현상 해소
-//   z-index: 1;
-// }
+.header_full {
+  position: relative;
+}
+.header_wrapper {
+  // index.css에 padding값 필요함
+  position: fixed;
+  top: 0;
+  left: 0;
+  //positon 겹침 현상 해소
+  z-index: 1;
+}
 
 .header_zip {
   margin-top: 0;
   width: 100%;
-  height: 65px;
-  display: flex;
+  height: 50px;
+  display: relative;
   justify-content: space-between;
+  background-color: #fff;
   .header_logo {
     a {
-      background-color: #fff;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      //height값을 부모랑 똑같이 안주면 위로 탁 붙어버림! 자식을 주면 부모는 height값 생략 가능
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // height값을 부모랑 똑같이 안주면 위로 탁 붙어버림! 자식을 주면 부모는 height값 생략 가능
+      height: 50px;
       min-width: 100%;
 
       font-size: 2rem;
@@ -38,7 +39,9 @@
     }
   }
   .header_search {
-    padding: 15px 0;
+    position: fixed;
+    top: 15px;
+    left: 20px;
   }
 }
 
