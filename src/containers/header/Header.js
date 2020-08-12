@@ -14,17 +14,7 @@ import * as authActions from '../../reducers/auth';
 import * as actions from '../../reducers/headerSearch';
 import Navbar from '../header/Navbar';
 
-const useStyles = makeStyles((theme) => ({
-  search: {
-    color: '#fff',
-    // backgroundColor: '#000',
-    width: theme.spacing(3),
-    height: theme.spacing(3),
-  },
-}));
-
 const Header = () => {
-  const classes = useStyles();
   const { auth } = useSelector((state) => state);
   const { isLogin } = auth;
   const { headerSearch } = useSelector((state) => state);
@@ -70,9 +60,7 @@ const Header = () => {
       <section className="header_zip">
         <div className="header_search">
           <Link to="/notesearch">
-            <Avatar className={classes.search}>
-              <SearchRoundedIcon className="icon" />
-            </Avatar>
+            <SearchRoundedIcon className="icon" />
           </Link>
         </div>
 
