@@ -11,6 +11,7 @@
     background: #f1f1f1;
     border-radius: 1rem;
     border: none;
+    padding-left: 1.5rem;
     &:hover {
       border: 1px solid $gray;
       background: #f1f1f1;
@@ -32,10 +33,14 @@
 }
 
 .note_result {
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-bottom: 3rem;
+  width: 200px;
+
   .note_result_keyword {
     font-weight: 500;
     font-style: italic;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
   }
 }

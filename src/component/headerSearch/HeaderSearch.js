@@ -1,10 +1,8 @@
 import React from 'react';
-import { NetTool, APIs } from '../../tool/NetTool';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/headerSearch';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import '../headerSearch/HeaderSearch.scss';
 
 const HeaderSearch = () => {
@@ -12,7 +10,6 @@ const HeaderSearch = () => {
   const dispatch = useDispatch();
   const { searchArr } = headerSearch.search;
   const history = useHistory();
-  const [hangOver, setHangingOver] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -22,14 +19,6 @@ const HeaderSearch = () => {
 
   const DiaryItem = (data) => {
     console.log('data란', data);
-    const handleOnMouseOver = () => {
-      setHangingOver(!hangOver);
-    };
-
-    const handleOnMouseLeave = () => {
-      setHangingOver(hangOver);
-    };
-
     const clickedItem = () => {
       if (!!history) {
         history.push('/diarydata/' + data.data.dId);
@@ -39,33 +28,9 @@ const HeaderSearch = () => {
 
     return (
       <div className="hSearch_wrapper">
-        <section
-          className="hSearch"
-          onMouseEnter={handleOnMouseOver}
-          onMouseLeave={handleOnMouseLeave}
-          onClick={clickedItem}
-        >
+        <section className="hSearch" onClick={clickedItem}>
           <img className="hSearch_image" src={data.data.cover} alt="" />
-
-          {hangOver ? (
-            <div className="hSearch_content">
-              <b>{data.data.title}</b>
-              <div>
-                <b>{data.data.rating}</b>/5
-              </div>
-            </div>
-          ) : (
-            <div className="hSearch_content">
-              <div>
-                <b className="hSearch_userTitle">{data.data.movieTitle}</b>
-              </div>
-              <div className="hSearch_tag">
-                {tags.map((tag) => {
-                  return `# ${tag} `;
-                })}
-              </div>
-            </div>
-          )}
+          <span className="hSearch_notes">{data.data.notes}</span>
         </section>
       </div>
     );

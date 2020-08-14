@@ -64,7 +64,7 @@ const App = () => {
         />
         <Route component={Register} path="/register" />
         <Route component={NoteSearch} path="/notesearch" />
-        <Route component={HeaderSearchContainer} path="/headersearch" />
+        {/* <Route component={HeaderSearchContainer} path="/headersearch" /> */}
 
         <Route path="/">Not found</Route>
       </Switch>

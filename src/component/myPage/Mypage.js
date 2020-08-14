@@ -59,10 +59,8 @@ const MyPage = ({ match }) => {
       <section>
         <div className="data_list" onClick={clickedItem}>
           <img src={data.cover} alt="" />
-          <div className="data_list_info">
-            <h1 className="data_list_info_title"> {data.title} </h1>
-            <h3 className="data_list_info_date">{data.watchDate}의 기록</h3>
-          </div>
+          <h1 className="data_list_info_title"> {data.title} </h1>
+          <h3 className="data_list_info_date">{data.watchDate}의 기록</h3>
         </div>
       </section>
     );
