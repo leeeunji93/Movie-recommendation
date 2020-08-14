@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Avatar from '@material-ui/core/Avatar';
 
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
@@ -16,10 +17,10 @@ const Header = () => {
             <SearchRoundedIcon className="icon" fontSize="large" />
           </Link>
         </div>
-
         <h1 className="header_logo">
           <Link to="/">Suddenly</Link>
         </h1>
+
         <Navbar />
       </section>
     </div>

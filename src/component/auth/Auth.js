@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import * as actions from '../../reducers/auth';
 import './Auth.scss';
+import '../../containers/header/Header';
+import Header from '../../containers/header/Header';
 
 const textMap = {
   login: '로그인',
@@ -109,67 +111,70 @@ const Auth = ({ type, onChangeLoginState }) => {
   };
 
   return (
-    <div className="authForm_wrapper">
-      <h1>{text}</h1>
+    <>
+      {/* <Header /> */}
+      <div className="authForm_wrapper">
+        <h1>{text}</h1>
 
-      <form onSubmit={onSubmit} className="auth_form">
-        <input
-          className="auth_input"
-          name="email"
-          placeholder="이메일 주소 입력하세요"
-          onChange={onChange}
-          value={email}
-        />
-        <br />
-        {type === 'register' && (
+        <form onSubmit={onSubmit} className="auth_form">
           <input
             className="auth_input"
-            name="nickname"
-            placeholder="닉네임을 입력하세요"
+            name="email"
+            placeholder="이메일 주소 입력하세요"
             onChange={onChange}
-            value={nickname}
+            value={email}
           />
-        )}
 
-        <input
-          type="password"
-          className="auth_input"
-          name="pwd"
-          placeholder="비밀번호를 입력하세요"
-          onChange={onChange}
-          value={pwd}
-        />
+          {type === 'register' && (
+            <input
+              className="auth_input"
+              name="nickname"
+              placeholder="닉네임을 입력하세요"
+              onChange={onChange}
+              value={nickname}
+            />
+          )}
 
-        {type === 'register' && (
           <input
             type="password"
             className="auth_input"
-            name="pwdConfirm"
-            placeholder="비밀번호를 확인하세요"
+            name="pwd"
+            placeholder="비밀번호를 입력하세요"
             onChange={onChange}
-            value={pwdConfirm}
+            value={pwd}
           />
-        )}
-        <div className="button">
-          {type === 'login' ? (
-            <Link to="/">
-              <button onClick={clickLogin}>로그인</button>
-            </Link>
-          ) : null}
-        </div>
 
-        <br />
-        <footer>
-          {type === 'login' ? (
-            <Link to="/register">회원가입</Link>
-          ) : (
-            <button className="registerbtn" onClick={clickJoin}>
-              로그인
-            </button>
+          {type === 'register' && (
+            <input
+              type="password"
+              className="auth_input"
+              name="pwdConfirm"
+              placeholder="비밀번호를 확인하세요"
+              onChange={onChange}
+              value={pwdConfirm}
+            />
           )}
-        </footer>
-      </form>
-    </div>
+          <div className="button">
+            {type === 'login' ? (
+              <Link to="/">
+                <button onClick={clickLogin}>로그인</button>
+              </Link>
+            ) : null}
+          </div>
+
+          <br />
+          <footer>
+            {type === 'login' ? (
+              <Link to="/register">계정이 필요하세요? / 회원가입</Link>
+            ) : (
+              <button className="registerbtn" onClick={clickJoin}>
+                로그인
+              </button>
+            )}
+          </footer>
+        </form>
+      </div>
+    </>
   );
 };
 

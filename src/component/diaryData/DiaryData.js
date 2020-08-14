@@ -32,20 +32,20 @@ const DiaryData = ({ match }) => {
       });
   }, []);
 
-  // const clickDelete = () => {
-  //   if (window.confirm('정말 삭제하세요?')) {
-  //     NetTool.request(APIs.filmDiaryDelete)
-  //       .appendFormData('dId', dId)
-  //       .exec(true)
-  //       .then(() => {
-  //         alert('삭제 완료');
-  //         history.replace('/mypage/' + dId);
-  //       })
-  //       .catch((error) => {
-  //         alert(error);
-  //       });
-  //   }
-  // };
+  const clickDelete = () => {
+    if (window.confirm('정말 삭제하세요?')) {
+      NetTool.request(APIs.filmDiaryDelete)
+        .appendFormData('dId', dId)
+        .exec(true)
+        .then(() => {
+          alert('삭제 완료');
+          history.replace('/mypage/' + dId);
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+  };
 
   // const clickUpdate = () => {
   //   history.push('/search/' + dId);
@@ -57,8 +57,8 @@ const DiaryData = ({ match }) => {
 
   let tags = diary.tags.split(',');
   return (
-    <div>
-      <Header />
+    <>
+      {/* <Header /> */}
       <div className="dairyData_wrapper">
         <div className="dairyData_headline">
           <div className="headline_img">
@@ -85,23 +85,23 @@ const DiaryData = ({ match }) => {
           <p>{diary.notes}</p>
         </div>
       </div>
-
-      {/* {console.log('uId', MyAccount.uId)}; */}
-      {/* <div className="btn">
-            {user.uId === MyAccount.uId ? (
-              <button className="data_list_btn" onClick={clickDelete}>
-                Delete
-              </button>
-            ) : null}
-          </div>
-          <div className="btn">
+      {console.log('uId', MyAccount.uId)};
+      <div className="btn">
+        {user.uId === MyAccount.uId ? (
+          <button className="data_list_btn" onClick={clickDelete}>
+            Delete
+          </button>
+        ) : null}
+      </div>
+      {/* 
+        <div className="btn">
             {user.uId === MyAccount.uId ? (
               <button className="data_list_btn" onClick={clickUpdate}>
                 Update
               </button>
             ) : null}
           </div> */}
-    </div>
+    </>
   );
 };
 

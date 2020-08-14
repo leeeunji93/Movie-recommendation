@@ -49,8 +49,8 @@ const App = () => {
   };
 
   return (
-    <div>
-      {/* <Header /> */}
+    <>
+      <Header />
       <Switch>
         <Route component={MainContainer} exact path="/" />
         <Route component={DiaryDataContainer} path="/diarydata/:dId" />
@@ -68,7 +68,7 @@ const App = () => {
 
         <Route path="/">Not found</Route>
       </Switch>
-    </div>
+    </>
   );
 };
 

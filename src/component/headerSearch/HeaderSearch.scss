@@ -9,69 +9,17 @@
   text-decoration: none;
 }
 
-.main_wrapper {
-  margin-top: 5rem;
-}
-
-.diary_data {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
-}
-
-.diary {
-  width: 15rem;
-  border: 1px solid $black;
-  &:hover {
-    background: $lightgreen;
-    color: #ffffff;
+.hSearch_wrapper {
+  margin: 1rem;
+  .hSearch_title {
+    font-weight: 400;
+    font-style: italic;
   }
-
-  .diary_image {
-    padding: 0.5rem;
-    height: 20rem;
+  .hSearch {
   }
-  .diary_content {
-    width: 100%;
-    text-align: center;
-    margin: 0.5rem auto;
-    line-height: 1.5;
-    letter-spacing: 0.15em;
-  }
-}
-
-h1 {
-  color: $red;
 }
 
 @media only screen and (min-width: 768px) {
-  .diary_data {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    padding: 0.5rem;
-    margin-left: 2rem;
-    margin-top: 2rem;
-  }
-
-  .diary {
-    width: 18rem;
-    height: auto;
-    &:hover {
-      background: $lightgreen;
-    }
-
-    .diary_content {
-      font-size: 1.2rem;
-      width: 100%;
-      text-align: center;
-      line-height: 1.5;
-      letter-spacing: 0.15em;
-      .userTitle {
-        font-style: italic;
-      }
-    }
-  }
 }
 
 // /*
@@ -91,4 +39,9 @@ h1 {
 
 // !* 큰 모니터 *!
 // @media only screen and (min-width : 1824px) {
+// }
+
+// &:hover {
+//   background: $lightgreen;
+//   color: #ffffff;
 // }

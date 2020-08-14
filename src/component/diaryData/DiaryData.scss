@@ -8,23 +8,14 @@
 .dairyData_wrapper {
   height: 100vh;
   position: relative;
-  .diaryData_icon {
-    position: absolute;
-    width: 2.5rem;
-    height: 2.5rem;
-    left: 24.2rem;
-    top: 2.4rem;
-    z-index: 2;
-    // background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-  }
 }
 
 .dairyData_headline {
   width: 100%;
   position: relative;
   .headline_img img {
-    height: 17rem;
+    height: 20rem;
+    padding-top: 30px;
     filter: brightness(40%);
   }
   .headline_title {
@@ -32,9 +23,8 @@
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    align-items: center;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 2.4rem;
     text-align: center;
     color: #ffffff;
@@ -67,6 +57,19 @@
 .dairyData_note {
   padding: 1.7rem;
   font-size: 1.2rem;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  .data_list_btn {
+    width: 6rem;
+    background: $black;
+    color: $white;
+    border-radius: 10px;
+    padding: 4px;
+    height: 4rem;
+    margin-bottom: 15rem;
+  }
 }
 
 // .dairyData_movieData {
@@ -113,7 +116,6 @@
     img {
       // padding: 0.5rem;
       width: 50rem;
-
       filter: brightness(40%);
     }
   }

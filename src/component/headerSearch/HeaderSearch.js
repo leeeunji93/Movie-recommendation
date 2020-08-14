@@ -38,35 +38,35 @@ const HeaderSearch = () => {
     let tags = data.data.tags.split(',');
 
     return (
-      <div className="main_wrapper">
-        <div
-          className="diary"
+      <div className="hSearch_wrapper">
+        <section
+          className="hSearch"
           onMouseEnter={handleOnMouseOver}
           onMouseLeave={handleOnMouseLeave}
           onClick={clickedItem}
         >
-          <img className="diary_image" src={data.data.cover} alt="" />
+          <img className="hSearch_image" src={data.data.cover} alt="" />
 
           {hangOver ? (
-            <div className="diary_content">
+            <div className="hSearch_content">
               <b>{data.data.title}</b>
               <div>
                 <b>{data.data.rating}</b>/5
               </div>
             </div>
           ) : (
-            <div className="diary_content">
+            <div className="hSearch_content">
               <div>
-                <b className="userTitle">{data.data.movieTitle}</b>
+                <b className="hSearch_userTitle">{data.data.movieTitle}</b>
               </div>
-              <div className="tag">
+              <div className="hSearch_tag">
                 {tags.map((tag) => {
                   return `# ${tag} `;
                 })}
               </div>
             </div>
           )}
-        </div>
+        </section>
       </div>
     );
   };
@@ -74,6 +74,8 @@ const HeaderSearch = () => {
   return (
     <div>
       <section className="diary_data">
+        <h2 className="hSearch_title"> "" 검색 결과</h2>
+        {console.log('배열', searchArr)}
         {searchArr.map((data, index) => (
           <DiaryItem data={data} key={index} />
         ))}

@@ -8,8 +8,13 @@ import * as authActions from '../../reducers/auth';
 const Ul = styled.ul`
   display: flex;
   flex-flow: row nowrap;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 20rem;
   li {
     color: black;
+    font-size: 1.5rem;
   }
 
   @media (max-width: 767px) {
@@ -20,8 +25,8 @@ const Ul = styled.ul`
     top: 0;
     right: 0;
     border-right: 0;
-    height: 50vh;
-    width: 15rem;
+    height: 100vh;
+    width: 10rem;
     padding-top: 3.5rem;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform 0.3s ease-in-out;

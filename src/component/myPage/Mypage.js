@@ -59,13 +59,9 @@ const MyPage = ({ match }) => {
       <section>
         <div className="data_list" onClick={clickedItem}>
           <img src={data.cover} alt="" />
-          <div className="data_list_text">
-            <div className="data_list_title">
-              {`${data.movieTitle}`.slice(0, 9)}
-            </div>
-            <div className="data_list_date">{data.watchDate}</div>
-
-            <div className="data_list_rate"> {`⭐${data.rating}.0`}</div>
+          <div className="data_list_info">
+            <h1 className="data_list_info_title"> {data.title} </h1>
+            <h3 className="data_list_info_date">{data.watchDate}의 기록</h3>
           </div>
         </div>
       </section>
@@ -74,13 +70,13 @@ const MyPage = ({ match }) => {
 
   return (
     <div className="mypage_wrapper">
-      <h1>{`${MyAccount.nickname} 님의 Note`}</h1>
-      <div className="mypage_totalcount">
+      <h1>{`${MyAccount.nickname} 님의 감상문`}</h1>
+      {/* <div className="mypage_totalcount">
         현재까지{' '}
         <span>
           <span className="total">{totalCount}</span> 편 작성하셨군요? 🥺{' '}
         </span>
-      </div>
+      </div> */}
       <div className="data_wrapper">
         {userDiaryArr.map((data, index) => (
           <DiaryItem data={data} key={index} />
@@ -91,3 +87,16 @@ const MyPage = ({ match }) => {
 };
 
 export default MyPage;
+
+{
+  /* 
+<div className="data_list_text">
+            <div className="data_list_title">
+              {`${data.movieTitle}`.slice(0, 9)}
+            </div>
+            <div className="data_list_date">{data.watchDate}</div>
+
+            <div className="data_list_rate"> {`⭐${data.rating}.0`}</div>
+          </div>
+       */
+}
