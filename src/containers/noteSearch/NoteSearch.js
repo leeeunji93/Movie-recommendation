@@ -56,6 +56,9 @@ const NoteSearch = () => {
         </div>
       </form>
       <div className="note_result">
+        <h3 div className="note_result_keyword">
+          {keyword.length > 0 ? `" ${keyword} " 결과` : null}
+        </h3>
         <HeaderSearch />
       </div>
     </div>

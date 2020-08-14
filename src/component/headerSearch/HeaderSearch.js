@@ -74,10 +74,8 @@ const HeaderSearch = () => {
   return (
     <div>
       <section className="diary_data">
-        <h2 className="hSearch_title"> "" 검색 결과</h2>
-        {console.log('배열', searchArr)}
-        {searchArr.map((data, index) => (
-          <DiaryItem data={data} key={index} />
+        {searchArr.map((data) => (
+          <DiaryItem data={data} key={data.id} />
         ))}
       </section>
     </div>

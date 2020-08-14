@@ -30,3 +30,12 @@
     color: $black;
   }
 }
+
+.note_result {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  .note_result_keyword {
+    font-weight: 500;
+    font-style: italic;
+  }
+}

@@ -10,7 +10,6 @@
 }
 
 .hSearch_wrapper {
-  margin: 1rem;
   .hSearch_title {
     font-weight: 400;
     font-style: italic;
@@ -22,6 +21,15 @@
 @media only screen and (min-width: 768px) {
 }
 
+.diary_data {
+  margin-top: 5rem auto;
+  .hSearch_title {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-weight: 500;
+    font-style: italic;
+  }
+}
 // /*
 
 // !* 스마트폰 가로+세로 *!
