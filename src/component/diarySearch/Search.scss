@@ -45,14 +45,6 @@
   // }
 }
 
-.dateDate {
-  margin-top: 2rem;
-  input {
-    border: none;
-    text-decoration: none;
-  }
-}
-
 .movie_search_result {
   margin: 0 auto;
   display: grid;
@@ -63,42 +55,75 @@
 // searchDiary
 
 .write_full {
+  border: 1px solid $gray;
   margin: 0 auto;
+  width: 95%;
+}
+//write_title
+.write_header {
+  padding: 2rem;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+
+  input {
+    border: none;
+  }
 }
 
 //write_rate
 
-.write_rating {
-  display: flex;
-  margin-top: 2rem;
+// .write_rating {
+//   display: flex;
+//   margin-top: 2rem;
 
-  .icon {
-    width: 5rem;
-  }
-  .star {
-    display: flex;
-    justify-content: space-between;
-    width: 5rem;
+//   .icon {
+//     width: 5rem;
+//   }
+//   .star {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 5rem;
+//   }
+// }
+
+.write_date {
+  border-bottom: 1px solid black;
+  padding: 1.5rem;
+  input {
+    border: none;
+    text-decoration: none;
   }
 }
-
-// tag
 .write_tags {
+  display: flex;
+}
+// tag
+.write_tags_when {
+  padding: 1rem;
+  border-bottom: 1px solid black;
   select {
     text-decoration: none;
     border: none;
-    margin-top: 1rem;
   }
 }
+
+.write_tags_location {
+  padding: 1rem;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  select {
+    text-decoration: none;
+    border: none;
+  }
+}
+
 .tagName {
   p {
     font-weight: 600;
     font-size: 1.2rem;
-    margin-top: 1rem;
   }
   .tags {
     display: flex;
-    margin-top: 1rem;
   }
 }
 
@@ -120,10 +145,11 @@
 
 //일기내용
 .write_content {
-  margin-top: 3rem;
-  height: 10vh;
+  padding: 1rem;
   font-size: 1.5rem;
+  border-bottom: 1px solid black;
   input {
+    height: 20rem;
     outline: none;
     box-shadow: none;
     text-decoration: none;
@@ -131,6 +157,16 @@
   }
   &:hover {
     border: 1px solid lighten($black, 5%);
+  }
+}
+
+.write_cover {
+  padding: 1rem;
+  border-bottom: 1px solid black;
+  input {
+    border: none;
+
+    width: 20rem;
   }
 }
 
@@ -157,15 +193,6 @@
     &:hover {
       background: lighten($black, 5%);
     }
-  }
-}
-
-.write_cover {
-  margin-top: 2rem;
-  input {
-    border: none;
-    border-bottom: 1px solid $black;
-    width: 20rem;
   }
 }
 

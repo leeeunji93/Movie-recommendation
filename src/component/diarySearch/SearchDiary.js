@@ -140,73 +140,31 @@ const SearchDiary = ({ match }) => {
       });
   };
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-    },
-
-    inputTitle: {
-      width: 150,
-      marginLeft: '0.4rem',
-
-      '& .MuiInput-underline:after': {
-        borderBottomColor: '#0d0d0d',
-      },
-      '&:hover fieldset': {
-        borderColor: '#16a085',
-      },
-      '& label.Mui-focused': {
-        color: '#0d0d0d',
-      },
-    },
-  }));
-
-  const classes = useStyles();
-
   return (
-    <div>
+    <>
       <section className="write_full">
-        <Card className={classes.root} elevation={0}>
-          <CardContent>
-            <Typography className={classes.title}>
-              {/* <h2>{isModify ? '일기수정' : 'Write'}</h2> */}
-              <h2>Write</h2>
-            </Typography>
-            <div className="write_header">
-              <TextField
-                className={classes.inputTitle}
-                name="title"
-                label="Title"
-                onChange={handleChangeDiaryData}
-                value={input.title}
-              />
+        {/* <h2>{isModify ? '일기수정' : 'Write'}</h2> */}
 
-              <div className="dateDate">
-                <input
-                  name="watchDate"
-                  value={input.watchDate}
-                  onChange={handleChangeDiaryData}
-                  type="date"
-                />
-              </div>
+        <div className="search_grid">
+          <div className="write_header">
+            <input
+              name="title"
+              placeholder="제목을 입력하세요"
+              onChange={handleChangeDiaryData}
+              value={input.title}
+            />
+          </div>
 
-              <div className="write_rating">
-                <span className="icon" onClick={handlePlusRating}>
-                  <ThumbUpAltIcon />
-                </span>
-                <span className="icon" onClick={handleMinusRating}>
-                  <ThumbDownIcon />
-                </span>
-
-                {[...Array(input.rating)].map((x, i) => (
-                  <span classNamej="star" key={i}>
-                    <StarIcon />️
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="write_tags">
+          <div className="write_date">
+            <input
+              name="watchDate"
+              value={input.watchDate}
+              onChange={handleChangeDiaryData}
+              type="date"
+            />
+          </div>
+          <div className="write_tags">
+            <div className="write_tags_when">
               <select name="tags" onChange={handleChangeTags}>
                 {tagsAll[0] !== undefined
                   ? tagsAll[0].tags.map((tagTypeData) => {
@@ -214,7 +172,8 @@ const SearchDiary = ({ match }) => {
                     })
                   : ''}
               </select>
-
+            </div>
+            <div className="write_tags_location">
               <select name="tags" onChange={handleChangeTags}>
                 {tagsAll[1] !== undefined
                   ? tagsAll[1].tags.map((tagTypeData) => {
@@ -223,31 +182,46 @@ const SearchDiary = ({ match }) => {
                   : ''}
               </select>
             </div>
+          </div>
 
-            <div className="write_content">
-              <input
-                name="notes"
-                placeholder="일기 내용"
-                onChange={handleChangeDiaryData}
-                value={input.notes}
-              />
-            </div>
-            <div className="write_cover">
-              <input
-                name="cover"
-                placeholder="https://"
-                onChange={handleChangeDiaryData}
-                value={input.cover}
-              />
-            </div>
-          </CardContent>
-        </Card>
-        <div className="write_button">
-          <button onClick={handleSave}>저장</button>
+          <div className="write_content">
+            <input
+              name="notes"
+              placeholder="내용"
+              onChange={handleChangeDiaryData}
+              value={input.notes}
+            />
+          </div>
+          <div className="write_cover">
+            <input
+              name="cover"
+              placeholder="https://"
+              onChange={handleChangeDiaryData}
+              value={input.cover}
+            />
+          </div>
         </div>
       </section>
-    </div>
+      <div className="write_button">
+        <button onClick={handleSave}>저장</button>
+      </div>
+    </>
   );
 };
 
 export default SearchDiary;
+
+// <div className="write_rating">
+// <span className="icon" onClick={handlePlusRating}>
+//   <ThumbUpAltIcon />
+// </span>
+// <span className="icon" onClick={handleMinusRating}>
+//   <ThumbDownIcon />
+// </span>
+
+// {[...Array(input.rating)].map((x, i) => (
+//   <span classNamej="star" key={i}>
+//     <StarIcon />️
+//   </span>
+// ))}
+// </div>
