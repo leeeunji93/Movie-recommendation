@@ -12,7 +12,7 @@ import {
   DiaryDataContainer,
   Register,
   SearchMovieContainer,
-  HeaderSearchContainer,
+  Home,
   NoteSearch,
 } from './containers';
 
@@ -52,7 +52,8 @@ const App = () => {
     <>
       <Header />
       <Switch>
-        <Route component={MainContainer} exact path="/" />
+        <Route component={Home} exact path="/" />
+        <Route component={MainContainer} path="/main" />
         <Route component={DiaryDataContainer} path="/diarydata/:dId" />
         <Route component={SearchMovieContainer} path="/search" />
         <Route component={MyPageContainer} path="/mypage" />
