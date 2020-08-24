@@ -1,0 +1,60 @@
+@import '../../style/utils.scss';
+@import '../../style//reset.scss';
+
+.home_slider {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slide {
+  position: relative;
+  min-width: 100%;
+  height: 80%;
+  transition: 0.5s;
+}
+
+%btn-styles {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10%;
+  height: 80%;
+  background: none;
+  border: none;
+  outline: none;
+  transition: 0.5s;
+  color: $lightgreen;
+}
+
+#goLeft {
+  left: 0;
+  @extend%btn-styles;
+}
+#goRight {
+  right: 0;
+  @extend%btn-styles;
+}
+
+.home_img1 {
+  background: url('../../image/image_4.png');
+  width: auto;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(50%);
+}
+
+.home_img2 {
+  background: url('../../image/image_2.jpg');
+  width: auto;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(50%);
+}

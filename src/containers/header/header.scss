@@ -6,21 +6,19 @@
   width: 100%;
 }
 
-.header_full {
+.header_wrapper {
   position: relative;
 }
-.header_wrapper {
+
+.header_zip {
   // index.css에 padding값 필요함
   position: fixed;
   top: 0;
   left: 0;
   //positon 겹침 현상 해소
   z-index: 1;
-}
-
-.header_zip {
   margin-top: 0;
-  // width: 100%;
+  width: 100vw;
   height: 50px;
   background-color: #fff;
   .header_logo {
@@ -30,7 +28,7 @@
       align-items: center;
       // height값을 부모랑 똑같이 안주면 위로 탁 붙어버림! 자식을 주면 부모는 height값 생략 가능
       height: 50px;
-      min-width: 100%;
+      // width: 100%;
       font-size: 2rem;
       color: $lightgreen;
     }
