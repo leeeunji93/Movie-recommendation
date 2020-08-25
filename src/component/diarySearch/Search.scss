@@ -61,9 +61,8 @@
 }
 //write_title
 .write_header {
-  padding: 2rem;
+  padding: 1rem;
   border-bottom: 1px solid black;
-  border-top: 1px solid black;
 
   input {
     border: none;
@@ -145,24 +144,20 @@
 
 //일기내용
 .write_content {
-  padding: 1rem;
-  font-size: 1.5rem;
-  border-bottom: 1px solid black;
-  input {
-    height: 20rem;
+  textarea {
+    height: 30rem;
+    font-size: 1.3rem;
     outline: none;
     box-shadow: none;
     text-decoration: none;
     border: none;
-  }
-  &:hover {
-    border: 1px solid lighten($black, 5%);
+    border-bottom: 1px solid black;
+    line-height: 1.5;
   }
 }
 
 .write_cover {
   padding: 1rem;
-  border-bottom: 1px solid black;
   input {
     border: none;
 

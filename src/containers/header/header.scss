@@ -20,7 +20,7 @@
   margin-top: 0;
   width: 100vw;
   height: 50px;
-  background-color: #fff;
+  background: $white;
   .header_logo {
     a {
       display: flex;
@@ -29,7 +29,8 @@
       // height값을 부모랑 똑같이 안주면 위로 탁 붙어버림! 자식을 주면 부모는 height값 생략 가능
       height: 50px;
       // width: 100%;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      font-weight: 800;
       color: $lightgreen;
     }
   }
@@ -48,7 +49,6 @@
 }
 
 .header_menu {
-  background-color: white;
   display: flex;
   height: 8rem;
 

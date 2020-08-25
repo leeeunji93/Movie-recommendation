@@ -28,6 +28,10 @@
   outline: none;
   transition: 0.5s;
   color: $lightgreen;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 #goLeft {
@@ -46,7 +50,10 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(50%);
+  filter: brightness(75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home_img2 {
@@ -56,5 +63,12 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(50%);
+  filter: brightness(75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home_log {
+  width: 65%;
 }

@@ -1,47 +1,61 @@
 @import '../../style/reset.scss';
 @import '../../style/utils.scss';
 
-* {
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
+.main_data {
+  margin-top: 25px;
 }
 
 .main_wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.938);
+  color: $white;
+  height: 100vh;
+  width: 100%;
 }
 
-.diary_data {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
-  margin-top: 0;
+%main_styles {
+  position: absolute;
+  top: 65%;
+  left: 5%;
+  width: 90%;
 }
 
-.diary {
-  width: 15rem;
-  border: 1px solid $black;
-  &:hover {
-    background: $lightgreen;
-    color: #ffffff;
+.main_top {
+  position: relative;
+  .main_top_img {
+    height: 26rem;
+    filter: brightness(60%);
   }
-
-  .diary_image {
-    padding: 0.5rem;
-    height: 20rem;
+  .main_user_title {
+    @extend%main_styles;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
   }
-  .diary_content {
-    width: 100%;
-    text-align: center;
-    margin: 0.5rem auto;
+  .main_top_tag {
+    @extend%main_styles;
+    top: 78%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+}
+.main_content {
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem auto;
+  line-height: 1.5;
+  letter-spacing: 0.15em;
+  font-size: 1.6rem;
+  p {
+    //공백을 있는 그대로 표기
+    white-space: pre-wrap;
     line-height: 1.5;
-    letter-spacing: 0.15em;
+    height: 3.6em;
+    box-pack: justify;
+    word-wrap: break-word;
   }
-}
-
-h1 {
-  color: $red;
 }
 
 @media only screen and (min-width: 768px) {

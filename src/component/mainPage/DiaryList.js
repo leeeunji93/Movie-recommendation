@@ -14,9 +14,6 @@ const DiaryList = ({ match }) => {
   const [totalPage, setTotalPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [diaryArr, setDiaryArr] = useState([]);
-
-  const [hangOver, setHangingOver] = useState(false);
-
   const history = useHistory();
   const dId = match.params.dId;
 
@@ -44,69 +41,44 @@ const DiaryList = ({ match }) => {
   // }
 
   const DiaryItem = ({ data }) => {
-    const handleOnMouseOver = () => {
-      setHangingOver(!hangOver);
-    };
-
-    const handleOnMouseLeave = () => {
-      setHangingOver(hangOver);
-    };
-
     const clickedItem = () => {
       history.push('/diarydata/' + data.dId);
     };
 
-    let tags = data.tags.split(',');
     return (
       <div className="main_wrapper">
-        <div
-          className="diary"
-          onMouseEnter={handleOnMouseOver}
-          onMouseLeave={handleOnMouseLeave}
-          onClick={clickedItem}
-        >
-          <img className="diary_image" src={data.cover} alt="" />
-
-          {hangOver ? (
-            <div className="diary_content">
-              <b>{data.movieTitle}</b>
-              <div>
-                <b>{data.rating}</b>/5
-              </div>
-            </div>
-          ) : (
-            <div className="diary_content">
-              <div>
-                <b className="userTitle">{data.title}</b>
-                <b> {data.director.split('|')}</b>
-              </div>
-              <div className="tag">
-                {tags.map((tag) => {
-                  return `# ${tag} `;
-                })}
-              </div>
-            </div>
-          )}
-        </div>
+        <header className="main_top">
+          <img
+            className="main_top_img"
+            src={data.cover}
+            alt=""
+            onClick={clickedItem}
+          />
+          <div className="main_user_title">{data.title}</div>
+          <div className="main_top_tag">
+            <span>#{data.movieTitle}</span>
+            <span> #{data.director.split('|')}</span>
+          </div>
+        </header>
+        <article className="main_content">
+          <p>{data.notes}</p>
+        </article>
       </div>
     );
   };
 
   return (
-    <div>
-      <Header />
-      <section className="diary_data">
+    <>
+      <div className="main_data">
         {diaryArr.map((data) => (
           <DiaryItem data={data} key={data.id} />
         ))}
-      </section>
-      {/* <header>
-        {page} / {totalPage}
-        - 페이지당 일기 갯수 :{' '}
-        {PAGE_SIZE} - 
-        저장된 전체 일기 갯수 : {totalCount}
-      </header> */}
-    </div>
+      </div>
+      <header>
+        {/* {page} / {totalPage}- 페이지당 일기 갯수 : {PAGE_SIZE} - 저장된 전체
+        일기 갯수 : {totalCount} */}
+      </header>
+    </>
   );
 };
 

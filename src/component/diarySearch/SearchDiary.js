@@ -12,6 +12,23 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import StarIcon from '@material-ui/icons/Star';
 
+const useInput = (initalValue, validator) => {
+  const [value, setValue] = useState(initalValue);
+  const onChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    let willUpdate = true;
+    if (typeof validator === 'function') {
+      willUpdate = validator(value);
+    }
+    if (willUpdate) {
+      setValue(value);
+    }
+  };
+  return { value, onChange };
+};
+
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -23,7 +40,7 @@ const SearchDiary = ({ match }) => {
   const history = useHistory();
 
   const [input, setInput] = useState({
-    title: '',
+    // title: '',
     cover: '',
     notes: '',
     watchDate: '',
@@ -91,30 +108,14 @@ const SearchDiary = ({ match }) => {
     console.log('  input.tags', input.tags);
   };
 
-  const handlePlusRating = () => {
-    console.log('rating', input.rating);
-    const maxCore = 4;
-    input.rating += 1;
-  };
-
-  const handleMinusRating = () => {
-    console.log('rating-', input.rating);
-    input.rating = input.rating - 1;
-  };
-
   const handleSave = () => {
     console.log(selectedMovie);
 
-    // if (!selectedMovie) {
-    //   console.log(selectedMovie);
-    //   alert('영화를 선택하세요');
-    //   return;
-    // }
-
-    // if (input.title.trim().length === 0) {
-    //   alert('일기 제목을 쓰세요');
-    //   return;
-    // }
+    if (!selectedMovie) {
+      console.log(selectedMovie);
+      alert('영화를 선택하세요');
+      return;
+    }
 
     input.tags = input.tags.join(',');
     console.log('@@tag', input.tags);
@@ -140,6 +141,9 @@ const SearchDiary = ({ match }) => {
       });
   };
 
+  const maxLen = (value) => value.length < 20;
+  const title = useInput('', maxLen);
+
   return (
     <>
       <section className="write_full">
@@ -150,8 +154,9 @@ const SearchDiary = ({ match }) => {
             <input
               name="title"
               placeholder="제목을 입력하세요"
-              onChange={handleChangeDiaryData}
-              value={input.title}
+              // onChange={handleChangeDiaryData}
+              // value={input.title}
+              {...title}
             />
           </div>
 
@@ -185,7 +190,8 @@ const SearchDiary = ({ match }) => {
           </div>
 
           <div className="write_content">
-            <input
+            <textarea
+              type="text"
               name="notes"
               placeholder="내용"
               onChange={handleChangeDiaryData}
