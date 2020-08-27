@@ -71,7 +71,8 @@ const DiaryData = ({ match }) => {
             <span className="info_1">#{movie.director.split('|')}</span>
             <span className="info_2"> #{movie.title}</span>
           </div>
-          <div className="info_right">by {user.nickname}</div>
+
+          <span className="info_right">by {user.nickname}</span>
         </div>
         <div className="dairyData_info_bottom">
           <span className="info_date">{diary.watchDate} ㅣ </span>

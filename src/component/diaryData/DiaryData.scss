@@ -34,18 +34,20 @@
 .dairyData_info_top {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: nowrap;
   padding: 1rem;
   padding-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.2;
   color: $basicFont;
+
   .info_left {
     font-weight: 600;
+    //텍스트가 길어져도 킵
+    white-space: nowrap;
   }
   .info_right {
-    display: flex;
-    justify-content: flex-end;
+    text-align: right;
     font-style: italic;
   }
 }
@@ -57,6 +59,9 @@
 .dairyData_note {
   padding: 1.7rem;
   font-size: 1.2rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  text-align: left;
 }
 .btn {
   display: flex;
@@ -71,32 +76,6 @@
     margin-bottom: 15rem;
   }
 }
-
-// .dairyData_movieData {
-//   padding: 1rem;
-//   border-bottom: 1px solid $black;
-//   h4 {
-//     font-size: 1.5rem;
-//     // border-bottom: 1px solid $gray;
-//     background: $lightgreen;
-//     color: $white;
-//     width: 136px;
-//     padding: 0.4rem;
-//     letter-spacing: 0.5rem;
-//   }
-
-//   .movieInfo_text {
-//     font-size: 1.3rem;
-//     line-height: 2;
-//     font-weight: 500;
-//     letter-spacing: 0.1rem;
-//   }
-// }
-
-// .movieInfo_text_title {
-//   padding-right: 0.5rem;
-//   margin-top: 0.5rem;
-// }
 
 @media only screen and (min-width: 768px) {
   .dairyData_diary {

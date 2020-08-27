@@ -2,16 +2,36 @@
 @import '../../style/utils.scss';
 
 .main_data {
-  margin-top: 25px;
+  margin-top: 29px;
 }
 
+.styles_scroll-to-top__2A70v {
+  background-color: none;
+}
+.scroll_top_icon {
+  transform: rotate(180deg);
+}
 .main_wrapper {
   display: flex;
   flex-direction: column;
   background: rgba(0, 0, 0, 0.938);
   color: $white;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
+  border: 3px solid $white;
+}
+
+.mypage_header {
+  display: flex;
+  align-items: center;
+  .mypage_title {
+    font-weight: 600;
+    font-size: 1.7rem;
+  }
+  .mypage_totalcount {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
 }
 
 %main_styles {
@@ -43,18 +63,24 @@
 }
 .main_content {
   width: 100%;
-  text-align: center;
   margin: 0.5rem auto;
-  line-height: 1.5;
-  letter-spacing: 0.15em;
-  font-size: 1.6rem;
+  padding: 1rem;
   p {
     //공백을 있는 그대로 표기
     white-space: pre-wrap;
     line-height: 1.5;
-    height: 3.6em;
-    box-pack: justify;
+    //line-clamp * line-height값으로 해줘야함;
+    height: 10.4em;
+    text-align: left;
     word-wrap: break-word;
+    line-height: 1.5;
+    letter-spacing: 0.15em;
+    font-size: 1.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
   }
 }
 

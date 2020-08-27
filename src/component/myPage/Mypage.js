@@ -68,13 +68,12 @@ const MyPage = ({ match }) => {
 
   return (
     <div className="mypage_wrapper">
-      <h1>{`${MyAccount.nickname} 님의 감상문`}</h1>
-      {/* <div className="mypage_totalcount">
-        현재까지{' '}
-        <span>
-          <span className="total">{totalCount}</span> 편 작성하셨군요? 🥺{' '}
-        </span>
-      </div> */}
+      <div className="mypage_header">
+        <span className="mypage_title">{`${MyAccount.nickname} 님의 감상문`}</span>
+
+        <span className="mypage_totalcount"> [ {totalCount} ] 편 </span>
+      </div>
+
       <div className="data_wrapper">
         {userDiaryArr.map((data, index) => (
           <DiaryItem data={data} key={index} />

@@ -4,8 +4,10 @@ import { useHistory } from 'react-router';
 import './DiaryList.scss';
 import { useState } from 'react';
 import './DiaryList.scss';
-import Header from '../../containers/header/Header';
+import { Link } from 'react-router-dom';
+import ScrollToTop from 'react-scroll-to-top';
 import MyAccount from '../../tool/MyAccount';
+import ArrowDropDownCircleRoundedIcon from '@material-ui/icons/ArrowDropDownCircleRounded';
 
 const PAGE_SIZE = 10;
 
@@ -75,6 +77,22 @@ const DiaryList = ({ match }) => {
         ))}
       </div>
       <header>
+        <ScrollToTop
+          smooth
+          style={{
+            right: '11px',
+            width: '35px',
+            height: '35px',
+          }}
+          component={
+            <ArrowDropDownCircleRoundedIcon
+              style={{ color: '#04bfad' }}
+              fontSize="large"
+              className="scroll_top_icon"
+            />
+          }
+        />
+
         {/* {page} / {totalPage}- 페이지당 일기 갯수 : {PAGE_SIZE} - 저장된 전체
         일기 갯수 : {totalCount} */}
       </header>

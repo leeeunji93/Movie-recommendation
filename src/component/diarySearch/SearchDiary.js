@@ -12,23 +12,6 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import StarIcon from '@material-ui/icons/Star';
 
-const useInput = (initalValue, validator) => {
-  const [value, setValue] = useState(initalValue);
-  const onChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    let willUpdate = true;
-    if (typeof validator === 'function') {
-      willUpdate = validator(value);
-    }
-    if (willUpdate) {
-      setValue(value);
-    }
-  };
-  return { value, onChange };
-};
-
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -40,7 +23,7 @@ const SearchDiary = ({ match }) => {
   const history = useHistory();
 
   const [input, setInput] = useState({
-    // title: '',
+    title: '',
     cover: '',
     notes: '',
     watchDate: '',
@@ -141,9 +124,6 @@ const SearchDiary = ({ match }) => {
       });
   };
 
-  const maxLen = (value) => value.length < 20;
-  const title = useInput('', maxLen);
-
   return (
     <>
       <section className="write_full">
@@ -153,10 +133,10 @@ const SearchDiary = ({ match }) => {
           <div className="write_header">
             <input
               name="title"
-              placeholder="제목을 입력하세요"
-              // onChange={handleChangeDiaryData}
-              // value={input.title}
-              {...title}
+              placeholder="제목을 입력하세요(10자 이내)"
+              onChange={handleChangeDiaryData}
+              value={input.title}
+              maxlength="10"
             />
           </div>
 
