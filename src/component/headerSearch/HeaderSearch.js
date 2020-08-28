@@ -30,7 +30,10 @@ const HeaderSearch = () => {
       <div className="hSearch_wrapper">
         <section className="hSearch" onClick={clickedItem}>
           <img className="hSearch_image" src={data.data.cover} alt="" />
-          <span className="hSearch_notes">{data.data.notes}</span>
+          <div className="hSearch_text">
+            <div className="hSearch_title">{data.data.title}</div>
+            <div className="hSearch_user">by. {data.data.nickname}</div>
+          </div>
         </section>
       </div>
     );

@@ -5,9 +5,6 @@
   margin-top: 29px;
 }
 
-.styles_scroll-to-top__2A70v {
-  background-color: none;
-}
 .scroll_top_icon {
   transform: rotate(180deg);
 }
@@ -44,6 +41,7 @@
 .main_top {
   position: relative;
   .main_top_img {
+    object-fit: cover;
     height: 26rem;
     filter: brightness(60%);
   }
@@ -65,17 +63,18 @@
   width: 100%;
   margin: 0.5rem auto;
   padding: 1rem;
+  // margin-left: 27px;
+  // margin-right: 23px;
   p {
     //공백을 있는 그대로 표기
     white-space: pre-wrap;
+    text-align: justify;
     line-height: 1.5;
     //line-clamp * line-height값으로 해줘야함;
-    height: 10.4em;
-    text-align: left;
-    word-wrap: break-word;
+    height: 10.5em;
     line-height: 1.5;
     letter-spacing: 0.15em;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

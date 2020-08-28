@@ -14,7 +14,8 @@
   width: 100%;
   position: relative;
   .headline_img img {
-    height: 20rem;
+    object-fit: cover;
+
     padding-top: 30px;
     filter: brightness(40%);
   }
@@ -28,6 +29,17 @@
     line-height: 2.4rem;
     text-align: center;
     color: #ffffff;
+  }
+  .data_list_btn {
+    position: absolute;
+    top: 80%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    background: $lightgreen;
+    color: $white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
   }
 }
 
@@ -57,24 +69,12 @@
 }
 
 .dairyData_note {
-  padding: 1.7rem;
+  padding: 1.1rem;
   font-size: 1.2rem;
   white-space: pre-wrap;
+  word-break: break-word;
+  text-align: justify;
   line-height: 1.5;
-  text-align: left;
-}
-.btn {
-  display: flex;
-  justify-content: center;
-  .data_list_btn {
-    width: 6rem;
-    background: $black;
-    color: $white;
-    border-radius: 10px;
-    padding: 4px;
-    height: 4rem;
-    margin-bottom: 15rem;
-  }
 }
 
 @media only screen and (min-width: 768px) {

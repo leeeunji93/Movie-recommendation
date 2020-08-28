@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { APIs, NetTool } from '../../tool/NetTool';
 import './Search.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/search';
-import SearchIcon from '@material-ui/icons/Search';
-import Grid from '@material-ui/core/Grid';
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 const NeverSearch = ({ match }) => {
   const { search } = useSelector((state) => state); //store연결
@@ -12,8 +11,13 @@ const NeverSearch = ({ match }) => {
   const { never } = search;
   const { selectedMovie, searchResultArr } = never;
   const [clickState, setClickState] = useState(false);
-
   const [keyword, setKeyword] = useState('');
+
+  useEffect(() => {
+    return () => {
+      dispatch(actions.destroy());
+    };
+  }, [dispatch]);
 
   const handleClickSearch = () => {
     /* const keyword = keyword.trim();*/
@@ -68,47 +72,42 @@ const NeverSearch = ({ match }) => {
     };
 
     return (
-      <Grid container spacing={1}>
-        <Grid item xs={12} lg={6}>
-          <div className={className} onClick={clickItem}>
-            <di className="Item">
-              <img src={searchResult.image} alt="" />
-            </di>
-            <div>
-              <b
-                className="Item_info"
-                dangerouslySetInnerHTML={{ __html: searchResult.title }}
-              />
-            </div>
-
-            <span className="Item_director">{searchResult.director}</span>
-            <span className="Item_date">{searchResult.pubDate}</span>
+      <>
+        <div className={className} onClick={clickItem}>
+          <div className="Item">
+            <img src={searchResult.image} alt="" />
           </div>
-        </Grid>
-      </Grid>
+          <div>
+            <b
+              className="Item_info"
+              dangerouslySetInnerHTML={{ __html: searchResult.title }}
+            />
+          </div>
+
+          <span className="Item_director">{searchResult.director}</span>
+          <span className="Item_date">{searchResult.pubDate}</span>
+        </div>
+      </>
     );
   };
 
   return (
-    <div>
+    <>
       <section className="movie_search">
-        {clickState ? (
-          ''
-        ) : (
-          <div className="search">
-            <input
-              name="keyword"
-              placeholder="작성하실 영화를 검색하세요"
-              value={keyword}
-              // onChange={handleChangeSearch}
-              onChange={(e) => setKeyword(e.target.value)}
-            />
+        {/* <h3>감상문 작성하기</h3> */}
 
-            <button onClick={handleClickSearch}>
-              <SearchIcon style={{ fontSize: 30 }} />
-            </button>
-          </div>
-        )}
+        <div className="search_input">
+          <input
+            name="keyword"
+            placeholder="작성하실 영화를 검색하세요  :)"
+            value={keyword}
+            // onChange={handleChangeSearch}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <button onClick={handleClickSearch}>
+            <SearchRoundedIcon color="action" style={{ fontSize: 20 }} />
+          </button>
+        </div>
       </section>
 
       <div className="movie_search_result">
@@ -117,10 +116,10 @@ const NeverSearch = ({ match }) => {
         ))}
       </div>
 
-      <d className="movie_selected">
+      {/* <div className="movie_selected">
         {!!selectedMovie && <MovieItem searchResult={selectedMovie} />}
-      </d>
-    </div>
+      </div> */}
+    </>
   );
 };
 

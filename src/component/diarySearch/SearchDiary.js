@@ -181,7 +181,7 @@ const SearchDiary = ({ match }) => {
           <div className="write_cover">
             <input
               name="cover"
-              placeholder="https://"
+              placeholder="이미지 주소를 복붙하세요"
               onChange={handleChangeDiaryData}
               value={input.cover}
             />
@@ -196,18 +196,3 @@ const SearchDiary = ({ match }) => {
 };
 
 export default SearchDiary;
-
-// <div className="write_rating">
-// <span className="icon" onClick={handlePlusRating}>
-//   <ThumbUpAltIcon />
-// </span>
-// <span className="icon" onClick={handleMinusRating}>
-//   <ThumbDownIcon />
-// </span>
-
-// {[...Array(input.rating)].map((x, i) => (
-//   <span classNamej="star" key={i}>
-//     <StarIcon />️
-//   </span>
-// ))}
-// </div>

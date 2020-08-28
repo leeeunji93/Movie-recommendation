@@ -3,7 +3,7 @@ $orange: #f2b705;
 $green: #658c6b;
 $lightgreen: #04bfad;
 $blue: #2980b9;
-$gray: #7f8c8d;
+$gray: #c4c4c4;
 
 $white: #f2f2f2;
 $black: #0d0d0d;
@@ -30,11 +30,11 @@ $desktop: 321px;
   width: 34rem;
   border: 1px solid $gray;
   border-radius: 3px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 1rem;
   background: #fff;
   &:hover {
-    border: 1px solid $black;
+    border: 1px solid $gray;
     background: #fff;
   }
 }

@@ -65,6 +65,14 @@ const DiaryData = ({ match }) => {
             <img src={diary.cover} alt="" />
           </div>
           <div className="headline_title">{diary.title}</div>
+          {console.log('uId', MyAccount.uId)}
+          <div className="btn">
+            {user.uId === MyAccount.uId ? (
+              <button className="data_list_btn" onClick={clickDelete}>
+                ✘
+              </button>
+            ) : null}
+          </div>
         </div>
         <div className="dairyData_info_top">
           <div className="info_left">
@@ -86,14 +94,7 @@ const DiaryData = ({ match }) => {
           <p>{diary.notes}</p>
         </div>
       </div>
-      {console.log('uId', MyAccount.uId)};
-      <div className="btn">
-        {user.uId === MyAccount.uId ? (
-          <button className="data_list_btn" onClick={clickDelete}>
-            Delete
-          </button>
-        ) : null}
-      </div>
+
       {/* 
         <div className="btn">
             {user.uId === MyAccount.uId ? (
