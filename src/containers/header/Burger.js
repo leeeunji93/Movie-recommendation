@@ -7,8 +7,8 @@ const StyledBurger = styled.div`
   width: 2rem;
   height: 2rem;
   position: fixed;
-  top: 15px;
-  right: 20px;
+  top: 9px;
+  left: 20px;
   display: none;
   z-index: 20;
   @media (max-width: 767px) {
@@ -19,7 +19,7 @@ const StyledBurger = styled.div`
 
   .Line {
     width: 2rem;
-    height: 0.2rem;
+    height: 0.1rem;
     background-color: ${({ open }) => (open ? '#fff' : '#000')};
     border-radius: 10px;
     transform-origin: 1px;

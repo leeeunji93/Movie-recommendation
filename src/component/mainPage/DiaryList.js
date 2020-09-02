@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import ScrollToTop from 'react-scroll-to-top';
 import MyAccount from '../../tool/MyAccount';
 import ArrowDropDownCircleRoundedIcon from '@material-ui/icons/ArrowDropDownCircleRounded';
+import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 
 const PAGE_SIZE = 10;
 
@@ -65,6 +66,10 @@ const DiaryList = ({ match }) => {
         <article className="main_content">
           <p>{data.notes}</p>
         </article>
+        <footer className="main_footer">
+          <span>자세히 보러가기</span>
+          <ArrowDropDownCircleIcon className="main_footer_icon" />
+        </footer>
       </div>
     );
   };

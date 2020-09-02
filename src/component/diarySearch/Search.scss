@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', 'Noto Sans KR';
+  font-family: 'sf-ui-display', 'Roboto';
 }
 
 //never search
@@ -27,7 +27,7 @@
   }
   input {
     @include input;
-
+    font-size: 16px;
     width: 200px;
     border: none;
     margin: 1rem;
@@ -35,7 +35,7 @@
     font-style: italic;
   }
   ::placeholder {
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
   button {
@@ -80,9 +80,10 @@
 
   input {
     border: none;
+    font-size: 16px;
   }
   ::placeholder {
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
 }
@@ -92,8 +93,7 @@
   padding: 1.5rem;
   input {
     border: none;
-    text-decoration: none;
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
 }
@@ -104,10 +104,11 @@
 .write_tags_when {
   padding: 1rem;
   border-bottom: 1px solid $gray;
+  font-size: 16px;
   select {
     text-decoration: none;
     border: none;
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
 }
@@ -116,10 +117,11 @@
   padding: 1rem;
   border-left: 1px solid $gray;
   border-bottom: 1px solid $gray;
+  font-size: 16px;
   select {
     text-decoration: none;
     border: none;
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
 }
@@ -148,7 +150,7 @@
     line-height: 1.5;
   }
   ::placeholder {
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
 }
@@ -158,9 +160,10 @@
   input {
     border: none;
     width: 20rem;
+    font-size: 16px;
   }
   ::placeholder {
-    font-size: 16px;
+    font-size: 12px;
     color: $gray;
   }
 }

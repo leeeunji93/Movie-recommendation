@@ -1,6 +1,7 @@
 @import './style/utils.scss';
 #root {
   min-height: 100%;
+  font-family: 'sf-ui-display', 'Roboto';
 }
 
 html {
@@ -21,8 +22,3 @@ a {
   outline: none;
   box-shadow: none;
 }
-
-/*code {
-  font-family: 'Roboto',source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}*/

@@ -10,7 +10,7 @@ const Ul = styled.ul`
   flex-flow: row nowrap;
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   width: 20rem;
   li {
     color: black;
@@ -23,12 +23,12 @@ const Ul = styled.ul`
     background-color: #04bfad;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     border-right: 0;
     height: 100vh;
     width: 10rem;
     padding-top: 3.5rem;
-    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
     transition: transform 0.3s ease-in-out;
     li {
       color: white;
