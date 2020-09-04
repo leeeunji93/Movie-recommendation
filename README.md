@@ -26,8 +26,8 @@
 
 #### 5. 영화 노트 검색 기능을 통해 궁금한 영화와 관련된 일기만 모아보기 가능<br/>
 
- <img src="https://user-images.githubusercontent.com/59554635/92228126-4ec87100-eee2-11ea-81b8-c4686cba3546.GIF"  width="300px" height="500px"  alt=""></img><br/>
-   
+<img src="https://user-images.githubusercontent.com/59554635/92228126-4ec87100-eee2-11ea-81b8-c4686cba3546.GIF"  width="300px" height="500px"  alt=""></img><br/>
+
 
 ### Skills
 
