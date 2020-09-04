@@ -6,9 +6,10 @@
 
 ### Use
 
+
 1. 로그인 및 회원 가입<br>
 <<<<<<< HEAD
-   <img src="https://user-images.githubusercontent.com/59554635/89487325-18fb7400-d7e0-11ea-8c44-a5ad377b4efe.gif" width="250px" height="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+   <img src="https://user-images.githubusercontent.com/59554635/92226309-7d911800-eedf-11ea-9725-ec41f943bea9.GIF" width="250px" height="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 2. 로그인을 하면 MyPage에서 일기 작성 가능
 =======
 2. 로그인을 하면 MyPage에서 나의 일기 모아보기 기능
