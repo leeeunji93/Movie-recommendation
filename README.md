@@ -14,7 +14,7 @@
 
    <img src="https://user-images.githubusercontent.com/59554635/92228113-4a03bd00-eee2-11ea-94d7-303f88317af7.GIF" width="300px" height="500px"  alt="RubberDuck"></img><br/>
    
-      <img src="https://user-images.githubusercontent.com/59554635/92228118-4bcd8080-eee2-11ea-8961-db9c30793710.GIF"  width="300px" height="500px"  alt=""></img><br/>
+<img src="https://user-images.githubusercontent.com/59554635/92228118-4bcd8080-eee2-11ea-8961-db9c30793710.GIF"  width="300px" height="500px"  alt=""></img><br/>
 
 #### 3. 로그인을 하면 MyPage에서 나의 일기 모아보기 기능<br/>
 
@@ -22,7 +22,7 @@
 
 #### 4. 다른 유저의 일기 공유 <br/>
    
-    <img src="https://user-images.githubusercontent.com/59554635/92228765-5a686780-eee3-11ea-93cc-16a41aee0c51.GIF"  width="300px" height="500px"  alt=""></img><br/>
+  <img src="https://user-images.githubusercontent.com/59554635/92228765-5a686780-eee3-11ea-93cc-16a41aee0c51.GIF"  width="300px" height="500px"  alt=""></img><br/>
 
 #### 5. 영화 노트 검색 기능을 통해 궁금한 영화와 관련된 일기만 모아보기 가능<br/>
 
