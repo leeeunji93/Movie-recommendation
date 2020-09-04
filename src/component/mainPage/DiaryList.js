@@ -67,8 +67,13 @@ const DiaryList = ({ match }) => {
           <p>{data.notes}</p>
         </article>
         <footer className="main_footer">
-          <span>자세히 보러가기</span>
-          <ArrowDropDownCircleIcon className="main_footer_icon" />
+          <span onClick={clickedItem}>자세히 보러가기</span>
+
+          <ArrowDropDownCircleIcon
+            className="main_footer_icon"
+            fontSize="large"
+            onClick={clickedItem}
+          />
         </footer>
       </div>
     );

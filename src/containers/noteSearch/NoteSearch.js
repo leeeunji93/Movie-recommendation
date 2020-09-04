@@ -68,24 +68,6 @@ const NoteSearch = ({ history }) => {
   return (
     <div className="note_wrapper">
       <form className="note_search">
-        {/* {clickState ? (
-          <button className="note_search_goBack" onClick={goBack}>
-            <PlayCircleFilledIcon fontSize="large" />
-          </button>
-        ) : (
-          <>
-            <input
-              name="keyword"
-              placeholder="영화 제목을 검색하세요"
-              onChange={handleChange}
-              value={keyword}
-              onKeyPress={handleKeyPress}
-            />
-            <div onClick={clickSearch} className="menu">
-              검색
-            </div>
-          </>
-        )} */}
         <input
           name="keyword"
           placeholder="영화 제목을 검색하세요"

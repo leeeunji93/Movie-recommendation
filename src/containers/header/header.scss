@@ -4,6 +4,7 @@
 * {
   box-sizing: border-box;
   width: 100%;
+  font-family: 'sf-ui-display';
 }
 
 .header_wrapper {
@@ -25,11 +26,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
       // height값을 부모랑 똑같이 안주면 위로 탁 붙어버림! 자식을 주면 부모는 height값 생략 가능
       height: 35px;
       font-size: 2rem;
       font-weight: 500;
       color: $lightgreen;
+
+      @media (min-width: 767px) {
+        height: 52px;
+      }
     }
   }
   .header_search {
@@ -40,89 +46,7 @@
     @media (min-width: 767px) {
       position: fixed;
       top: 15px;
-      left: 80px;
-      width: 2rem;
-    }
-  }
-}
-
-.header_menu {
-  display: flex;
-  height: 8rem;
-
-  .search {
-    margin-left: 2rem;
-    display: flex;
-    align-items: center;
-
-    input {
-      border: none;
-      text-align: center;
-      padding-bottom: 0.5rem;
-    }
-    input::placeholder {
-      color: $basicFont;
-      font-size: 0.9rem;
-      font-style: italic;
-    }
-  }
-}
-
-.list {
-  display: flex;
-  justify-content: center;
-  width: 100rem;
-  .menu {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    // margin-right: 1rem;
-  }
-  .icon {
-    margin-right: 1rem;
-  }
-}
-
-// >768
-@media only screen and (min-width: 768px) {
-  .header_menu {
-    display: flex;
-    justify-content: space-around;
-    .search {
-      width: 40rem;
-      margin-left: 10rem;
-
-      input {
-        padding: 0.5rem;
-      }
-      input::placeholder {
-        color: $basicFont;
-        font-size: 1.6rem;
-        font-style: italic;
-      }
-    }
-  }
-  .list {
-    width: 30rem;
-    .menu {
-      font-size: 1.6rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      text-decoration: none;
-      .text {
-        width: 10vw;
-      }
-      button {
-        background: none;
-        border: none;
-        box-shadow: none;
-        font-size: 1.5rem;
-        margin-top: 0.2rem;
-      }
+      right: 80px;
     }
   }
 }

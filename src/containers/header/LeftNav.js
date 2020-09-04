@@ -14,7 +14,11 @@ const Ul = styled.ul`
   width: 20rem;
   li {
     color: black;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.5;
+    font-family: 'sf-ui-display';
+    margin-left: 15px;
   }
 
   @media (max-width: 767px) {
@@ -35,8 +39,8 @@ const Ul = styled.ul`
       line-height: 1.5;
       letter-spacing: 0.3rem;
       padding: 1.8rem 1rem;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.3rem;
+      font-weight: 400;
     }
   }
 `;

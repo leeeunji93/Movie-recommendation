@@ -3,35 +3,18 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Lato', 'Noto Sans KR';
+  font-family: 'sf-ui-display';
 }
 
 .mypage_wrapper {
   margin-top: 5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 1.4rem;
   width: 80%;
   h1 {
     color: $black;
   }
-  // .mypage_totalcount {
-  //   margin-top: 2rem;
-  //   font-size: 1.4rem;
-  //   font-weight: 500;
-  //   .total {
-  //     font-size: 1.3rem;
-  //     font-weight: 600;
-  //     color: $lightgreen;
-  //   }
-  // }
 }
 
-.mypage_wrapper {
-  margin-left: 1.4rem;
-}
-
-.mypage_header {
-}
 .data_wrapper {
   display: flex;
   flex-direction: column;
@@ -43,7 +26,7 @@ section {
 
   .data_list {
     width: 29rem;
-    margin-right: 2rem;
+    margin: 0 auto;
     position: relative;
     img {
       width: 100%;
@@ -81,10 +64,22 @@ section {
   color: black;
 }
 
-@media only screen and (min-width: 768px) {
-  // .data_wrapper {
-  //   display: grid;
-  //   grid-template-columns: repeat(2, 1fr);
-  //   grid-gap: 1rem;
-  // }
+@media all and (min-width: 767px) and (max-width: 1023px) {
+  .data_wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .data_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .data_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
 }

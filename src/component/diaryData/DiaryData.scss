@@ -3,7 +3,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Lato', 'Noto Sans KR';
+  font-family: 'sf-ui-display';
 }
 .dairyData_wrapper {
   height: 100vh;
@@ -15,31 +15,45 @@
   position: relative;
   .headline_img img {
     object-fit: cover;
-
-    padding-top: 30px;
+    padding-top: 10px;
     filter: brightness(40%);
   }
   .headline_title {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 2.4rem;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 3;
     text-align: center;
     color: #ffffff;
+
+    @media all and (min-width: 767px) and (max-width: 1023px) {
+      font-size: 3rem;
+    }
+    @media all and (min-width: 1024px) {
+      font-size: 3.5rem;
+    }
   }
   .data_list_btn {
     position: absolute;
     top: 80%;
-    right: 0;
-    transform: translate(-50%, -50%);
+    right: 5%;
+
     background: $lightgreen;
     color: $white;
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
+    @media all and (min-width: 767px) and (max-width: 1023px) {
+      width: 3rem;
+      height: 3rem;
+    }
+    @media all and (min-width: 1023px) {
+      width: 5rem;
+      height: 5rem;
+    }
   }
 }
 
@@ -49,12 +63,15 @@
   flex-wrap: nowrap;
   padding: 1rem;
   padding-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1.2;
   color: $basicFont;
+  @media all and (min-width: 767px) {
+    font-size: 1.7rem;
+  }
 
   .info_left {
-    font-weight: 600;
+    font-weight: 500;
     //텍스트가 길어져도 킵
     white-space: nowrap;
   }
@@ -65,102 +82,22 @@
 }
 .dairyData_info_bottom {
   padding-left: 1rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
+  @media all and (min-width: 767px) and (max-width: 1023px) {
+    font-size: 1.7rem;
+  }
 }
 
 .dairyData_note {
   padding: 1.1rem;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   white-space: pre-wrap;
   word-break: break-word;
   text-align: justify;
   line-height: 1.5;
-}
+  font-weight: 300;
 
-@media only screen and (min-width: 768px) {
-  .dairyData_diary {
-    position: relative;
-    .dairyData_diary_data {
-      position: absolute;
-      top: 50%;
-      left: 65%;
-      transform: translate(-50%, -65%);
-    }
-  }
-  .dairyData_diary_user_img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    img {
-      // padding: 0.5rem;
-      width: 50rem;
-      filter: brightness(40%);
-    }
-  }
-
-  .dairyData_movieData {
-    border: none;
-    margin-top: 7rem;
-    padding: 1rem;
-
-    h4 {
-      font-size: 2.5rem;
-      width: 200px;
-      padding: 0.4rem;
-      letter-spacing: 0.5rem;
-    }
-    .movieInfo_text {
-      font-size: 1.6rem;
-      line-height: 2;
-      font-weight: 500;
-      letter-spacing: 0.1rem;
-    }
-  }
-  .movieInfo_note {
-    width: 80%;
-    margin: 2rem auto;
-    p {
-      height: 50vh;
-      font-size: 1.5rem;
-      line-height: 2;
-      letter-spacing: 0.2;
-      text-align: justify;
-    }
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .dairyData_wrapper {
-    display: flex;
-  }
-  .dairyData_diary {
-    position: relative;
-    .dairyData_diary_data {
-      width: 45rem;
-      position: absolute;
-      padding: 1rem;
-      color: $white;
-      line-height: 3.5;
-    }
-  }
-  .dairyData_diary_user_img {
-    img {
-      // padding: 0.5rem;
-      width: 50rem;
-      height: 40rem;
-      filter: brightness(40%);
-    }
-  }
-  .movieInfo_note {
-    border-top: 1px solid $black;
-    width: 90%;
-    margin: 5rem auto;
-    p {
-      margin-top: 2rem;
-      font-size: 1.5rem;
-      line-height: 2;
-      letter-spacing: 0.2;
-    }
+  @media all and (min-width: 1023px) {
+    font-size: 2.2rem;
   }
 }

@@ -16,6 +16,9 @@
   height: 90vh;
   width: 100%;
   border-bottom: 3px solid $white;
+  @media all and (min-width: 767px) and (max-width: 1023px) {
+    height: 100%;
+  }
 }
 
 .mypage_header {
@@ -40,10 +43,17 @@
 
 .main_top {
   position: relative;
+
   .main_top_img {
     object-fit: cover;
     height: 26rem;
     filter: brightness(60%);
+    @media all and (min-width: 767px) and (max-width: 1023px) {
+      height: 40rem;
+    }
+    @media (min-width: 1024px) {
+      height: 55rem;
+    }
   }
   .main_user_title {
     @extend%main_styles;
@@ -51,6 +61,13 @@
     font-weight: 500;
     letter-spacing: 0.1em;
     line-height: 2.6;
+    @media all and (min-width: 767px) and (max-width: 1023px) {
+      top: 75%;
+      font-size: 2.5rem;
+    }
+    @media (min-width: 1024px) {
+      font-size: 3.5rem;
+    }
   }
   .main_top_tag {
     @extend%main_styles;
@@ -59,6 +76,13 @@
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.1em;
+    @media all and (min-width: 767px) and (max-width: 1023px) {
+      top: 88%;
+      font-size: 1.6rem;
+    }
+    @media (min-width: 1024px) {
+      font-size: 2.6rem;
+    }
   }
 }
 .main_content {
@@ -71,6 +95,7 @@
     text-align: justify;
     //line-clamp * line-height값으로 해줘야함;
     height: 10em;
+    padding: 1rem;
     line-height: 2;
     letter-spacing: 0.005em;
     font-size: 1.7rem;
@@ -79,65 +104,46 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+    color: $gray;
+    @media all and (min-width: 767px) and (max-width: 1023px) {
+      height: 7em;
+      line-height: 2;
+      -webkit-line-clamp: 3;
+      padding: 2rem;
+      white-space: normal;
+      color: $gray;
+      font-size: 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      height: 7em;
+      line-height: 2;
+      -webkit-line-clamp: 3;
+      padding: 2rem;
+      white-space: normal;
+      color: $gray;
+      font-size: 2.2rem;
+    }
   }
 }
 
 .main_footer {
   display: flex;
+  align-items: center;
+  margin-top: 3rem;
+
+  @media (min-width: 767px) {
+    margin-bottom: 3rem;
+  }
 
   span {
-    display: inline-block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.3;
     color: #7b7b7b;
+    text-align: end;
+    margin-right: 1rem;
+  }
+  .main_footer_icon {
+    margin-right: 1rem;
+    transform: rotate(-90deg);
   }
 }
-
-@media only screen and (min-width: 768px) {
-  .diary_data {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    padding: 0.5rem;
-    margin-left: 2rem;
-    margin-top: 2rem;
-  }
-
-  .diary {
-    width: 18rem;
-    height: auto;
-    &:hover {
-      background: $lightgreen;
-    }
-
-    .diary_content {
-      font-size: 1.2rem;
-      width: 100%;
-      text-align: center;
-      line-height: 1.5;
-      letter-spacing: 0.15em;
-      .userTitle {
-        font-style: italic;
-      }
-    }
-  }
-}
-
-// /*
-
-// !* 스마트폰 가로+세로 *!
-
-// @media only screen and (min-device-width : 320px) and (max-device-width : 480px){
-// }
-
-// !* 스마트폰 세로 *!
-// @media only screen and (max-width : 320px) {
-// }
-
-// !* 데스크탑 브라우저 가로 *!
-// @media only screen and (min-width : 1224px) {
-// }
-
-// !* 큰 모니터 *!
-// @media only screen and (min-width : 1824px) {
-// }

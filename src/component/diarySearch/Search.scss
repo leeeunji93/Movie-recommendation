@@ -99,6 +99,12 @@
 }
 .write_tags {
   display: flex;
+  appearance: none; /* 기본 스타일 없애기 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  border-radius: 0;
+  font-family: inherit;
 }
 // tag
 .write_tags_when {
@@ -203,7 +209,6 @@
     grid-gap: 5px;
   }
   .write_content {
-    height: 10vh;
     font-size: 1.5rem;
     margin-top: 1.5rem;
     input {

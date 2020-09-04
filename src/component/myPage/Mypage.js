@@ -84,16 +84,3 @@ const MyPage = ({ match }) => {
 };
 
 export default MyPage;
-
-{
-  /* 
-<div className="data_list_text">
-            <div className="data_list_title">
-              {`${data.movieTitle}`.slice(0, 9)}
-            </div>
-            <div className="data_list_date">{data.watchDate}</div>
-
-            <div className="data_list_rate"> {`⭐${data.rating}.0`}</div>
-          </div>
-       */
-}
