@@ -66,7 +66,7 @@ const SearchDiary = ({ match }) => {
       .catch((error) => alert(error));
   };
 
-  //태그들을 가져오자
+  //태그들을 가져오자 가져오자 가져오자
   const refreshTags = () => {
     NetTool.request(APIs.filmTags)
       .exec()
