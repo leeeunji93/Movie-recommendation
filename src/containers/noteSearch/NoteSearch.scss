@@ -13,14 +13,13 @@
     padding-top: 100px;
   }
   input {
-    height: 3.5rem;
     background: none;
     border-radius: 1rem;
     border: none;
-    padding-left: 1.5rem;
-    font-size: 1.6rem;
+    box-shadow: none;
+    outline: none;
+    padding: 1.5rem;
     @media (min-width: 767px) {
-      height: 5rem;
       font-size: 2rem;
     }
 
@@ -31,7 +30,6 @@
   ::placeholder {
     font-weight: 500;
     font-size: 1.2rem;
-    line-height: 17px;
     color: #c4c4c4;
     padding: 1rem;
   }

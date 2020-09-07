@@ -15,10 +15,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 40px;
-  // h3 {
-  //   text-align: center;
-  //   white-space: nowrap;
-  // }
 
   .search_input {
     display: flex;
@@ -26,10 +22,11 @@
     align-items: center;
   }
   input {
-    @include input;
+    border: none;
+    box-shadow: none;
+    outline: none;
     font-size: 16px;
     width: 200px;
-    border: none;
     margin: 1rem;
     color: $gray;
     font-style: italic;
@@ -91,20 +88,21 @@
 .write_date {
   border-bottom: 1px solid $gray;
   padding: 1.5rem;
-  input {
-    border: none;
-    font-size: 12px;
-    color: $gray;
-  }
 }
 .write_tags {
   display: flex;
-  appearance: none; /* 기본 스타일 없애기 */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  border-radius: 0;
-  font-family: inherit;
+  select {
+    appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    font-family: inherit;
+    box-shadow: none;
+    outline: none;
+    font-size: 16px;
+    background-color: none;
+  }
 }
 // tag
 .write_tags_when {
@@ -114,7 +112,7 @@
   select {
     text-decoration: none;
     border: none;
-    font-size: 12px;
+
     color: $gray;
   }
 }
@@ -127,7 +125,7 @@
   select {
     text-decoration: none;
     border: none;
-    font-size: 12px;
+
     color: $gray;
   }
 }
@@ -216,9 +214,6 @@
       box-shadow: none;
       text-decoration: none;
       border: none;
-    }
-    &:hover {
-      border: 1px solid lighten($black, 5%);
     }
   }
 }

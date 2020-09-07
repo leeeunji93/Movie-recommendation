@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MyAccount from '../../tool/MyAccount';
@@ -25,12 +25,13 @@ const Ul = styled.ul`
     display: flex;
     flex-flow: column nowrap;
     background-color: #04bfad;
+    filter: opacity(85%);
     position: fixed;
     top: 0;
     left: 0;
     border-right: 0;
     height: 100vh;
-    width: 10rem;
+    width: 15rem;
     padding-top: 3.5rem;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
     transition: transform 0.3s ease-in-out;
@@ -39,8 +40,8 @@ const Ul = styled.ul`
       line-height: 1.5;
       letter-spacing: 0.3rem;
       padding: 1.8rem 1rem;
-      font-size: 1.3rem;
-      font-weight: 400;
+      font-size: 1.4rem;
+      font-weight: 500;
     }
   }
 `;

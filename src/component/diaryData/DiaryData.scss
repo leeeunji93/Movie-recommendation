@@ -29,7 +29,7 @@
     text-align: center;
     color: #ffffff;
 
-    @media all and (min-width: 767px) and (max-width: 1023px) {
+    @media all and (min-width: 767px) and (max-width: 1024px) {
       font-size: 3rem;
     }
     @media all and (min-width: 1024px) {
@@ -46,11 +46,11 @@
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
-    @media all and (min-width: 767px) and (max-width: 1023px) {
+    @media all and (min-width: 767px) and (max-width: 1024px) {
       width: 3rem;
       height: 3rem;
     }
-    @media all and (min-width: 1023px) {
+    @media all and (min-width: 1024px) {
       width: 5rem;
       height: 5rem;
     }
@@ -66,8 +66,13 @@
   font-size: 1.3rem;
   line-height: 1.2;
   color: $basicFont;
-  @media all and (min-width: 767px) {
+  @media all and (min-width: 767px) and (max-width: 1024px) {
     font-size: 1.7rem;
+    line-height: 1.5;
+  }
+  @media all and (min-width: 1024px) {
+    font-size: 2.2rem;
+    line-height: 2;
   }
 
   .info_left {
@@ -83,8 +88,11 @@
 .dairyData_info_bottom {
   padding-left: 1rem;
   font-size: 1.3rem;
-  @media all and (min-width: 767px) and (max-width: 1023px) {
+  @media all and (min-width: 767px) and (max-width: 1024px) {
     font-size: 1.7rem;
+  }
+  @media all and (min-width: 1024px) {
+    font-size: 2.2rem;
   }
 }
 
@@ -94,10 +102,10 @@
   white-space: pre-wrap;
   word-break: break-word;
   text-align: justify;
-  line-height: 1.5;
+  line-height: 2;
   font-weight: 300;
 
-  @media all and (min-width: 1023px) {
+  @media all and (min-width: 1024px) {
     font-size: 2.2rem;
   }
 }

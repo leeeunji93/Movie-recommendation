@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { APIs, NetTool } from '../../tool/NetTool';
-import Grid from '@material-ui/core/Grid';
 import './Search.scss';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../reducers/search';
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Card, CardContent, TextField } from '@material-ui/core';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import ThumbDownIcon from '@material-ui/icons/ThumbDown';
-import StarIcon from '@material-ui/icons/Star';
 
+const useStyles = makeStyles({
+  underline: {
+    '&&&:before': {
+      borderBottom: 'none',
+    },
+    '&&:after': {
+      borderBottom: 'none',
+    },
+    fontSize: '15px',
+    color: 'gray',
+  },
+});
 const SearchDiary = ({ match }) => {
   const { search } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -124,6 +131,8 @@ const SearchDiary = ({ match }) => {
       });
   };
 
+  const classes = useStyles();
+
   return (
     <>
       <section className="write_full">
@@ -141,11 +150,19 @@ const SearchDiary = ({ match }) => {
           </div>
 
           <div className="write_date">
-            <input
+            {/* <input
               name="watchDate"
               value={input.watchDate}
               onChange={handleChangeDiaryData}
               type="date"
+            /> */}
+            <TextField
+              type="date"
+              name="watchDate"
+              value={input.watchDate}
+              onChange={handleChangeDiaryData}
+              defaultValue="언제 봤나요?"
+              InputProps={{ classes }}
             />
           </div>
           <div className="write_tags">

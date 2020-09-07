@@ -64,7 +64,7 @@ section {
   color: black;
 }
 
-@media all and (min-width: 767px) and (max-width: 1023px) {
+@media all and (min-width: 767px) and (max-width: 1024px) {
   .data_wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

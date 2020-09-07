@@ -103,7 +103,8 @@ a {
 button,
 input,
 textarea {
-  font-family: 'Roboto', sans-serif;
+  -webkit-appearance: none;
+  font-family: 'sf-ui-display', 'Roboto', sans-serif;
 }
 
 button:focus,
