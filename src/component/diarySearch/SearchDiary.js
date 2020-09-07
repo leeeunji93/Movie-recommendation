@@ -28,7 +28,6 @@ const SearchDiary = ({ match }) => {
   const dId = match.params.dId;
   const isModify = dId > 0;
   const history = useHistory();
-
   const [input, setInput] = useState({
     title: '',
     cover: '',
@@ -67,7 +66,7 @@ const SearchDiary = ({ match }) => {
       .catch((error) => alert(error));
   };
 
-  //태그
+  //태그들을 가져오자
   const refreshTags = () => {
     NetTool.request(APIs.filmTags)
       .exec()
